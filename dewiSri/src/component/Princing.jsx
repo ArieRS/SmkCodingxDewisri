@@ -3,50 +3,59 @@ import React, { Component } from 'react'
 export default class Princing extends Component {
     render() {
         return (
-            <div className="colorlib-pricing">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
-                            <h2>Pricing</h2>
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name</p>
-                        </div>
+            <section id="pricing" class="section-bg">
+                <div class="container">
+                    <div class="section-header">
+                        <h3 class="section-title">Pricing</h3>
+                        <span class="section-divider"></span>
+                        <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
                     </div>
-                    <div className="row">
-                        <div className="col-md-3 text-center animate-box">
-                            <div className="pricing">
-                                <h2 className="pricing-heading">Starter</h2>
-                                <div className="price"><sup className="currency">$</sup>9<small>per month</small></div>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p><a href="#" className="btn btn-primary">Select Plan</a></p>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="box wow fadeInLeft">
+                            <h3>Free</h3>
+                            <h4><sup>$</sup>0<span> month</span></h4>
+                            <ul>
+                                <li><i class="ion-android-checkmark-circle"></i> Quam adipiscing vitae proin</li>
+                                <li><i class="ion-android-checkmark-circle"></i> Nec feugiat nisl pretium</li>
+                                <li><i class="ion-android-checkmark-circle"></i> Nulla at volutpat diam uteera</li>
+                                <li><i class="ion-android-checkmark-circle"></i> Pharetra massa massa ultricies</li>
+                                <li><i class="ion-android-checkmark-circle"></i> Massa ultricies mi quis hendrerit</li>
+                            </ul>
+                            <a href="#" class="get-started-btn">Get Started</a>
                             </div>
                         </div>
-                        <div className="col-md-3 text-center animate-box">
-                            <div className="pricing">
-                                <h2 className="pricing-heading">Basic</h2>
-                                <div className="price"><sup className="currency">$</sup>27<small>per month</small></div>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p><a href="#" className="btn btn-primary">Select Plan</a></p>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="box featured wow fadeInUp">
+                                <h3>Business</h3>
+                                <h4><sup>$</sup>29<span> month</span></h4>
+                                <ul>
+                                    <li><i class="ion-android-checkmark-circle"></i> Quam adipiscing vitae proin</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Nec feugiat nisl pretium</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Nulla at volutpat diam uteera</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Pharetra massa massa ultricies</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Massa ultricies mi quis hendrerit</li>
+                                </ul>
+                                <a href="#" class="get-started-btn">Get Started</a>
                             </div>
                         </div>
-                        <div className="col-md-3 text-center animate-box">
-                            <div className="pricing">
-                                <h2 className="pricing-heading">Pro</h2>
-                                <div className="price"><sup className="currency">$</sup>74<small>per month</small></div>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p><a href="#" className="btn btn-primary">Select Plan</a></p>
-                            </div>
-                        </div>
-                        <div className="col-md-3 text-center animate-box">
-                            <div className="pricing">
-                                <h2 className="pricing-heading">Unlimited</h2>
-                                <div className="price"><sup className="currency">$</sup>140<small>per month</small></div>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p><a href="#" className="btn btn-primary">Select Plan</a></p>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="box wow fadeInRight">
+                                <h3>Developer</h3>
+                                <h4><sup>$</sup>49<span> month</span></h4>
+                                <ul>
+                                    <li><i class="ion-android-checkmark-circle"></i> Quam adipiscing vitae proin</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Nec feugiat nisl pretium</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Nulla at volutpat diam uteera</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Pharetra massa massa ultricies</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Massa ultricies mi quis hendrerit</li>
+                                </ul>
+                                <a href="#" class="get-started-btn">Get Started</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         )
     }
 }
