@@ -1,0 +1,92 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #1DDF9B, #1DC9CA);
+}
+
+.container {
+    background-color: white;
+    width: 500px;
+    margin: 200px auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    position: relative;
+}
+
+.btn-groub {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+}
+
+#btn-login, #btn-register {
+    border: 0;
+    outline: 0;
+    flex-grow: 1;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.btn-active {
+    background-color: rgb(29, 223, 155);
+    box-shadow: 0 10px 10px rgba(29, 223, 155, .1);
+    color: white;
+}
+
+.container input {
+    border: none;
+    background: none;
+    outline: none;
+    background: #f0f0f0;
+    border-bottom: 2px solid #f0f0f0;
+    width: 30%;
+    padding: 10px 20px;
+    transition: .2s;
+}
+
+.container #login, #register {
+    position: relative;
+    display: block;
+}
+
+.container #login > *, #register > * {
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.container input:hover {
+    border-bottom: 2px solid #aeaeae;
+}
+
+.container input:focus {
+    width: 50%;
+    border-bottom: 2px solid #1DC9CA;
+}
+
+.container #register {
+    display: none;
+}
+
+button {
+    width: 30%;
+    background: none;
+    border: 2px solid #1DDF9B;
+    outline: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: black;
+    transition: .2s;
+}
+
+button:hover {
+    color: white;
+    background-color: rgb(29, 223, 155);
+    box-shadow: 0 10px 10px rgba(29, 223, 155, .1);
+}

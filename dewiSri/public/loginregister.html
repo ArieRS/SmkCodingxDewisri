@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login/Register</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="btn-groub">
+                <button id="btn-login" class="btn-active">Login</button>
+                <button id="btn-register">Register</button>
+            </div>
+            <div id="login">
+                <h3>Login</h3>
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <button>Login</button>
+            </div>
+            <div id="register">
+                <h3>Register</h3>
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="password" id="confirmpassword" required>
+                <button>Register</button>
+            </div>
+        </div>
+        <script>
+            const btnLogin = document.querySelector('#btn-login');
+            const btnRegister = document.querySelector('#btn-register');
+
+            const login = document.querySelector('#login');
+            const register = document.querySelector('#register');
+
+            btnLogin.addEventListener('click', () => {
+                login.style.display = 'block'
+                register.style.display = 'none'
+                btnRegister.classList.remove('btn-active')
+                btnLogin.classList.add('btn-active')
+            })
+            
+            btnRegister.addEventListener('click', () => {
+                register.style.display = 'block';
+                login.style.display = 'none'
+                btnRegister.classList.add('btn-active')
+                btnLogin.classList.remove('btn-active')
+            })
+        </script>
+    </body>
+</html>
