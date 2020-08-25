@@ -3,17 +3,13 @@ import './App.css';
 import Header from './component/Header';
 import Section from './component/main/Section';
 import Main from './component/Main';
-import Footer from './component/Footer';
+import { MainApp } from './system/Router';
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <Section />
-      <Main />
-      <Footer />
-    </div>
-  )
+
+export default class App extends React.Component {
+  render() {
+    <Header />
+    return MainApp(false)
+  }
 }
 
-export default App;
