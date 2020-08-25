@@ -8,7 +8,9 @@ import { MainApp } from './system/Router';
 
 export default class App extends React.Component {
   render() {
-    <Header />
+    // const MyApp = MainApp(false);
+    // return <MyApp />
+    
     return MainApp(false)
   }
 }

@@ -8,16 +8,13 @@ export default class MainPage extends Component {
     render() {
         return (
             <div className="container-fluid" style={{ backgroundColor: "#fff", marginTop:100 }}>
-                <div className="container-sm">
-                    
+                <div className="container-sm">  
                     <FullCalendar
                         plugins={[dayGridPlugin]}
                         initialView="dayGridMonth"
                     />
                 </div>
             </div>
-
-
         )
     }
 }

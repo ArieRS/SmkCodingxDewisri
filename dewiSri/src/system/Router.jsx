@@ -7,13 +7,14 @@ import MainPage from '../pages/MainPage';
 
 
 export const MainApp = (auth) => {
-    return ( 
+    return (
         <div>
             <Header></Header>
             <Router>
                 <Switch>
                     <Route exact path="/" component={HomePages} />
                     <Route exact path="/main" component={MainPage} />
+                    <Route exact path="/coba" component={MainPage} />
                 </Switch>
             </Router>
             <Footer></Footer>

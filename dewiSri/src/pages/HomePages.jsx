@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Section from '../component/Section'
+import Section from '../component/main/Section'
 import Main from '../component/Main'
 
 export default class HomePages extends Component {
