@@ -14,7 +14,7 @@ export default class About extends Component {
                         </p>
                     </div>
                 </div>
-
+                <div className="container">
                 <div className="row">
                     <div className="col-lg-6 about-img wow fadeInLeft">
                         <img src="assets/img/about-img.jpg" alt="" />
@@ -38,6 +38,8 @@ export default class About extends Component {
                         </p>
                     </div>
                 </div>
+            
+                </div>    
             </section>
         )
     }

@@ -8,6 +8,11 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+:root {
+  --greenColor: #1de099;
+  --blueColor: #1dc8cd;
+}
+
 body {
   background: #fff;
   color: #666666;
@@ -16,7 +21,7 @@ body {
 }
 
 a {
-  color: #1dc8cd;
+  color: var(--blueColor);
   transition: 0.5s;
 }
 
@@ -42,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 .back-to-top {
   position: fixed;
   display: none;
-  background: linear-gradient(45deg, #1de099, #1dc8cd);
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
   color: #fff;
   padding: 2px 20px 8px 20px;
   font-size: 16px;
@@ -53,13 +58,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .back-to-top:focus {
-  background: linear-gradient(45deg, #1de099, #1dc8cd);
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
   color: #fff;
   outline: none;
 }
 
 .back-to-top:hover {
-  background: #1dc8cd;
+  background: var(--blueColor);
   color: #fff;
 }
 
@@ -75,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   transition: all 0.5s;
   z-index: 997;
-  background: linear-gradient(45deg, #1de099, #1dc8cd);
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
 }
 
 #header #logo {
@@ -118,7 +123,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header.header-fixed {
-  background: linear-gradient(45deg, #1de099, #1dc8cd);
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
   padding: 20px 0;
   height: 72px;
   transition: all 0.5s;
@@ -200,7 +205,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #intro .btn-get-started:hover {
-  color: #1dc8cd;
+  color: var(--blueColor);
   background: #fff;
 }
 
@@ -379,7 +384,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu ul li:hover > a {
-  color: #1dc8cd;
+  color: var(--blueColor);
 }
 
 .nav-menu ul ul {
@@ -466,11 +471,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-nav ul .menu-has-children i.fa-chevron-up {
-  color: #1dc8cd;
+  color: var(--blueColor);
 }
 
 #mobile-nav ul .menu-item-active {
-  color: #1dc8cd;
+  color: var(--blueColor);
 }
 
 #mobile-body-overly {
@@ -520,8 +525,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   display: block;
   width: 60px;
   height: 3px;
-  background: #1dc8cd;
-  background: linear-gradient(0deg, #1dc8cd 0%, #55fabe 100%);
+  background: var(--blueColor);
+  background: linear-gradient(0deg, var(--blueColor) 0%, #55fabe 100%);
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -643,7 +648,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #about .content i {
   font-size: 20px;
   padding-right: 4px;
-  color: #1dc8cd;
+  color: var(--blueColor);
 }
 
 #about .content ul {
@@ -695,8 +700,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #features .icon i:before {
-  background: #1dc8cd;
-  background: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
+  background: var(--blueColor);
+  background: linear-gradient(45deg, var(--blueColor) 0%, #55fabe 100%);
   background-clip: border-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -762,8 +767,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #advanced-features i:before {
-  background: #1dc8cd;
-  background: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
+  background: var(--blueColor);
+  background: linear-gradient(45deg, var(--blueColor) 0%, #55fabe 100%);
   background-clip: border-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -837,8 +842,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #call-to-action .cta-btn:hover {
-  background: #1dc8cd;
-  border: 2px solid #1dc8cd;
+  background: var(--blueColor);
+  border: 2px solid var(--blueColor);
 }
 
 /* More Features Section
@@ -868,8 +873,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #more-features .icon i:before {
-  background: #1dc8cd;
-  background: linear-gradient(45deg, #1dc8cd 0%, #55fabe 100%);
+  background: var(--blueColor);
+  background: linear-gradient(45deg, var(--blueColor) 0%, #55fabe 100%);
   background-clip: border-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -950,7 +955,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #pricing h4 {
   font-size: 46px;
-  color: #1dc8cd;
+  color: var(--blueColor);
   font-weight: 300;
 }
 
@@ -977,7 +982,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #pricing ul i {
-  color: #1dc8cd;
+  color: var(--blueColor);
   font-size: 18px;
   padding-right: 4px;
 }
@@ -995,11 +1000,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #pricing .featured {
-  border: 2px solid #1dc8cd;
+  border: 2px solid var(--blueColor);
 }
 
 #pricing .featured .get-started-btn {
-  background: linear-gradient(45deg, #1de099, #1dc8cd);
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
 }
 
 /* Frequently Asked Questions Section
@@ -1050,7 +1055,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #faq #faq-list a.collapse {
-  color: #1dc8cd;
+  color: var(--blueColor);
 }
 
 #faq #faq-list a.collapsed {
@@ -1104,7 +1109,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #team .member .social a:hover {
-  color: #1dc8cd;
+  color: var(--blueColor);
 }
 
 #team .member .social i {
@@ -1175,7 +1180,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-weight: 300;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #1dc8cd;
+  color: var(--blueColor);
 }
 
 #contact .contact-about p {
@@ -1193,7 +1198,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 18px;
   display: inline-block;
   background: #fff;
-  color: #1dc8cd;
+  color: var(--blueColor);
   line-height: 1;
   padding: 8px 0;
   margin-right: 4px;
@@ -1202,11 +1207,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   width: 36px;
   height: 36px;
   transition: 0.3s;
-  border: 1px solid #1dc8cd;
+  border: 1px solid var(--blueColor);
 }
 
 #contact .social-links a:hover {
-  background: #1dc8cd;
+  background: var(--blueColor);
   color: #fff;
 }
 
@@ -1216,7 +1221,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #contact .info i {
   font-size: 32px;
-  color: #1dc8cd;
+  color: var(--blueColor);
   float: left;
   line-height: 1;
 }
@@ -1280,11 +1285,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .php-email-form input::focus, #contact .php-email-form textarea::focus {
-  background-color: #1dc8cd;
+  background-color: var(--blueColor);
 }
 
 #contact .php-email-form button[type="submit"] {
-  background: linear-gradient(45deg, #1de099, #1dc8cd);
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
   border: 0;
   border-radius: 20px;
   padding: 8px 30px;
@@ -1339,5 +1344,47 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #footer .footer-links a:hover {
-  color: #1dc8cd;
+  color: var(--blueColor);
+}
+
+/* Custom Style */
+
+.navigation-panel {
+  padding: 20px 10px;
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
+  border: var(--blueColor);
+  color: white;
+}
+
+.panel-tanaman {
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
+  padding: 20px 10px;
+  color: white;
+  display: flex;
+}
+
+.card-kebutuhan-tanam, .card-catatan-pertanian {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-catatan-pertanian, .card-kebutuhan-tanam, .card-jurnal-harian, .card-other {
+  color: black;
+}
+
+.table-custom {
+  width: 100%;
+  text-align: center;
+  border: 2px solid var(--greenColor);
+}
+
+.table-custom tr td {
+  padding: 10px;
+  color: #666;
+}
+
+.card-jurnal-harian, .card-other {
+  text-align: center;
 }
