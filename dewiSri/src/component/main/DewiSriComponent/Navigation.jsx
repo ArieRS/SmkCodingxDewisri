@@ -37,22 +37,7 @@ export default class Navigation extends Component {
     }
 
     dateDecrement(d) {
-        // var pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
-        // var newDate = new Date(d.replace(pattern, '$3-$2-$1'));
-        // // var  = new Date(d);
-        // var dd = newDate.setDate(newDate.getDate() - 1);
-        // var mm = newDate.getMonth();
-        // var yyyy = newDate.getFullYear();
-
-        // var result = dd + ', ' + this.monthNames[mm] + ' ' + yyyy;
-        // var newDate = new Date("" + yyyy + "/" + mm + "/" + dd + "");
-        // this.setState({
-        //     currentDate: result,
-        //     dateFormat: newDate
-        // })
-        // var newDate = moment(d, "MM-DD-YYYY");
-        // console.log("current date state : " + newDate.format('LL'));
-        var newDateFormat = moment(d,"MM-DD-YYYY").subtract('days', 1).format('L');
+        var newDateFormat = moment(d, "MM-DD-YYYY").subtract('days', 1).format('L');
         var newDate = moment(d, "MM-DD-YYYY").subtract('days', 1);
         console.log("current date state : " + d);
         this.setState({
@@ -62,7 +47,7 @@ export default class Navigation extends Component {
     }
 
     dateIncrement(d) {
-        var newDateFormat = moment(d,"MM-DD-YYYY").add('days', 1).format('L');
+        var newDateFormat = moment(d, "MM-DD-YYYY").add('days', 1).format('L');
         var newDate = moment(d, "MM-DD-YYYY").add('days', 1);
         console.log("current date state : " + d);
         this.setState({
@@ -73,28 +58,47 @@ export default class Navigation extends Component {
 
     render() {
         return (
-            <nav className="navigation-panel mt-5" style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
-                <button className="btn btn-light rounded-pill">
-                    <a href="#" className="text-dark">Go Premium</a>
-                </button>
-                <a onClick={() => this.dateDecrement(this.state.dateFormat)}>
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-caret-left-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-                    </svg>
+            <nav className="navigation-panel mt-5 px-4 rounded-pill" style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
+                <a class="btn btn-dark rounded-pill" >
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-award-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 0l1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z" />
+                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+                    </svg> <span class="d-none d-md-inline">Get Premium</span>
                 </a>
+                <div className="w-50 d-flex justify-content-between">
+                    <a onClick={() => this.dateDecrement(this.state.dateFormat)}>
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-caret-left-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                        </svg>
+                    </a>
 
-                <span><b>{this.state.currentDate}</b></span>
-                <a onClick={() => this.dateIncrement(this.state.dateFormat)}>
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
-                    </svg>
-                </a>
+                    <span><b>{this.state.currentDate}</b></span>
+                    <a onClick={() => this.dateIncrement(this.state.dateFormat)}>
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                        </svg>
+                    </a>
+                </div>
 
-                <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
-                    <path fillRule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                    <path fillRule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
-                </svg>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item d-inline">
+
+                        <i className="fa fa-user-circle fa-2x"></i>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                            {/* <img class="float-left" src="img/users/kolyan.jpg" alt="" /> */}
+                            <p>Username</p>
+                            <p class="float-left">Name</p>
+                            <p>Surname</p>
+                            <p>Status</p>
+                            <div class="dropdown-divider"></div>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a class="btn btn-secondary" href="#">Open Profile</a>
+                                <a class="btn btn-danger" href="#">Exit</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </nav>
         )
     }
