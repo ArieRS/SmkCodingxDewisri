@@ -1,9 +1,11 @@
 'use strict';
 
 module.exports = function(app) {
-    var index = require('../controller/controller');
+    var index = require('../controllers/controller');
+    var userController = require('../controllers/user_controller');
     var getImage = require('./server')
-    var authController = require('../controller/auth');
+    var authController = require('../controllers/auth');
+    var plantController = require('../controllers/plant_controller');
 
     //Index Controller
 
@@ -34,4 +36,18 @@ module.exports = function(app) {
 
     app.route('/auth/updateProfile')
         .post(authController.updateProfile);
+    
+    //Test Using Mongo
+    app.route('/testMongo')
+        .get(userController.index);
+    
+    app.route('/auth/registerUser')
+        .post(userController.registerUser);
+    
+    app.route('/auth/getAllUsers')
+        .get(userController.getAllUser);
+    
+    //Plant
+    app.route('/plant/addPlant')
+        .post(plantController.addPlant);
 };

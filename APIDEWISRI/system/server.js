@@ -5,7 +5,7 @@ var express = require('express'),
     port = process.env.PORT || 8080,
     bodyParser = require('body-parser'),
     multer = require('multer'),
-    controller = require('../controller/controller');
+    controller = require('../controllers/controller');
 var cors = require('cors');
 var upload = multer();
 

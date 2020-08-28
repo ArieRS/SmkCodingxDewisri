@@ -1,9 +1,9 @@
 'use strict';
 
-var response = require('../helper/responseHelper');
-var connection = require('../system/connection');
-var Hashing = require('../helper/hashHelper');
-var mailerhelper = require('../helper/mailerHelper');
+var response = require('../helpers/responseHelper');
+var connection = require('../system/mongo_connection');
+var Hashing = require('../helpers/hashHelper');
+var mailerhelper = require('../helpers/mailerHelper');
 const bcrypt = require('bcrypt');
 
 exports.index = function(req, res) {
