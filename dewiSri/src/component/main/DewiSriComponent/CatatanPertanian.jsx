@@ -43,7 +43,7 @@ export default class CatatanPertanian extends Component {
                             </tbody>
                         </table>
                     </div>
-                    <a href="#" className="btn-get-started">Download Data</a>
+                    <a href="#" className="btn-get-started mt-3">Download Data</a>
                 </div>
             </section>
         )

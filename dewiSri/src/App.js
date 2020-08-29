@@ -11,7 +11,7 @@ export default class App extends React.Component {
     // const MyApp = MainApp(false);
     // return <MyApp />
     
-    return MainApp(false)
+    return MainApp(true)
   }
 }
 

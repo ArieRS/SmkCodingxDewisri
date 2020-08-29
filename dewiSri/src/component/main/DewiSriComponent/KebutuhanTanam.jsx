@@ -50,7 +50,7 @@ export default class KebutuhanTaman extends Component {
                         <span className="section-divider"></span>
                     </div>
                     <a href="#" className="button btn-get-started">Get Started</a>
-                    <table border="1" className="table-custom mt-3">
+                    <table className="table-striped table-custom mt-3">
                         <thead>
                             <tr className="table-success">
                                 <td>Bibit</td>

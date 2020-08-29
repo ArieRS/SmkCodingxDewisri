@@ -1410,7 +1410,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 .table-custom {
   width: 100%;
   text-align: center;
-  border: 2px solid var(--greenColor);
+  border-radius: 10px;
+  
 }
 
 .table-custom tr td {
@@ -1437,7 +1438,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .section-title-princing {
   text-align: center;
-  margin: 100px;
+  line-height: 300px;
   color: white;
   text-transform: capitalize;
   font-family: 'Roboto', sans-serif;

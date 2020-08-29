@@ -13,7 +13,7 @@ export default class Header extends Component {
           <nav id="nav-menu-container">
             <ul class="nav-menu">
               <li class="menu-active"><a href="/">Home</a></li>
-              <li><a href="/main">About Us</a></li>
+              <li><a href="/main">Calendar</a></li>
               <li><a href="#features">Features</a></li>
               <li><a href="#kebutuhan-tanam">Kebutuhan Tanam</a></li>
             </ul>
