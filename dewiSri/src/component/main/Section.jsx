@@ -6,8 +6,8 @@ export default class Section extends Component {
             <section id="intro">
 
                 <div className="intro-text">
-                    <h2>Welcome to Avilon</h2>
-                    <p>We are team of talanted designers making websites with Bootstrap</p>
+                    <h2>Selamat Datang di Dewisri</h2>
+                    <p>Plant Your Future</p>
                     <a href="#about" className="btn-get-started scrollto">Get Started</a>
                 </div>
 
