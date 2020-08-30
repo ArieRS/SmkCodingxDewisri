@@ -7,9 +7,9 @@ export default class CatatanPertanian extends Component {
                 <div className="card-catatan-pertanian">
                     <div className="container">
 
-                        <table border="1" className="table-custom">
-                            <thead>
-                                <tr className="table-success">
+                        <table className="table-striped table-custom">
+                            <thead className="table-header">
+                                <tr>
                                     <td>Tanggal Panen</td>
                                     <td>Hasil Panen</td>
                                     <td>Harga Pasar</td>

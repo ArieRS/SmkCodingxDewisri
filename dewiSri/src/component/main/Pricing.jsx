@@ -41,18 +41,18 @@ export default class Pricing extends Component {
     render() {
         return (
             <section id="pricing" className="section-bg">
-                <div className="section-header-princing">
-                    <h3 className="section-title-princing">Plant It Premium</h3>
+                <div className="section-header-pricing">
+                    <h3 className="section-title-pricing">Plant It Premium</h3>
                     <span className="section-divider"></span>
                 </div>
                 <div className="container">
                     <div className="row mt-3">
-                        <table className="table-princing">
-                            <thead>
-                                <tr className="table-success">
-                                    <th>Fitur</th>
-                                    <th>Gratis</th>
-                                    <th>Premium</th>
+                        <table className="table-striped table-pricing">
+                            <thead className="table-header">
+                                <tr>
+                                    <td>Fitur</td>
+                                    <td>Gratis</td>
+                                    <td>Premium</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,7 +69,7 @@ export default class Pricing extends Component {
                             </tbody>
                         </table>
                     </div>
-                    <div className="row btn-princing">
+                    <div className="row btn-pricing">
                         <button onClick={this.showPricing} data-toggle="modal" data-target="#staticBackdropPricng">Rp29.999,-/bulan</button>
                         <button>Rp85.000,_/musim</button>
                         <button>Rp320.000,_/tahun</button>

@@ -49,10 +49,10 @@ export default class KebutuhanTaman extends Component {
                         <h3 className="section-title">Kebutuhan Tanam</h3>
                         <span className="section-divider"></span>
                     </div>
-                    <a href="#" className="button btn-get-started">Get Started</a>
+                    <a href="#" className="btn-get-started">Download Data</a>
                     <table className="table-striped table-custom mt-3">
-                        <thead>
-                            <tr className="table-success">
+                        <thead className="table-header">
+                            <tr>
                                 <td>Bibit</td>
                                 <td>Pupuk</td>
                                 <td>Air</td>

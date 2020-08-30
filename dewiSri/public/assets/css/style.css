@@ -1410,7 +1410,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 .table-custom {
   width: 100%;
   text-align: center;
-  border-radius: 10px;
   
 }
 
@@ -1424,9 +1423,9 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
 }
 
-/* Princing Plant It Prmium */
+/* pricing Plant It Prmium */
 
-.section-header-princing {
+.section-header-pricing {
   height: 300px;
   width: 100vw;
   overflow: hidden;
@@ -1436,7 +1435,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-position: left 0 top, 25% 0%, 60% 0, 100% 0;
 }
 
-.section-title-princing {
+.section-title-pricing {
   text-align: center;
   line-height: 300px;
   color: white;
@@ -1446,23 +1445,31 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.table-princing {
+.table-header {
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
+}
+
+.table-header tr td {
+  color: white;
+}
+
+.table-pricing {
   width: 100%;
   background-color: white;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
 }
 
-.table-princing thead tr th,
+.table-pricing thead tr td,
 tbody tr td {
   padding: 10px 5px;
   text-align: center;
 }
 
-.table-princing img {
+.table-pricing img {
   width: 50px;
 }
 
-.btn-princing button {
+.btn-pricing button {
   border: none;
   outline: none;
   background: none;
@@ -1476,27 +1483,27 @@ tbody tr td {
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-.btn-princing button:nth-child(1) {
+.btn-pricing button:nth-child(1) {
   background-color: #279F3A;
 }
 
-.btn-princing button:nth-child(2) {
+.btn-pricing button:nth-child(2) {
   background-color: #5CB945;
 }
 
-.btn-princing button:nth-child(3) {
+.btn-pricing button:nth-child(3) {
   background-color: #C7D70D;
 }
 
-.btn-princing button:nth-child(4) {
+.btn-pricing button:nth-child(4) {
   background-color: #6F5228;
 }
 
-.btn-princing button:nth-child(5) {
+.btn-pricing button:nth-child(5) {
   background-color: #C4C4C4;
 }
 
-section#pricing .btn-get-started {
+section#pricing .btn-get-started, .kebutuhan-tanam .btn-get-started {
   background: #515e61;
   display: inline-block;
   padding: 6px 30px;
@@ -1510,7 +1517,7 @@ section#pricing .btn-get-started {
   background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
 }
 
-section#pricing .btn-get-started {
+section#pricing .btn-get-started, .kebutuhan-tanam .btn-get-started {
   background: #515e61;
   display: inline-block;
   padding: 6px 30px;
@@ -1522,4 +1529,18 @@ section#pricing .btn-get-started {
   font-family: "Montserrat", sans-serif;
   color: white;
   background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
+}
+
+.form-container {
+  width: 50vw;
+}
+
+.form {
+  width: 100vw;
+}
+
+@media screen and (max-width: 576px) { 
+  .form-container {
+    width: 95vw;
+  }
 }

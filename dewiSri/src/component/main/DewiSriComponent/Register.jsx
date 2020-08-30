@@ -4,19 +4,19 @@ export default class Register extends Component {
     render() {
         return (
             <body style={{ background: 'linear-gradient(45deg, #1de099, #1dc8cd)', width: '100vw', height: '100vh' }}>
-                <div className="d-flex " style={{width: '50vw'}}>
-                    <form style={{width: '100%',}}>
+                <div className="form-container d-flex">
+                    <form className="form">
                         <h2>Register</h2>
                         <div className="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" className="form-control" id="email" aria-describedby="emailHelp" />
+                            <label for="telephone">Nomer Telepon</label>
+                            <input type="number" className="form-control" id="telephone" aria-describedby="nomerTelepon" />
                         </div>
                         <div className="form-group">
                             <label for="password">Password</label>
                             <input type="password" className="form-control" id="password" />
                         </div>
                         <div className="form-group">
-                            <label for="confirmpassword">Confirm Password</label>
+                            <label for="confirmpassword">Ketik Ulang Password</label>
                             <input type="password" className="form-control" id="confirmpassword" />
                         </div>
                         <div className="form-check">

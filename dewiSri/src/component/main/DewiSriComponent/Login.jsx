@@ -1,19 +1,33 @@
 import React, { Component } from 'react'
 
 export default class Login extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+
+        }
+    }
+
+    componentWillMount(){
+        this.loginFunction();
+    }
+
+    loginFunction(){
+        fetch("http://localhost:8080/auth/getAllUsers",{headers: {'Access-Control-Allow-Origin': '*'}}).then(response => response.json()).then(json => console.log(json))
+    }
     render() {
         return (
             <body style={{ background: 'linear-gradient(45deg, #1de099, #1dc8cd)', width: '100vw', height: '100vh' }}>
-                <div className="d-flex " style={{width: '50vw'}}>
-                    <form style={{width: '100%',}}>
+                <div className="form-container d-flex">
+                    <form className="form">
                         <h2>Login</h2>
                         <div className="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <label for="number">Nomer Telepon</label>
+                            <input type="number" className="form-control" id="number" aria-describedby="telephone" />
                         </div>
                         <div className="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" className="form-control" id="exampleInputPassword1" />
+                            <label for="password">Password</label>
+                            <input type="password" className="form-control" id="password" />
                         </div>
                         <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="exampleCheck1" />
