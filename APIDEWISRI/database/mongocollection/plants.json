@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "5f4948b510a98101a8078c91"
+  },
+  "plantName": "Tebu",
+  "comodity": "Aqweoi Ofijq",
+  "startDate": "28/08/2020",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f4948f110a98101a8078c92"
+  },
+  "plantName": "Jagung",
+  "comodity": "Zea Mays",
+  "startDate": "29/08/2020",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f49c1f6c83c4508b082ef94"
+  },
+  "plantName": "Jagung",
+  "comodity": "Zea Mays",
+  "startDate": "29/08/2020",
+  "__v": 0
+}]

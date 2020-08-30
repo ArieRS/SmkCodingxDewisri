@@ -1,18 +1,20 @@
 var mongoose = require('mongoose');
 
 var journalSchema = mongoose.Schema({
-    journalName: String,
-    comodity: String,
     owner_userId: String,
-    startDate: {
+    inputDate: {
         type: String,
         format: Date
-    }
-
+    },
+    jurnalHarian: String,
+    plantList: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "plant"
+    }]
 });
 
-var journal = module.exports = mongoose.model('journal', journalSchema);
+var Journal = module.exports = mongoose.model('journal', journalSchema);
 
 module.exports.get = function (callback, limit) {
-    journal.find(callback).limit(limit);
+    Journal.find(callback).limit(limit);
 }

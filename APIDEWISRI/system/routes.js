@@ -2,14 +2,15 @@
 
 module.exports = function (app) {
     var index = require('../controllers/controller');
-    var userController = require('../controllers/user_controller');
     var getImage = require('./server')
+    
+    var userController = require('../controllers/user_controller');
     var plantController = require('../controllers/plant_controller');
+    var journalController = require('../controllers/journal_controller');
 
     //Index Controller
     app.route('/')
         .get(index.index);
-
 
     // Image Route
     app.route('/storage/image/')
@@ -18,10 +19,7 @@ module.exports = function (app) {
     app.route('/storage/imagePost/')
         .get(getImage.getImagePost)
 
-
     //Auth
-    app.route('/testMongo')
-        .get(userController.index);
 
     app.route('/auth/registerUser')
         .post(userController.registerUser);
@@ -35,4 +33,12 @@ module.exports = function (app) {
     //Plant
     app.route('/plant/addPlant')
         .post(plantController.addPlant);
+        
+    app.route('/plant/getAllPlant')
+        .get(plantController.getAllPlant);
+
+    //Journal
+    app.route('/journal/addJournal')
+        .post(journalController.addJournal);
+
 };

@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "5f49e0e6dacee623b472b093"
+  },
+  "isPremium": false,
+  "userStatus": "petani",
+  "journalList": [
+    {
+      "$oid": "5f49f1eafa4d55294cc89046"
+    },
+    {
+      "$oid": "5f49fd776930243f68deda41"
+    }
+  ],
+  "username": "ramadani",
+  "email": "mail@rama.com",
+  "password": "$2b$10$B4dSV9SQwImrhMeUZ4ZR3.35o5EEpWNn4iSSoHRzxtaPilv4Zsv6u",
+  "name": "Akhmad Ramadani",
+  "phone": "081212941280",
+  "avatar": "avatar.png",
+  "coins": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f49fdb36930243f68deda43"
+  },
+  "isPremium": false,
+  "userStatus": "petani",
+  "journalList": [
+    {
+      "$oid": "5f49fdc26930243f68deda44"
+    }
+  ],
+  "username": "ramadani",
+  "email": "email@rama.com",
+  "password": "$2b$10$9KfCuB/G2KvnUhpmHLKWLu7LP3ezDd10kvRX7yg/XbarkfppJoPsG",
+  "name": "Akhmad Ramadani",
+  "phone": "081212941280",
+  "avatar": "avatar.png",
+  "coins": 0,
+  "__v": 0
+}]

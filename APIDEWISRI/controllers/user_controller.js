@@ -2,10 +2,6 @@ User = require('../models/user_model');
 var response = require('../helpers/responseHelper');
 const bcrypt = require('bcrypt');
 
-exports.index = function (req, res) {
-    response.getData("Hello from the Node JS RESTful side!", res);
-}
-
 exports.getAllUser = function (req, res) {
     User.find({}, function (err, users) {
         res.json({
@@ -45,7 +41,6 @@ exports.registerUser = function (req, res) {
                 res.json({
                     'status': 400,
                     'message': 'Email telah ada',
-                    // 'mail': email,
                 })
         }
     })
@@ -82,5 +77,5 @@ exports.loginUser = function (req, res) {
                     'message': 'Login Failed',
                 })
         }
-    }).populate("plantList")
+    }).populate("journalList")
 }

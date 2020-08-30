@@ -1,6 +1,5 @@
 let mongoose = require('mongoose');
 
-
 mongoose.connect('mongodb://localhost:27017/dewisri', {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -11,5 +10,3 @@ mongoose.connect('mongodb://localhost:27017/dewisri', {
         console.log('Error !!! database Tidak Terkoneksi atau Tidak Ada');
         process.exit();
     });
-
-// module.exports = MongoConnection;

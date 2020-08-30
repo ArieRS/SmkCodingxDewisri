@@ -1,17 +1,21 @@
 var mongoose = require('mongoose');
 
 var plantSchema = mongoose.Schema({
-    plantName: String,
-    comodity: String,
-    // owner_userId: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "user"
-    // },
+    variety: String,
+    comodity: {
+        type: String,
+        enum: ['cabai',
+            'kentang',
+            'kubis',
+            'wortel',
+            'sawi',
+            'tomat']
+    },
     startDate: {
         type: String,
         format: Date
-    }
-
+    },
+    owner_userId: String
 });
 
 var Plant = module.exports = mongoose.model('plant', plantSchema);

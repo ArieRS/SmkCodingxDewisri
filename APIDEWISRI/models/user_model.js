@@ -17,9 +17,9 @@ var userSchema = mongoose.Schema({
         enum:['petani', 'admin', 'editor'],
         default: 'petani'
     },
-    plantList:[{
+    journalList:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "plant"
+        ref: "journal"
     }]
           
 });

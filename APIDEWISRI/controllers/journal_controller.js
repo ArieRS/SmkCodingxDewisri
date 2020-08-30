@@ -1,24 +1,18 @@
-Plant = require('../models/plant_model');
-User = require('../models/user_model');
-var response = require('../helpers/responseHelper');
+Journal = require('../models/journal_model');
 
-
-exports.getAllPlant = function (req, res) {
-    Plant.find({}, function (err, plants) {
-        res.json({
-            data: plants
-        })
-    });
-}
-
-exports.addPlant = function (req, res) {
-    var plant = new Plant(req.body);
-    plant.save().then(docPlant => {
+exports.addJournal = function (req, res) {
+    var journal = new Journal(req.body);
+    var date = new Date();
+    journal.inputDate = date.toISOString();
+    // res.json({
+    //     journal: journal
+    // })
+    journal.save().then(docJournal => {
         User.findByIdAndUpdate(
             req.body.owner_userId,
             {
                 $push: {
-                    plantList: docPlant._id
+                    journalList: docJournal._id
                 }
             },
             {
@@ -31,7 +25,7 @@ exports.addPlant = function (req, res) {
                 } else {
                     res.json({
                         status: 200,
-                        data: plant
+                        data: journal
                     })
                 }
             })

@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "5f49fd776930243f68deda41"
+  },
+  "plantList": [],
+  "owner_userId": "5f49e0e6dacee623b472b093",
+  "jurnalHarian": "",
+  "inputDate": "2020-08-29T07:02:15.535Z",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f49fdc26930243f68deda44"
+  },
+  "plantList": [],
+  "owner_userId": "5f49fdb36930243f68deda43",
+  "jurnalHarian": "",
+  "inputDate": "2020-08-29T07:03:30.392Z",
+  "__v": 0
+}]
