@@ -22,7 +22,7 @@ export const MainApp = (auth) => {
                 </Switch>
             </Router>
             {
-                auth == false ?     
+                auth === false ?     
                 <Footer></Footer>
                 :
                 <div></div>

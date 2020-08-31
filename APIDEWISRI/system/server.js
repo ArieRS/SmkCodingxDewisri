@@ -33,6 +33,8 @@ app.use(function(req, res, next) {
 
 app.options(cors())
 
+app.use(controller.adminBro.options.rootPath, controller.router);
+
 var routes = require('./routes');
 routes(app);
 
