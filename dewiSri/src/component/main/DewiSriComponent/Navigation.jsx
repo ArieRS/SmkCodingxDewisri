@@ -81,11 +81,9 @@ export default class Navigation extends Component {
                             </svg>
                         </a>
                     </div>
-
-
+                    
                     <ul class="navbar-nav">
                         <li class="nav-item d-inline">
-
                             <i className="fa fa-user-circle fa-2x"></i>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                                 {/* <img class="float-left" src="img/users/kolyan.jpg" alt="" /> */}

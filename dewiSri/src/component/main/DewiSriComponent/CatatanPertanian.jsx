@@ -5,43 +5,29 @@ export default class CatatanPertanian extends Component {
         return (
             <section id="pricing">
                 <div className="card-catatan-pertanian">
-                    <div className="container">
-
-                        <table className="table-striped table-custom">
-                            <thead className="table-header">
-                                <tr>
-                                    <td>Tanggal Panen</td>
-                                    <td>Hasil Panen</td>
-                                    <td>Harga Pasar</td>
-                                    <td>Keuntungan Bersih</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-toggle="modal" data-target="#exampleModal" style={{cursor: 'pointer'}}>
-                                            <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
-                                        </svg>
-                                    </td>
-                                    <td>
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-toggle="modal" data-target="#exampleModal" style={{cursor: 'pointer'}}>
-                                            <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
-                                        </svg>
-                                    </td>
-                                    <td>
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-toggle="modal" data-target="#exampleModal" style={{cursor: 'pointer'}}>
-                                            <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
-                                        </svg>
-                                    </td>
-                                    <td>
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-award-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M8 0l1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
-                                            <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-                                        </svg>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div className="container">
+                        <nav className="nav-fill">
+                            <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a className="nav-link active" id="nav-tanggal-panen-tab" data-toggle="tab" href="#nav-tanggal-panen" role="tab" aria-controls="nav-tanggal-panen" aria-selected="true">Tanggal Panen</a>
+                                <a className="nav-link" id="nav-hasil-panen-tab" data-toggle="tab" href="#nav-hasil-panen" role="tab" aria-controls="nav-hasil-panen" aria-selected="false">Hasil Panen</a>
+                                <a className="nav-link" id="nav-harga-pasar-tab" data-toggle="tab" href="#nav-harga-pasar" role="tab" aria-controls="nav-harga-pasar" aria-selected="false">Harga Pasar</a>
+                                <a className="nav-link" id="nav-keuntungan-bersih-tab" data-toggle="tab" href="#nav-keuntungan-bersih" role="tab" aria-controls="nav-keuntungan-bersih" aria-selected="false">Keuntungan Bersih</a>
+                            </div>
+                        </nav>
+                        <div className="tab-content" id="nav-tabContent">   
+                            <div className="tab-pane fade show active" id="nav-tanggal-panen" role="tabpanel" aria-labelledby="nav-tanggal-panen-tab">
+                                <p>tanggal panen</p>
+                            </div>
+                            <div className="tab-pane fade" id="nav-hasil-panen" role="tabpanel" aria-labelledby="nav-hasil-panen-tab">
+                                <p>hasil panen</p>
+                            </div>
+                            <div className="tab-pane fade" id="nav-harga-pasar" role="tabpanel" aria-labelledby="nav-harga-pasar-tab">
+                                <p>harga pasar</p>
+                            </div>
+                            <div className="tab-pane fade " id="nav-keuntungan-bersih" role="tabpanel" aria-labelledby="nav-keuntungan-bersih-tab">
+                                <p>keuntungan bersih</p>
+                            </div>
+                        </div>
                     </div>
                     <a href="#" className="btn-get-started mt-3">Download Data</a>
                 </div>

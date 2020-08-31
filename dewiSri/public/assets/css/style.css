@@ -1389,9 +1389,28 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
   padding: 20px 10px;
   color: white;
-  display: flex;
 }
 
+.panel-tanaman table {
+  float: left;
+}
+
+.panel-tanaman .btn-right {
+  float: right;
+  width: 50px;
+  margin: 10px 10px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.5s;
+}
+
+.panel-tanaman .btn-right:hover {
+  opacity: 1;
+}
+
+.panel-tanaman .clear {
+  clear: both;
+}
 .card-kebutuhan-tanam,
 .card-catatan-pertanian {
   display: flex;
@@ -1504,6 +1523,9 @@ tbody tr td {
 }
 
 section#pricing .btn-get-started, .kebutuhan-tanam .btn-get-started {
+  border: none;
+  outline: none;
+  background: none;
   background: #515e61;
   display: inline-block;
   padding: 6px 30px;
@@ -1543,4 +1565,18 @@ section#pricing .btn-get-started, .kebutuhan-tanam .btn-get-started {
   .form-container {
     width: 95vw;
   }
+}
+
+.nav .nav-link {
+  border: none;
+  /* border: 1px solid var(--greenColor); */
+  color: #18d26e;
+}
+
+.nav .nav-link.active {
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
+  color: white;
+}
+.nav {
+  border-bottom: 1px solid var(--greenColor);
 }

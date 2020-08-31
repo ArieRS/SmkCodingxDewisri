@@ -36,9 +36,7 @@ export default class Login extends Component {
             }else{
                 alert(responseData.message)
             }
-
         })
-
     }
 
     render() {
