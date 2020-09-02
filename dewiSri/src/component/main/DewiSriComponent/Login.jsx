@@ -22,28 +22,31 @@ export default class Login extends Component {
         // this.loginFunction();
     }
 
-    loginFunction = async () => {
+    loginFunction = async (e) => {
+        e.preventDefault()
         var data = new FormData()
 
         data.append('email', this.state.phone)
         data.append('password', this.state.password)
 
-        console.log(this.state.phone);
         await postFunction(data, LOGIN_END).then(() => {
             if (responseData.status == 200) {
                 console.log("success");
+                alert(responseData.message)
                 this.props.history.push("/");
-            }else{
+                console.log(responseData);
+            } else {
                 alert(responseData.message)
             }
         })
+
     }
 
     render() {
         return (
             <body style={{ background: 'linear-gradient(45deg, #1de099, #1dc8cd)', width: '100vw', height: '100vh' }}>
                 <div className="form-container d-flex">
-                    <form className="form">
+                    <form className="form" onSubmit={this.loginFunction.bind(this)}>
                         <h2>Login</h2>
                         <div className="form-group">
                             <label for="number">Nomer Telepon</label>
@@ -54,7 +57,7 @@ export default class Login extends Component {
                             <input type="password" onChange={(text) => this.changeState("password", text)} className="form-control" id="password" />
                         </div>
                         <small className="d-block mb-3">Jika anda belum memiliki akun silahkan <a href="/register">buat akun</a>!!</small>
-                        <button onClick={() => this.loginFunction()} className="btn btn-success">Submit</button>
+                        <button onClick={this.loginFunction.bind(this)} className="btn btn-success">Submit</button>
                     </form>
                 </div>
             </body>

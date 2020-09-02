@@ -10,16 +10,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
-form {
+.form {
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
 
-form h2 {
+.form h2 {
     text-align: center;
     text-decoration: underline;
     color: var(--greenColor);

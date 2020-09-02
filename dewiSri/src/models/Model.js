@@ -53,7 +53,7 @@ export function postFunction(data,route) {
 
           reject(true)
       });
-      console.log(data);
+    //   console.log(data);
   })
 }
 
