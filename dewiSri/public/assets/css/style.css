@@ -1536,16 +1536,24 @@ section#pricing .btn-get-started, .kebutuhan-tanam .btn-get-started {
 }
 
 .form-container {
-  width: 50vw;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form {
-  width: 100vw;
+  width: 50vw;
+  background-color: white;
+  padding: 20px 15px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 576px) { 
-  .form-container {
-    width: 95vw;
+  .form {
+    width: 90vw;
   }
 }
 
