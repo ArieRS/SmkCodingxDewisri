@@ -13,7 +13,7 @@ exports.getAllUser = function (req, res) {
 exports.registerUser = function (req, res) {
 
     var user = new User(req.body);
-    var query = { 'email': req.body.email };
+    var query = { 'phone': req.body.phone };
     User.find(query, function name(err, results) {
         if (err) {
             console.log(err);
@@ -40,14 +40,14 @@ exports.registerUser = function (req, res) {
                 :
                 res.json({
                     'status': 400,
-                    'message': 'Email telah ada',
+                    'message': 'Nomor telepon telah digunakan',
                 })
         }
     })
 }
 
 exports.loginUser = function (req, res) {
-    var query = { 'email': req.body.email };
+    var query = { 'phone': req.body.phone };
     User.find(query, function (error, result) {
         if (error) {
             console.log(error);
@@ -79,3 +79,28 @@ exports.loginUser = function (req, res) {
         }
     }).populate("journalList")
 }
+
+exports.updateUser = function (req, res) {
+
+    User.findById(req.params.userId, function (err, user) {
+        if (err)
+            res.send(err);
+
+        user.username = req.body.username ? req.body.username : user.username;
+        user.email = req.body.email ? req.body.email : user.email;
+        user.name = req.body.name ? req.body.name : user.name;
+        user.phone = req.body.phone ? req.body.phone : user.phone;
+        user.avatar = req.body.avatar ? req.body.avatar : user.avatar;
+        user.password = req.body.password ? bcrypt.hashSync(req.body.password, 10) : user.password;
+
+        user.save(function (err) {
+            if (err)
+                res.json(err);
+            res.json({
+                status: 200,
+                message: 'User Info updated',
+                data: user
+            });
+        });
+    });
+};

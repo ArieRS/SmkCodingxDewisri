@@ -11,6 +11,19 @@ exports.getAllPlant = function (req, res) {
     });
 }
 
+exports.deletePlant = function (req, res) {
+    Plant.remove({
+        _id: req.params.plantId
+    }, function (err, plant) {
+        if (err)
+            res.send(err);
+        res.json({
+            status: "success",
+            message: 'Plant deleted'
+        });
+    });
+};
+
 exports.addPlant = function (req, res) {
     var plant = new Plant(req.body);
     plant.save().then(docPlant => {
@@ -36,4 +49,33 @@ exports.addPlant = function (req, res) {
                 }
             })
     })
+}
+
+exports.updatePlant = function (req, res) {
+
+    Plant.findById(req.params.plantId, function (err, plant) {
+        if (err)
+            res.send(err);
+        plant.variety = req.body.variety ? req.body.variety : plant.variety;
+        plant.comodity = req.body.comodity ? req.body.comodity : plant.comodity;
+
+        plant.save(function (error) {
+            if (error)
+                res.json(error);
+            res.json({
+                status: 200,
+                message: 'Plant Info updated',
+                data: plant
+            });
+        });
+    });
+};
+
+exports.getPlantById = function (req,res) {
+    Plant.findById(req.params.plantId, function (err, plant) {
+        res.json({
+            status: 200,
+            data: plant
+        })
+    });
 }

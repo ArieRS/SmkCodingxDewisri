@@ -50,3 +50,33 @@ exports.addJournal = function (req, res) {
     })
 
 }
+
+exports.updateJournal = function (req, res) {
+
+    Journal.findById(req.params.journalId, function (err, journal) {
+        if (err)
+            res.send(err);
+
+        journal.dailyJournal = req.body.dailyJournal ? req.body.dailyJournal : journal.dailyJournal;
+
+        journal.save(function (error) {
+            if (error)
+                res.json(error);
+            res.json({
+                status: 200,
+                message: 'Journal Info updated',
+                data: journal
+            });
+        });
+    });
+};
+
+
+exports.getJournalById = function (req,res) {
+    Journal.findById(req.params.journalId, function (err, journal) {
+        res.json({
+            status: 200,
+            data: journal
+        })
+    }).populate("plantList")
+}
