@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 
-export default class Header extends Component {
+export default class Header2 extends Component {
   render() {
     return (
-      <header id="header" className="header-transparent">
+      <header id="header">
         <div className="container">
+
           <div id="logo" className="pull-left">
             <h1><a href="/" className="scrollto">Dewisri</a></h1>
           </div>
+
           <nav id="nav-menu-container">
             <ul className="nav-menu">
               <li className="menu-active"><a href="/">Beranda</a></li>

@@ -1492,34 +1492,16 @@ tbody tr td {
   border: none;
   outline: none;
   background: none;
-  background-color: red;
   display: block;
   width: 100%;
   padding: 10px 5px;
   margin: 10px 0;
   color: white;
-  /* clip-path: polygon(50% 0, 100% 40%, 100% 60%, 50% 100%, 0 60%, 0 40%); */
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
 }
 
-.btn-pricing button:nth-child(1) {
-  background-color: #279F3A;
-}
-
-.btn-pricing button:nth-child(2) {
-  background-color: #5CB945;
-}
-
-.btn-pricing button:nth-child(3) {
-  background-color: #C7D70D;
-}
-
-.btn-pricing button:nth-child(4) {
-  background-color: #6F5228;
-}
-
-.btn-pricing button:nth-child(5) {
-  background-color: #C4C4C4;
+.btn-pricing button:hover {
+  opacity: .9;
 }
 
 section#pricing .btn-get-started, .kebutuhan-tanam .btn-get-started {
@@ -1579,4 +1561,21 @@ section#pricing .btn-get-started, .kebutuhan-tanam .btn-get-started {
 }
 .nav {
   border-bottom: 1px solid var(--greenColor);
+}
+
+.btn-custom {
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
+  color: white;
+}
+
+.btn-custom:hover {
+  color: white;
+}
+
+form {
+  box-shadow: none;
+}
+
+.tab-pane {
+  text-align: center;
 }
