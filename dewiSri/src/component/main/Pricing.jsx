@@ -28,7 +28,7 @@ export default class Pricing extends Component {
         </div>
         `
         modalFooter.innerHTML = `
-                <button type="submit" id="btn-pricing-next-validation" class="btn btn-primary" title="Send Message">Beli / Langganan</button>
+                <button type="submit" id="btn-pricing-next-validation" class="btn btn-custom" title="Send Message">Beli / Langganan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
             `
 
@@ -70,11 +70,11 @@ export default class Pricing extends Component {
                         </table>
                     </div>
                     <div className="row btn-pricing">
-                        <button onClick={this.showPricing} data-toggle="modal" data-target="#staticBackdropPricng">Rp29.999,-/bulan</button>
-                        <button>Rp85.000,_/musim</button>
-                        <button>Rp320.000,_/tahun</button>
-                        <button>Rp1.800.000,_/selamanya</button>
-                        <button>Nanti Dulu</button>
+                        <button className="btn btn-dark" onClick={this.showPricing} data-toggle="modal" data-target="#staticBackdropPricng">Rp29.999,-/bulan</button>
+                        <button className="btn btn-dark">Rp85.000,_/musim</button>
+                        <button className="btn btn-dark">Rp320.000,_/tahun</button>
+                        <button className="btn btn-dark">Rp1.800.000,_/selamanya</button>
+                        <button id="btn-not" className="btn btn-dark">Nanti Dulu</button>
                     </div>
                 </div>
             </section>
