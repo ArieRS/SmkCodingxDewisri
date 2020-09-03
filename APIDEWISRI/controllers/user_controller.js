@@ -31,7 +31,8 @@ exports.registerUser = function (req, res) {
                             else {
                                 res.json({
                                     status: 200,
-                                    data: user
+                                    data: user,
+                                    message: 'Pendaftaran berhasil'
                                 })
                             }
                         })

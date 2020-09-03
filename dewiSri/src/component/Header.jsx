@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 
 export default class Header extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+
+    }
+  }
   render() {
     return (
       <header id="header" className="header-transparent bg-transparent">
@@ -14,7 +20,14 @@ export default class Header extends Component {
               <li><a href="/main">Calendar</a></li>
               <li><a href="#features">Features</a></li>
               <li><a href="#pricing">Catatan Pertanian</a></li>
-              <li><a href="/login">Login</a></li>
+              {
+                this.props.isLogin === false ? 
+                <li><a href="/login">Login</a></li>
+                :
+                <li><a href="/logout">Logout</a></li>
+
+              }
+              {/* <li><a href="/login">Login</a></li> */}
               <li>
                 <div className="menu-toggle">
                   <span></span>

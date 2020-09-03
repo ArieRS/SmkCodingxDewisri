@@ -13,7 +13,7 @@ export const MainApp = (auth) => {
     return (
         <div>
             <Profile />
-            <Header></Header>
+            <Header isLogin={auth}></Header>
             <Router>
                 <Switch>
                     <Route exact path="/" component={HomePages} />

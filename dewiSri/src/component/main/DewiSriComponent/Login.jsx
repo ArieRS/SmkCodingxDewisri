@@ -33,6 +33,8 @@ export default class Login extends Component {
             if (responseData.status == 200) {
                 console.log("success");
                 alert(responseData.message)
+                localStorage.setItem("auth", true);
+                localStorage.setItem("userData", responseData.data.toString())
                 this.props.history.push("/");
                 console.log(responseData);
             } else {
