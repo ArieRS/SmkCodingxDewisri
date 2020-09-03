@@ -7,10 +7,12 @@ import Footer from '../component/Footer';
 import MainPage from '../pages/MainPage';
 import Login from '../component/main/DewiSriComponent/Login';
 import Register from '../component/main/DewiSriComponent/Register';
+import Profile from '../component/main/DewiSriComponent/Profile';
 
 export const MainApp = (auth) => {
     return (
         <div>
+            <Profile />
             <Header></Header>
             <Router>
                 <Switch>

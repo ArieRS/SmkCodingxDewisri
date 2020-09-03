@@ -4,7 +4,6 @@ export default class KebutuhanTaman extends Component {
     showDetail(nama) {
         const modalTitle = document.querySelector('#staticBackdropKebutuhanTanam .modal-title');
         const modalContent = document.querySelector('#staticBackdropKebutuhanTanam .modal-body');
-        const modalFooter = document.querySelector('#staticBackdropKebutuhanTanam .modal-footer');
         modalTitle.innerHTML = nama;
         modalContent.innerHTML = `
             <div class="form">

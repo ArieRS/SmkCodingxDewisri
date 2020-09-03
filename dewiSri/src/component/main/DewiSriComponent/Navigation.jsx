@@ -61,11 +61,11 @@ export default class Navigation extends Component {
         return (
             <div className="container">
                 <nav className="navigation-panel mt-5 px-4 rounded-pill" style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <a class="btn btn-light rounded-pill" >
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-award-fill text-success" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <a className="btn btn-light rounded-pill" >
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-award-fill text-success" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 0l1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
                         <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-                    </svg> <span class="d-none d-md-inline text-success">Get Premium</span>
+                    </svg> <span className="d-none d-md-inline text-success">Get Premium</span>
                     </a>
                     <div className="w-50 d-flex justify-content-between">
                         <a onClick={() => this.dateDecrement(this.state.dateFormat)}>
@@ -82,19 +82,19 @@ export default class Navigation extends Component {
                         </a>
                     </div>
                     
-                    <ul class="navbar-nav">
-                        <li class="nav-item d-inline">
+                    <ul className="navbar-nav">
+                        <li className="nav-item d-inline">
                             <i className="fa fa-user-circle fa-2x"></i>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                {/* <img class="float-left" src="img/users/kolyan.jpg" alt="" /> */}
+                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                                {/* <img className="float-left" src="img/users/kolyan.jpg" alt="" /> */}
                                 <p>Username</p>
-                                <p class="float-left">Name</p>
+                                <p className="float-left">Name</p>
                                 <p>Surname</p>
                                 <p>Status</p>
-                                <div class="dropdown-divider"></div>
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a class="btn btn-secondary" href="#">Open Profile</a>
-                                    <a class="btn btn-danger" href="#">Exit</a>
+                                <div className="dropdown-divider"></div>
+                                <div className="btn-group" role="group" aria-label="Basic example">
+                                    <a className="btn btn-secondary" href="#">Open Profile</a>
+                                    <a className="btn btn-danger" href="#">Exit</a>
                                 </div>
                             </div>
                         </li>
