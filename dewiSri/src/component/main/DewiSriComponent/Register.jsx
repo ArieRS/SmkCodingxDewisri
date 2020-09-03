@@ -39,7 +39,7 @@ export default class Register extends Component {
         return (
             <body style={{ background: 'linear-gradient(45deg, #1de099, #1dc8cd)', width: '100vw', height: '100vh' }}>
                 <div className="form-container d-flex">
-                    <form className="form">
+                    <form className="form-auth">
                         <h2>Register</h2>
                         <div className="form-group">
                             <label for="telephone">Nomer Telepon</label>

@@ -46,7 +46,7 @@ export default class Login extends Component {
         return (
             <body style={{ background: 'linear-gradient(45deg, #1de099, #1dc8cd)', width: '100vw', height: '100vh' }}>
                 <div className="form-container d-flex">
-                    <form className="form" onSubmit={this.loginFunction.bind(this)}>
+                    <form className="form-auth" onSubmit={this.loginFunction.bind(this)}>
                         <h2>Login</h2>
                         <div className="form-group">
                             <label for="number">Nomer Telepon</label>

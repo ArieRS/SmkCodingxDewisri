@@ -1543,11 +1543,11 @@ section#pricing .btn-get-started, .kebutuhan-tanam .btn-get-started {
   align-items: center;
 }
 
-.form {
+.form-auth {
   width: 50vw;
   background-color: white;
   padding: 20px 15px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
 
@@ -1567,6 +1567,7 @@ section#pricing .btn-get-started, .kebutuhan-tanam .btn-get-started {
   background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
   color: white;
 }
+
 .nav {
   border-bottom: 1px solid var(--greenColor);
 }
