@@ -7,6 +7,11 @@ module.exports = function (app) {
     var userController = require('../controllers/user_controller');
     var plantController = require('../controllers/plant_controller');
     var journalController = require('../controllers/journal_controller');
+    var plantingNeedsController = require('../controllers/planting_needs_controller');
+    var bibitController = require('../controllers/bibit_controller');
+    var bbmController = require('../controllers/bbm_contoller');
+    var pupukController = require('../controllers/pupuk_controller');
+    var pestisidaController = require('../controllers/pestisida_controller');
 
     //Index Controller
     app.route('/')
@@ -60,5 +65,24 @@ module.exports = function (app) {
     app.route('/journal/getJournalById/:journalId')
         .get(journalController.getJournalById);
 
+    //Planting Needs
+    app.route('/plantingNeeds/addPlantingNeeds')
+        .post(plantingNeedsController.addPlantingNeeds);
+
+    //Bibit
+    app.route('/bibit/addBibit')
+        .post(bibitController.addBibit);
+
+    //BBM
+    app.route('/bbm/addBBM')
+        .post(bbmController.addBBM);
+    
+    //Pupuk
+    app.route('/pupuk/addPupuk')
+        .post(pupukController.addPupuk);
+     
+    //Pestisida
+    app.route('/pestisida/addPestisida')
+    .post(pestisidaController.addPestisida);
 
 };

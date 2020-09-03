@@ -8,7 +8,17 @@ exports.getAllPlant = function (req, res) {
         res.json({
             data: plants
         })
-    });
+    }).populate("plantingNeeds")
+    // .populate({ 
+    //     path: "plantingNeeds", 
+    //     model: 'plantingNeeds',
+    //     populate:[
+    //         '_idBBMList',
+    //         '_idPupukList',
+    //         '_idPestisidaList',
+
+    //     ]
+    // })
 }
 
 exports.deletePlant = function (req, res) {
@@ -71,7 +81,7 @@ exports.updatePlant = function (req, res) {
     });
 };
 
-exports.getPlantById = function (req,res) {
+exports.getPlantById = function (req, res) {
     Plant.findById(req.params.plantId, function (err, plant) {
         res.json({
             status: 200,
