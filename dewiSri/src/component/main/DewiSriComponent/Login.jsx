@@ -26,7 +26,7 @@ export default class Login extends Component {
         e.preventDefault()
         var data = new FormData()
 
-        data.append('email', this.state.phone)
+        data.append('phone', this.state.phone)
         data.append('password', this.state.password)
 
         await postFunction(data, LOGIN_END).then(() => {
