@@ -1,6 +1,18 @@
 import React, { Component } from 'react'
 
 export default class Tanaman extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+
+        }
+        this.method = {
+
+        }
+    }
+
+    
+
     render() {
         return (
             <div className="container">

@@ -16,7 +16,7 @@ export const MainApp = (auth) => {
             <Header isLogin={auth}></Header>
             <Router>
                 <Switch>
-                    <Route exact path="/" component={HomePages} />
+                    <Route exact path="/" component={() => <HomePages isLogin={auth}></HomePages>} />
                     <Route exact path="/main" component={MainPage} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />

@@ -7,7 +7,13 @@ export default class HomePages extends Component {
         return (
             <div>
                 <Section></Section>
-                <Main />
+                {/* {
+                    this.props.auth === true ? 
+                    <Main />
+                    :
+                    <div/>
+                } */}
+                <Main/>
             </div>
         )
     }

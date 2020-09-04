@@ -15,20 +15,23 @@ var plantingNeedSchema = mongoose.Schema({
     //         "_idPestisida": "",
     //     }]
     // },
-    _idPupukList: {
-        type: Array,
+    _idPupukList: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "pupuk",
         default: []
-    },
+    }],
 
-    _idBBMList: {
-        type: Array,
+    _idBBMList: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "bbm",
         default: []
-    },
+    }],
 
-    _idPestisidaList: {
-        type: Array,
+    _idPestisidaList: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "pestisida",
         default: []
-    },
+    }],
     // needs: {
     //     type: array,
     //     items:{
@@ -41,7 +44,10 @@ var plantingNeedSchema = mongoose.Schema({
     //         }
     //     }
     // },
-    _idBibit: String,
+    _idBibit: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "bibit",
+    },
     dateInput: {
         type: String,
         format: Date,

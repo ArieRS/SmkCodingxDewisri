@@ -15,11 +15,16 @@ const AdminBroMongoose = require('@admin-bro/mongoose');
 const User = require('../models/user_model');
 const Plant = require('../models/plant_model');
 const Journal = require('../models/journal_model');
+const BBM = require('../models/bbm_model');
+const Pupuk = require('../models/pupuk_model');
+const PlantingNeeds = require('../models/planting_needs');
+const Pestisida = require('../models/pestisida_model');
+const Bibit = require('../models/bibit_model');
 
 AdminBro.registerAdapter(AdminBroMongoose)
 
 const AdminBroOptions = {
-    resources: [User, Plant, Journal],
+    resources: [User, Journal, Plant, PlantingNeeds, Bibit, Pupuk, BBM, Pestisida],
 }
 exports.adminBro = new AdminBro(AdminBroOptions)
 // const router = AdminBroExpress.buildRouter(adminBro)

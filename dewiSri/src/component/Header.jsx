@@ -6,7 +6,17 @@ export default class Header extends Component {
     this.state = {
 
     }
+    this.method = {
+      logout: this._logout.bind(this)
+    }
   }
+
+  _logout(){
+    localStorage.removeItem('auth');
+    localStorage.removeItem('userData');
+    alert(localStorage.getItem("auth"));
+  }
+
   render() {
     return (
       <header id="header" className="header-transparent bg-transparent">
@@ -21,10 +31,10 @@ export default class Header extends Component {
               <li><a href="#features">Features</a></li>
               <li><a href="#pricing">Catatan Pertanian</a></li>
               {
-                this.props.isLogin === false ? 
-                <li><a href="/login">Login</a></li>
+                this.props.isLogin === true ? 
+                <li><a onClick={this.method.logout} href="">Logout</a></li>
                 :
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="/login">Login</a></li>
 
               }
               {/* <li><a href="/login">Login</a></li> */}
