@@ -15,13 +15,6 @@ export default class Header extends Component {
               <li><a href="#features">Features</a></li>
               <li><a href="#pricing">Catatan Pertanian</a></li>
               <li><a href="/login">Login</a></li>
-              <li>
-                <div className="menu-toggle">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </li>
             </ul>
           </nav>
         </div>

@@ -157,7 +157,7 @@ h6 {
 
 @media (max-width: 576px) {
   #header #nav-menu-container ul li .menu-toggle {
-    display: block;
+    /* display: block; */
   }
 }
 
@@ -449,7 +449,7 @@ h6 {
   }
 
   #nav-menu-container ul li {
-    display: block;
+    display: none;
   }
 }
 
