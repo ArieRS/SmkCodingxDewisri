@@ -31,7 +31,6 @@ export default class Pricing extends Component {
                 <button type="submit" id="btn-pricing-next-validation" class="btn btn-custom" title="Send Message">Beli / Langganan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
             `
-
     }
 
     showStep() {
@@ -42,7 +41,13 @@ export default class Pricing extends Component {
         return (
             <section id="pricing" className="section-bg">
                 <div className="section-header-pricing">
-                    <h3 className="section-title-pricing">Plant It Premium</h3>
+                    <div className="foto-petani">
+                        <img src="../../assets/img/petani/petani1.jpg" alt=""/>
+                        <img src="../../assets/img/petani/petani2.jpg" alt=""/>
+                        <img src="../../assets/img/petani/petani3.jpg" alt=""/>
+                        <img src="../../assets/img/petani/petani4.jpg" alt=""/>
+                    <h1 className="section-title-pricing">Plant It Premium</h1>
+                    </div>
                     <span className="section-divider"></span>
                 </div>
                 <div className="container">

@@ -20,9 +20,6 @@ export default class Header extends Component {
               <li><a href="/main">Calendar</a></li>
               <li><a href="#features">Features</a></li>
               <li><a href="#pricing">Catatan Pertanian</a></li>
-<<<<<<< HEAD
-              <li><a href="/login">Login</a></li>
-=======
               {
                 this.props.isLogin === false ? 
                 <li><a href="/login">Login</a></li>
@@ -38,7 +35,6 @@ export default class Header extends Component {
                   <span></span>
                 </div>
               </li>
->>>>>>> 87d5a924bdfd72e78021f04fc8615a160cb07f20
             </ul>
           </nav>
         </div>

@@ -22,7 +22,7 @@ export default class Profile extends Component {
                             </svg>
                         </p>
                     </div>
-                    <div className="clear"></div>
+                    <div className="clear"></div>           
                 </div>
                 <nav id="nav-menu-container">
                     <ul className="nav-menu">

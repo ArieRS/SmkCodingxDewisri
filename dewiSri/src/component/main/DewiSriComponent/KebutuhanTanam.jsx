@@ -42,7 +42,7 @@ export default class KebutuhanTaman extends Component {
                         <span className="section-divider"></span>
                     </div>
                     <a href="#" className="btn-get-started">Download Data</a>
-                    <div className="container">
+                    <div className="container mt-3">
                         <nav className="nav-fill">
                             <div className="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a className="nav-link active" id="nav-bibit-tab" data-toggle="tab" href="#nav-bibit" role="tab" aria-controls="nav-bibit" aria-selected="true">bibit</a>
@@ -53,7 +53,7 @@ export default class KebutuhanTaman extends Component {
                         </nav>
                         <div className="tab-content" id="nav-tabContent">   
                             <div className="tab-pane fade show active" id="nav-bibit" role="tabpanel" aria-labelledby="nav-bibit-tab">
-                                <button className="btn-get-started mt-2"  data-toggle="modal" data-target="#staticBackdropKebutuhanTanam" onClick={this.showDetail.bind(this, 'bibit')}>
+                                <button className="btn-get-started mt-3"  data-toggle="modal" data-target="#staticBackdropKebutuhanTanam" onClick={this.showDetail.bind(this, 'bibit')}>
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                                     </svg>
@@ -61,7 +61,7 @@ export default class KebutuhanTaman extends Component {
                                 </button>
                             </div>
                             <div className="tab-pane fade" id="nav-pupuk" role="tabpanel" aria-labelledby="nav-pupuk-tab">
-                            <button className="btn-get-started mt-2"  data-toggle="modal" data-target="#staticBackdropKebutuhanTanam" onClick={this.showDetail.bind(this, 'pupuk')}>
+                            <button className="btn-get-started mt-3"  data-toggle="modal" data-target="#staticBackdropKebutuhanTanam" onClick={this.showDetail.bind(this, 'pupuk')}>
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                                     </svg>
@@ -69,7 +69,7 @@ export default class KebutuhanTaman extends Component {
                                 </button>
                             </div>
                             <div className="tab-pane fade " id="nav-bbm" role="tabpanel" aria-labelledby="nav-mmb-tab">
-                            <button className="btn-get-started mt-2"  data-toggle="modal" data-target="#staticBackdropKebutuhanTanam" onClick={this.showDetail.bind(this, 'bbm')}>
+                            <button className="btn-get-started mt-3"  data-toggle="modal" data-target="#staticBackdropKebutuhanTanam" onClick={this.showDetail.bind(this, 'bbm')}>
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                                     </svg>
@@ -77,7 +77,7 @@ export default class KebutuhanTaman extends Component {
                                 </button>
                             </div>
                             <div className="tab-pane fade" id="nav-pestisida" role="tabpanel" aria-labelledby="nav-pestisida-tab">
-                            <button className="btn-get-started mt-2" data-toggle="modal" data-target="#staticBackdropKebutuhanTanam" onClick={this.showDetail.bind(this, 'pestisida')}>
+                            <button className="btn-get-started mt-3" data-toggle="modal" data-target="#staticBackdropKebutuhanTanam" onClick={this.showDetail.bind(this, 'pestisida')}>
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                                     </svg>
