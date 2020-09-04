@@ -1,12 +1,30 @@
 var mongoose = require('mongoose');
 
 var userSchema = mongoose.Schema({
-    username: String,
-    email: String,
-    password: String,
-    name: String,
-    phone: String,
-    avatar: String,
+    username: {
+        type: String,
+        default: ''
+    },
+    email:{
+        type: String,
+        default: ''
+    },
+    password:{
+        type: String,
+        default: ''
+    },
+    name:{
+        type: String,
+        default: ''
+    },
+    phone:  {
+        type: String,
+        default: ''
+    },
+    avatar:  {
+        type: String,
+        default: ''
+    },
     isPremium: {
         type: Boolean,
         default: false

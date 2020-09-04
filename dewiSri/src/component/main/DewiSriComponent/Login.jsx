@@ -26,13 +26,15 @@ export default class Login extends Component {
         e.preventDefault()
         var data = new FormData()
 
-        data.append('email', this.state.phone)
+        data.append('phone', this.state.phone)
         data.append('password', this.state.password)
 
         await postFunction(data, LOGIN_END).then(() => {
             if (responseData.status == 200) {
                 console.log("success");
                 alert(responseData.message)
+                localStorage.setItem("auth", true);
+                localStorage.setItem("userData", responseData.data.toString())
                 this.props.history.push("/");
                 console.log(responseData);
             } else {

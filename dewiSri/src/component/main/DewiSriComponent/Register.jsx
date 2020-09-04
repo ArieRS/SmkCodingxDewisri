@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { postFunction, responseData } from '../../../models/Model';
-import { LOGIN_END } from '../../../system/Strings';
+import { REGISTER_END } from '../../../system/Strings';
 
 export default class Register extends Component {
     constructor(props) {
@@ -8,7 +8,7 @@ export default class Register extends Component {
         this.state = {
             phone: "",
             password: "",
-            conformPassword: ""
+            confirmPassword: ""
         }
     }
 
@@ -18,19 +18,23 @@ export default class Register extends Component {
         })
     }
 
-    registerFunction = async () => {
+    registerFunction = async (e) => {
+        e.preventDefault();
         var data = new FormData();
-        if(this.state.password === this.state.conformPassword) {
-            data.append('email', this.state.phone);
+        if(this.state.password === this.state.confirmPassword) {
+            data.append('phone', this.state.phone);
             data.append('password', this.state.password);
-            await postFunction(data, LOGIN_END).then(() => {
+            await postFunction(data, REGISTER_END).then(() => {
                 if(responseData.status == 200) {
-                    console.log("Berhasil Register");
-                    this.props.history.push('/')
+                    alert(responseData.message)
+
+                    this.props.history.push('/login')
                 } else {
                     alert(responseData.message)
                 }
             })
+        }else{
+            alert("Password tidak sama")
         }
         
     }
@@ -51,14 +55,14 @@ export default class Register extends Component {
                         </div>
                         <div className="form-group">
                             <label for="confirmpassword">Ketik Ulang Password</label>
-                            <input type="password" className="form-control" id="confirmpassword" onChange={(text) => this.changeState('conformPassword', text)} />
+                            <input type="password" className="form-control" id="confirmpassword" onChange={(text) => this.changeState('confirmPassword', text)} />
                         </div>
                         <div className="form-check">
                             <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                             <label className="form-check-label" for="exampleCheck1">Setujui Persyaratan</label>
                         </div>
                         <small className="d-block mb-3">Jika sudah memiliki akun silahkan <a href="/login">login</a>!!</small>
-                        <button type="submit" className="btn btn-success" onClick={() => this.registerFunction()}>Submit</button>
+                        <button className="btn btn-success" onClick={this.registerFunction.bind(this)}>Submit</button>
                     </form>
                 </div>
             </body>
