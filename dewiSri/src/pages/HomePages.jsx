@@ -3,17 +3,24 @@ import Section from '../component/main/Section'
 import Main from '../component/Main'
 
 export default class HomePages extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            isLogin: localStorage.getItem('auth')
+        }
+    }
+
     render() {
         return (
             <div>
                 <Section></Section>
-                {/* {
-                    this.props.auth === true ? 
+                {
+                    this.state.isLogin ? 
                     <Main />
                     :
                     <div/>
-                } */}
-                <Main/>
+                }
+                {/* <Main/> */}
             </div>
         )
     }

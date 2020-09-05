@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isLogin: false
+      isLogin: localStorage.getItem('auth')
     }
   }
   componentWillMount(){
@@ -22,6 +22,8 @@ export default class App extends React.Component {
     this.setState({
       isLogin: authLocalStorage
     })
+    console.log("ndekApp:" +this.state.isLogin);
+    // console.log("ndekApp:" +authLocalStorage);
   }
 
   render() {

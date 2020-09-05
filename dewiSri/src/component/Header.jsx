@@ -4,11 +4,15 @@ export default class Header extends Component {
   constructor(props){
     super(props);
     this.state = {
-
+      isLogin: localStorage.getItem('auth')
     }
     this.method = {
       logout: this._logout.bind(this)
     }
+  }
+
+  componentWillMount(){
+    console.log(this.props.isLogin);
   }
 
   _logout(){
@@ -27,12 +31,13 @@ export default class Header extends Component {
           <nav id="nav-menu-container">
             <ul className="nav-menu">
               <li className="menu-active"><a href="/">Beranda</a></li>
-              <li><a href="/main">Calendar</a></li>
-              <li><a href="#features">Features</a></li>
-              <li><a href="#pricing">Catatan Pertanian</a></li>
               {
-                this.props.isLogin === true ? 
-                <li><a onClick={this.method.logout} href="">Logout</a></li>
+                this.state.isLogin ?
+                <> 
+                <li><a href="/main">Calendar</a></li>
+                <li><a href="#">Catatan Pertanian</a></li>
+                <li><a onClick={() => this.method.logout()} href="">Logout</a></li>
+                </>
                 :
                 <li><a href="/login">Login</a></li>
 

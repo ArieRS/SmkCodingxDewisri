@@ -29,7 +29,10 @@ var userSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
-    coins: Number,
+    coins: {
+        type: Number,
+        default: 0
+    },
     userStatus:{
         type: String,
         enum:['petani', 'admin', 'editor'],
