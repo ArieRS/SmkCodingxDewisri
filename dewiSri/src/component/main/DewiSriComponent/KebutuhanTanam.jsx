@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { API_ADDRESS, ADD_BIBIT, ADD_PESTISIDA, ADD_PUPUK } from '../../../system/Strings';
+import { API_ADDRESS, ADD_BIBIT, ADD_PESTISIDA, ADD_PUPUK, ADD_BBM } from '../../../system/Strings';
 import { postFunction, responseData } from '../../../models/Model';
 import EnhancedTable from './Table';
 
@@ -25,13 +25,23 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                         <input type="date" name="tanggal" onChange={(text) => method.changeState('dateInput',text)} class="form-control" id="tanggal" placeholder="Tanggal" required={true}/>
                         <div class="validate"></div>
                     </div>
+                    {
+                        state.type == 'bbm' 
+                        ? 
+                        <div class="form-group">
+                            <label for="jumlah">Durasi Diesel (Menit)</label>
+                            <input type="number" onChange={(text) => method.changeState('quantity',text)} class="form-control" name="jumlah" id="jumlah" placeholder="Durasi" required={true}/>
+                            <div class="validate"></div>
+                        </div>
+                        :
+                        <div class="form-group">
+                            <label for="jumlah">Jumlah</label>
+                            <input type="number" onChange={(text) => method.changeState('quantity',text)} class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah" required={true}/>
+                            <div class="validate"></div>
+                        </div>
+                    }
                     <div class="form-group">
-                        <label for="jumlah">Jumlah</label>
-                        <input type="number" onChange={(text) => method.changeState('quantity',text)} class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah" required={true}/>
-                        <div class="validate"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="harga">Harga</label>
+                        <label for="harga">Harga Bahan Bakar</label>
                         <input type="Number" class="form-control"  onChange={(text) => method.changeState('price',text)} name="harga" id="harga" placeholder="Harga" required={true}/>
                         <div class="validate"></div>
                     </div>
@@ -91,13 +101,50 @@ export default class KebutuhanTaman extends Component {
         // e.preventDefault()
         
         var data = new FormData()
-        var insertType = type === 'bibit' ? ADD_BIBIT : type === 'pupuk' ? ADD_PUPUK : ADD_PESTISIDA;
+        // var dataNonBBM = (
+        //     data.append('date_input', this.state.dateInput),
+        //     data.append('quantity', this.state.quantity),
+        //     data.append('price', this.state.price),
+        //     data.append('keterangan', this.state.keterangan),
+        //     data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+        // )
+        // var dataBBM = (
+            // data.append('date_input', this.state.dateInput),
+            // data.append('diesel_duration', this.state.quantity),
+            // data.append('price', this.state.price),
+            // data.append('keterangan', this.state.keterangan),
+            // data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+        // )
+        if (type === 'bibit') {
+            var insertType = ADD_BIBIT
+            data.append('date_input', this.state.dateInput)
+            data.append('quantity', this.state.quantity)
+            data.append('price', this.state.price)
+            data.append('keterangan', this.state.keterangan)
+            data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+        } else if (type === 'pupuk') {
+            var insertType = ADD_PUPUK
+            data.append('date_input', this.state.dateInput)
+            data.append('quantity', this.state.quantity)
+            data.append('price', this.state.price)
+            data.append('keterangan', this.state.keterangan)
+            data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+        }else if (type === 'pestisida') {
+            var insertType = ADD_PESTISIDA
+            data.append('date_input', this.state.dateInput)
+            data.append('quantity', this.state.quantity)
+            data.append('price', this.state.price)
+            data.append('keterangan', this.state.keterangan)
+            data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+        }else if (type === 'bbm') {
+            var insertType = ADD_BBM
+            data.append('date_input', this.state.dateInput)
+            data.append('diesel_duration', this.state.quantity)
+            data.append('price', this.state.price)
+            data.append('keterangan', this.state.keterangan)
+            data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+        }
         
-        data.append('date_input', this.state.dateInput)
-        data.append('quantity', this.state.quantity)
-        data.append('price', this.state.price)
-        data.append('keterangan', this.state.keterangan)
-        data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
 
         await postFunction(data, insertType).then(() => {
             if (responseData.status == 200) {
@@ -106,6 +153,7 @@ export default class KebutuhanTaman extends Component {
                 this.setState({
                     showModal: !this.state.showModal,
                 })
+                window.location.reload(false)
             } else {
                 alert(responseData.message)
             }
@@ -228,7 +276,7 @@ export default class KebutuhanTaman extends Component {
                                                 return(
                                                     <tr>
                                                         <td>{this.props.state.bbmData[index].date_input}</td>
-                                                        <td>{this.props.state.bbmData[index].quantity}</td>
+                                                        <td>{this.props.state.bbmData[index].diesel_duration}</td>
                                                         <td>{this.props.state.bbmData[index].price}</td>
                                                         <td>{this.props.state.bbmData[index].keterangan}</td>
                                                     </tr>

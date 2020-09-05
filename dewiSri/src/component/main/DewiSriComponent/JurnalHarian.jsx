@@ -95,6 +95,8 @@ export default class JurnalHarian extends Component {
                 this.setState({
                     showModal: !this.state.showModal,
                 })
+                window.location.reload(false)
+
             } else {
                 alert(responseData.message)
             }
@@ -127,14 +129,17 @@ export default class JurnalHarian extends Component {
                             </thead>
                             <tbody>
                                 {(() => {
-                                    let data = this.props.state.journalDataByDate[0].dailyJournal;
-                                    return(
-                                        <tr>
-                                            <td>{data.inputDate}</td>
-                                            <td>{data.activity}</td>
-                                            <td>{data.problem}</td>
-                                        </tr>
-                                    )
+                                    if (this.props.state.journalDataByDate[0].dailyJournal != null || this.props.state.journalDataByDate[0].dailyJournal != undefined) {
+                                        let data = this.props.state.journalDataByDate[0].dailyJournal  ;
+                                        return(
+                                            <tr>
+                                                <td>{data.inputDate}</td>
+                                                <td>{data.activity}</td>
+                                                <td>{data.problem}</td>
+                                            </tr>
+                                        )
+                                    }
+                                    
                                 })()}
                             </tbody>
                         </table>

@@ -8,3 +8,4 @@ export var ADD_BBM = 'bbm/addBBM';
 export var GET_JOURNAL_BY_DATE = 'journal/getJournalByDate/'
 export var GET_PLANTING_NEEDS = 'plantingNeeds/getPlantingNeedsById/'
 export var ADD_DAILY_JOURNAL = 'journal/addDailyJournal'
+export var ADD_JOURNAL = 'journal/addJournal'

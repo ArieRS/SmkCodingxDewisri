@@ -14,8 +14,7 @@ export default class Header2 extends Component {
             <ul className="nav-menu">
               <li className="menu-active"><a href="/">Beranda</a></li>
               <li><a href="/main">Calendar</a></li>
-              <li><a href="#features">Features</a></li>
-              <li><a href="#pricing">Catatan Pertanian</a></li>
+              <li><a href="">Catatan Pertanian</a></li>
               <li><a href="/login">Login</a></li>
             </ul>
           </nav>

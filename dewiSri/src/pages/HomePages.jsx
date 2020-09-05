@@ -9,9 +9,10 @@ import KebutuhanTanam from '../component/main/DewiSriComponent/KebutuhanTanam'
 import JurnalHarian from '../component/main/DewiSriComponent/JurnalHarian'
 import CatatanPertanian from '../component/main/DewiSriComponent/CatatanPertanian'
 import Other from '../component/main/DewiSriComponent/Other'
-import { LOGIN_END, GET_JOURNAL_BY_DATE, GET_PLANTING_NEEDS } from '../system/Strings'
+import { LOGIN_END, GET_JOURNAL_BY_DATE, GET_PLANTING_NEEDS, ADD_JOURNAL } from '../system/Strings'
 import { postFunction, responseData, getDataFunction } from '../models/Model'
 import moment from 'moment';
+import Header2 from '../component/Header2'
 
 export default class HomePages extends Component {
     constructor(props){
@@ -38,7 +39,7 @@ export default class HomePages extends Component {
     }
 
     async componentWillMount(){
-        this.getUserData();
+        await this.getUserData();
         await this.getCurrentDate();
     }
 
@@ -54,7 +55,7 @@ export default class HomePages extends Component {
                 this.setState({
                     userData: responseData.data,
                     journalData: responseData.data.journalList
-                },() => console.log('userData: '+this.state.userData.username))
+                },() => console.log('userData: '+this.state.userData._id))
                 
             } else {
                 alert(responseData.message)
@@ -94,20 +95,33 @@ export default class HomePages extends Component {
         })
     }
 
-
     async getPlantByDate(){
+        var data = new FormData()
+        data.append('owner_userId', this.state.userData._id)
+
         var query = GET_JOURNAL_BY_DATE+this.state.dateIsoFormat;
+
         console.log(query);
         await getDataFunction(query).then(() => {
             if (responseData.status == 200) {
-                this.setState({
+                
+                if (responseData.data == undefined || responseData.data == null || responseData.data.length == 0) {
+                    postFunction(data, ADD_JOURNAL).then(() => {
+                        // alert(responseData.status)
+                        window.location.reload(false)
+                    })
+                }{
+                    this.setState({
                     journalDataByDate: responseData.data,
 
-                },() => {
-                    console.log("dataaaaa: "+ this.state.journalDataByDate[0].dailyJournal.inputDate);
-                    console.log(query);
-                    this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
-                })
+                    },() => {
+                        console.log("dataaaaa: "+ this.state.journalDataByDate);
+                        console.log(query);
+                        if (this.state.journalDataByDate.length != 0) {   
+                            this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
+                        }
+                    })
+                }
             }else{
                 alert("galgagal")
             }
@@ -134,12 +148,15 @@ export default class HomePages extends Component {
     render() {
         return (
             <div>
-                <Section></Section>
+                {
+                    // this.state.isLogin ? <section id="intro"/> : <Section></Section> 
+                }
+                <Section></Section> 
                 {
                     this.state.isLogin ? 
-                    <main id="main">
+                    <main id="main" className='mt-5'>
                         {
-                            this.state.bibitData.length != 0 ? 
+                            this.state.journalDataByDate.length != 0 ? 
                             <>
                                 <Navigation state={this.state} method={this.method} />
                                 <Tanaman state={this.state} method={this.method} />
