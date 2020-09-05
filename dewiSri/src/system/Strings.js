@@ -5,3 +5,5 @@ export var ADD_BIBIT = 'bibit/addBibit';
 export var ADD_PUPUK = 'pupuk/addPupuk';
 export var ADD_PESTISIDA = 'pestisida/addPestisida';
 export var ADD_BBM = 'bbm/addBBM';
+export var GET_JOURNAL_BY_DATE = 'journal/getJournalByDate/'
+export var GET_PLANTING_NEEDS = 'plantingNeeds/getPlantingNeedsById/'

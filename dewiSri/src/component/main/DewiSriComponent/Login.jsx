@@ -34,7 +34,8 @@ export default class Login extends Component {
                 console.log("success");
                 alert(responseData.message)
                 localStorage.setItem("auth", true);
-                localStorage.setItem("userData", responseData.data.toString())
+                localStorage.setItem("phone", responseData.data.phone)
+                localStorage.setItem("password", this.state.password)
                 this.props.history.push("/");
                 console.log(localStorage.getItem("auth"));
                 console.log(responseData.data);

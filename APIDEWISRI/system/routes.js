@@ -65,9 +65,16 @@ module.exports = function (app) {
     app.route('/journal/getJournalById/:journalId')
         .get(journalController.getJournalById);
 
+    app.route('/journal/getJournalByDate/:date')
+        .get(journalController.getJournalByDate);
+
     //Planting Needs
     app.route('/plantingNeeds/addPlantingNeeds')
         .post(plantingNeedsController.addPlantingNeeds);
+
+    app.route('/plantingNeeds/getPlantingNeedsById/:plantId')
+        .get(plantingNeedsController.getPlantingNeeds);
+
 
     //Bibit
     app.route('/bibit/addBibit')

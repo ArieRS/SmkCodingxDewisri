@@ -2,60 +2,48 @@ import React, { Component } from 'react'
 // import moment from 'moment';
 import moment from 'moment';
 export default class Navigation extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentDate: "",
-            dateFormat: ""
-        }
-        this.monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
-            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
-        ];
-    }
-    componentWillMount() {
-        // var date = new Date()
-        this.getCurrentDate()
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         currentDate: "",
+    //         dateFormat: ""
+    //     }
+    //     this.monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
+    //         "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+    //     ];
+    // }
+    // componentWillMount() {
+    //     this.getCurrentDate()
+    // }
 
-    getCurrentDate() {
-        // var today = date;
-        // var dd = String(today.getDate()).padStart(2, '0');
-        // var mm = today.getMonth();
-        // var yyyy = today.getFullYear();
+    // getCurrentDate() {
+    //     var newDateFormat = moment().format('L');
+    //     var currentDate = moment().format('LL');
+    //     this.setState({
+    //         currentDate: currentDate,
+    //         dateFormat: newDateFormat
+    //     }, console.log("date: " + newDateFormat))
+    // }
 
-        // var newToday = dd + ', ' + this.monthNames[mm] + ' ' + yyyy;
-        // var newDateFormat = dd + "." + mm + "." + yyyy;
-        // this.setState({
-        //     currentDate: newToday,
-        //     dateFormat: newDateFormat
-        // })
-        var newDateFormat = moment().format('L');
-        var currentDate = moment().format('LL');
-        this.setState({
-            currentDate: currentDate,
-            dateFormat: newDateFormat
-        }, console.log("date: " + newDateFormat))
-    }
+    // dateDecrement(d) {
+    //     var newDateFormat = moment(d, "MM-DD-YYYY").subtract('days', 1).format('L');
+    //     var newDate = moment(d, "MM-DD-YYYY").subtract('days', 1);
+    //     console.log("current date state : " + d);
+    //     this.setState({
+    //         currentDate: newDate.format('LL'),
+    //         dateFormat: newDateFormat
+    //     })
+    // }
 
-    dateDecrement(d) {
-        var newDateFormat = moment(d, "MM-DD-YYYY").subtract('days', 1).format('L');
-        var newDate = moment(d, "MM-DD-YYYY").subtract('days', 1);
-        console.log("current date state : " + d);
-        this.setState({
-            currentDate: newDate.format('LL'),
-            dateFormat: newDateFormat
-        })
-    }
-
-    dateIncrement(d) {
-        var newDateFormat = moment(d, "MM-DD-YYYY").add('days', 1).format('L');
-        var newDate = moment(d, "MM-DD-YYYY").add('days', 1);
-        console.log("current date state : " + d);
-        this.setState({
-            currentDate: newDate.format('LL'),
-            dateFormat: newDateFormat
-        })
-    }
+    // dateIncrement(d) {
+    //     var newDateFormat = moment(d, "MM-DD-YYYY").add('days', 1).format('L');
+    //     var newDate = moment(d, "MM-DD-YYYY").add('days', 1);
+    //     console.log("current date state : " + d);
+    //     this.setState({
+    //         currentDate: newDate.format('LL'),
+    //         dateFormat: newDateFormat
+    //     })
+    // }
 
     render() {
         return (
@@ -68,14 +56,14 @@ export default class Navigation extends Component {
                     </svg> <span className="d-none d-md-inline text-success">Get Premium</span>
                     </a>
                     <div className="d-flex text-align-center">
-                        <a onClick={() => this.dateDecrement(this.state.dateFormat)}>
+                        <a onClick={() => this.props.method.dateDecrement(this.props.state.dateFormat)}>
                             <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-caret-left-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
                             </svg>
                         </a>
 
-                        <span><b>{this.state.currentDate}</b></span>
-                        <a onClick={() => this.dateIncrement(this.state.dateFormat)}>
+                        <span><b>{this.props.state.currentDate}</b></span>
+                        <a onClick={() => this.props.method.dateIncrement(this.props.state.dateFormat)}>
                             <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
                             </svg>

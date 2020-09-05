@@ -80,3 +80,12 @@ exports.getPlantById = function (req,res) {
         })
     });
 }
+
+exports.getPlantingNeeds = function (req,res) {
+    PlantingNeeds.find({owner_plantId: req.params.plantId}, function (err, planting_needs) {
+        res.json({
+            status: 200,
+            data: planting_needs
+        })
+    }).populate('_idBibit').populate('_idPestisidaList').populate('_idPupukList').populate('_idBBMList')
+}

@@ -11,7 +11,9 @@ export default class Tanaman extends Component {
         }
     }
 
-    
+    componentWillMount(){
+        console.log(this.props.state.currentDate);
+    }
 
     render() {
         return (
@@ -21,12 +23,13 @@ export default class Tanaman extends Component {
                         <tr>
                             <th>Tanaman</th>
                             <td>:</td>
-                            <td>Kentang Besar</td>
+                            <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td>
                         </tr>
                         <tr>
                             <th>Komoditas</th>
                             <td>:</td>
-                            <td>Granola Jerman</td>
+                            <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td>
+
                         </tr>
                         <tr>
                             <th>Hari Ke</th>

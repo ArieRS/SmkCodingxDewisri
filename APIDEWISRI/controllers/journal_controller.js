@@ -4,7 +4,12 @@ var Plant = require('../models/plant_model');
 exports.addJournal = function (req, res) {
     var journal = new Journal(req.body);
     var date = new Date();
-    journal.inputDate = date.toISOString();
+
+    var year = date.getFullYear();
+    var month = date.getMonth()+1;
+    var day = date.getDate();
+    var newDate =day+"-"+month+"-"+year;
+    journal.inputDate = newDate;
     var arrayPlantList = [];
     // res.json({
     //     journal: journal
@@ -74,6 +79,15 @@ exports.updateJournal = function (req, res) {
 
 exports.getJournalById = function (req,res) {
     Journal.findById(req.params.journalId, function (err, journal) {
+        res.json({
+            status: 200,
+            data: journal
+        })
+    }).populate("plantList")
+}
+
+exports.getJournalByDate = function (req,res) {
+    Journal.find({'inputDate': req.params.date}, function (err, journal) {
         res.json({
             status: 200,
             data: journal

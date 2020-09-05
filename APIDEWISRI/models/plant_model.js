@@ -16,10 +16,10 @@ var plantSchema = mongoose.Schema({
         format: Date
     },
     owner_userId: String,
-    plantingNeeds: [{
+    plantingNeeds: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "plantingNeed"
-    }]
+    }
 });
 
 var Plant = module.exports = mongoose.model('plant', plantSchema);

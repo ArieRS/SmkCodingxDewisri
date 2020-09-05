@@ -44,10 +44,11 @@ var plantingNeedSchema = mongoose.Schema({
     //         }
     //     }
     // },
-    _idBibit: {
+    _idBibit: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "bibit",
-    },
+        default: []
+    }],
     dateInput: {
         type: String,
         format: Date,
