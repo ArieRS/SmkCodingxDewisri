@@ -20,11 +20,12 @@ const Pupuk = require('../models/pupuk_model');
 const PlantingNeeds = require('../models/planting_needs');
 const Pestisida = require('../models/pestisida_model');
 const Bibit = require('../models/bibit_model');
+const DailyJournal = require('../models/daily_journal_model');
 
 AdminBro.registerAdapter(AdminBroMongoose)
 
 const AdminBroOptions = {
-    resources: [User, Journal, Plant, PlantingNeeds, Bibit, Pupuk, BBM, Pestisida],
+    resources: [User, Journal, DailyJournal, Plant, PlantingNeeds, Bibit, Pupuk, BBM, Pestisida],
 }
 exports.adminBro = new AdminBro(AdminBroOptions)
 // const router = AdminBroExpress.buildRouter(adminBro)

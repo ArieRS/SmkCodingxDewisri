@@ -19,12 +19,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData( inputDate, quantity, price, keterangan) {
+  return {  inputDate, quantity, price, keterangan };
 }
 
 const rows = [
-  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Cupcake', 305, 3.7, 67),
 
 ];
 
@@ -55,11 +55,10 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
-  { id: 'tanggal', numeric: true, disablePadding: false, label: 'Tanggal' },
-  { id: 'jumlah', numeric: true, disablePadding: false, label: 'Jumlah' },
-  { id: 'harga', numeric: true, disablePadding: false, label: 'Harga' },
-  { id: 'deskripsi', numeric: true, disablePadding: false, label: 'Deskripsi' },
+  { id: 'inputDate', numeric: true, disablePadding: false, label: 'Tanggal Input' },
+  { id: 'quantity', numeric: true, disablePadding: false, label: 'Jumlah' },
+  { id: 'price', numeric: true, disablePadding: false, label: 'Harga' },
+  { id: 'keterangan', numeric: true, disablePadding: false, label: 'Keterangan' },
 ];
 
 function EnhancedTableHead(props) {
@@ -203,7 +202,7 @@ const useStyles = makeStyles((theme) => ({
 export default function EnhancedTable(props) {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
+  const [orderBy, setOrderBy] = React.useState('inputDate');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -307,10 +306,10 @@ export default function EnhancedTable(props) {
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
+                      <TableCell align="right">{row.inputDate}</TableCell>
+                      <TableCell align="right">{row.quantity}</TableCell>
+                      <TableCell align="right">{row.price}</TableCell>
+                      <TableCell align="right">{row.keterangan}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -332,10 +331,10 @@ export default function EnhancedTable(props) {
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
       </Paper>
-      <FormControlLabel
+      {/* <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
-      />
+      /> */}
     </div>
   );
 }

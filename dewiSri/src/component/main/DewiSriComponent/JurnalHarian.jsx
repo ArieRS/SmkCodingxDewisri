@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { ADD_DAILY_JOURNAL } from '../../../system/Strings';
+import { postFunction, responseData } from '../../../models/Model';
 
 
 const Modal = ({ handleClose, show, children, state, method }) => {
@@ -18,19 +20,19 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                 <div class="modal-body">
                     <div class="form">
                         <form class="php-email-form">
-                            <div class="form-group">
+                            {/* <div class="form-group">
                                 <label for="tanggal">Tanggal</label>
                                 <input type="date" name="tanggal" onChange={(text) => method.changeState('dateInput',text)} class="form-control" id="tanggal" placeholder="Tanggal" required={true}/>
                                 <div class="validate"></div>
-                            </div>
+                            </div> */}
                             <div class="form-group">
                                 <label for="keterangan">Kegiatan</label>
-                                <textarea class="form-control" id="kegiatan" onChange={(text) => method.changeState('kegiatan',text)} name="keterangan" rows="5" data-rule="required" placeholder="Keterangan" required={true}></textarea>
+                                <textarea class="form-control" id="kegiatan" onChange={(text) => method.changeState('activity',text)} name="activity" rows="5" data-rule="required" placeholder="Kegiatan" required={true}></textarea>
                                 <div class="validate"></div>
                             </div>
                             <div class="form-group">
                                 <label for="keterangan">Permasalahan</label>
-                                <textarea class="form-control" id="Permasalahan" onChange={(text) => method.changeState('dummy',text)} name="keterangan" rows="5" data-rule="required" placeholder="Keterangan" required={true}></textarea>
+                                <textarea class="form-control" id="Permasalahan" onChange={(text) => method.changeState('problem',text)} name="keterangan" rows="5" data-rule="required" placeholder="Permasalahan" required={true}></textarea>
                                 <div class="validate"></div>
                             </div>
                         </form>
@@ -38,7 +40,7 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>
-                  <button type="button" onClick={() => method.addData({type: state.type})} class="btn btn-custom">Tambah Data</button>
+                  <button type="button" onClick={() => method.addData()} class="btn btn-custom">Tambah Data</button>
                 </div>
               </div>
             </div>
@@ -55,10 +57,14 @@ export default class JurnalHarian extends Component {
         super(props);
         this.state = {
             dateInput: '',
-            showModal: false
+            showModal: false,
+            activity: '',
+            problem: ''
         }
         this.method = {
-            modalShowHide: this.modalShowHide.bind(this)
+            modalShowHide: this.modalShowHide.bind(this),
+            changeState: this._changeState.bind(this),
+            addData: this._addData.bind(this),
         }
         this.modalShowHide = this.modalShowHide.bind(this)
     }
@@ -68,8 +74,34 @@ export default class JurnalHarian extends Component {
             showModal: !this.state.showModal
         })
     }
+    _changeState(state,value){
+        this.setState({
+            [state]: value.target.value
+        })
+    }
 
-    
+    async _addData(){
+        var data = new FormData()
+        
+        data.append('activity', this.state.activity)
+        data.append('problem', this.state.problem)
+        data.append('owner_journalId',this.props.state.journalDataByDate[0]._id)
+        data.append('owner_userId',this.props.state.userData._id)
+
+        await postFunction(data, ADD_DAILY_JOURNAL).then(() => {
+            if (responseData.status == 200) {
+                console.log("success");
+                alert("Sukses menambah jurnal harian")
+                this.setState({
+                    showModal: !this.state.showModal,
+                })
+            } else {
+                alert(responseData.message)
+            }
+        })
+
+    }
+
     render() {
         return (
             <section id="pricing" className="container">
@@ -77,13 +109,35 @@ export default class JurnalHarian extends Component {
                 <div className="container">
                     <div className="section-header">
                         <h3 className="section-title">Jurnal Harian</h3>
+                        <h2 className="text-center">{this.props.state.currentDate}</h2>
                         <span className="section-divider"></span>
                     </div>
+
                     <div className="tab-pane fade show active" id="nav-bibit" role="tabpanel" aria-labelledby="nav-bibit-tab">  
                         <a href="3" className="btn-get-started">Download Data</a>
                     </div>
-                    <div>
-                        <table></table>
+                    <div className="my-3">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th className="text-center">Tanggal Input</th>
+                                    <th className="text-center">Kegiatan</th>
+                                    <th className="text-center">Permasalahan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {(() => {
+                                    let data = this.props.state.journalDataByDate[0].dailyJournal;
+                                    return(
+                                        <tr>
+                                            <td>{data.inputDate}</td>
+                                            <td>{data.activity}</td>
+                                            <td>{data.problem}</td>
+                                        </tr>
+                                    )
+                                })()}
+                            </tbody>
+                        </table>
                     </div>
                     <div className="tab-pane fade show active" id="nav-bibit" role="tabpanel" aria-labelledby="nav-bibit-tab">
                         <button className="btn-get-started mt-3" onClick={this.modalShowHide}>

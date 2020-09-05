@@ -52,8 +52,9 @@ export default class HomePages extends Component {
             if (responseData.status == 200) {
                 console.log("success");
                 this.setState({
+                    userData: responseData.data,
                     journalData: responseData.data.journalList
-                },() => console.log(this.state.journalData))
+                },() => console.log('userData: '+this.state.userData.username))
                 
             } else {
                 alert(responseData.message)
@@ -100,9 +101,10 @@ export default class HomePages extends Component {
         await getDataFunction(query).then(() => {
             if (responseData.status == 200) {
                 this.setState({
-                    journalDataByDate: responseData.data
+                    journalDataByDate: responseData.data,
+
                 },() => {
-                    console.log("dataaaaa: "+ this.state.journalDataByDate[0].inputDate);
+                    console.log("dataaaaa: "+ this.state.journalDataByDate[0].dailyJournal.inputDate);
                     console.log(query);
                     this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
                 })
@@ -119,9 +121,9 @@ export default class HomePages extends Component {
             if (responseData.status == 200) {
                 this.setState({
                     bibitData: responseData.data[0]._idBibit,
-                    bbmData: responseData.data[0]._idBBM,
-                    pupukData: responseData.data[0]._idPupuk,
-                    pestisidaData: responseData.data[0]._idPestisida,
+                    bbmData: responseData.data[0]._idBBMList,
+                    pupukData: responseData.data[0]._idPupukList,
+                    pestisidaData: responseData.data[0]._idPestisidaList,
                 },() => {console.log("dataaaaa: "+ this.state.pupukData);console.log(query)})
             }else{
                 alert("galgagal")
@@ -142,7 +144,7 @@ export default class HomePages extends Component {
                                 <Navigation state={this.state} method={this.method} />
                                 <Tanaman state={this.state} method={this.method} />
                                 <KebutuhanTanam state={this.state} method={this.method}/>
-                                <JurnalHarian />
+                                <JurnalHarian state={this.state} method={this.method}/>
                                 <CatatanPertanian />
                                 <Other />
                                 <Pricing />

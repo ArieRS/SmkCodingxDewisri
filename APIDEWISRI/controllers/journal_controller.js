@@ -92,5 +92,5 @@ exports.getJournalByDate = function (req,res) {
             status: 200,
             data: journal
         })
-    }).populate("plantList")
+    }).populate("plantList").populate('dailyJournal')
 }

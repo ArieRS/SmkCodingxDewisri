@@ -7,6 +7,7 @@ module.exports = function (app) {
     var userController = require('../controllers/user_controller');
     var plantController = require('../controllers/plant_controller');
     var journalController = require('../controllers/journal_controller');
+    var dailyJournalController = require('../controllers/daily_journal_controller');
     var plantingNeedsController = require('../controllers/planting_needs_controller');
     var bibitController = require('../controllers/bibit_controller');
     var bbmController = require('../controllers/bbm_contoller');
@@ -67,6 +68,10 @@ module.exports = function (app) {
 
     app.route('/journal/getJournalByDate/:date')
         .get(journalController.getJournalByDate);
+
+    //Daily Journal
+    app.route('/journal/addDailyJournal')
+        .post(dailyJournalController.addDailyJournal);
 
     //Planting Needs
     app.route('/plantingNeeds/addPlantingNeeds')

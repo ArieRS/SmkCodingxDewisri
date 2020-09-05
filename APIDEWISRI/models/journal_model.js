@@ -6,7 +6,10 @@ var journalSchema = mongoose.Schema({
         type: String,
         format: Date
     },
-    dailyJournal: String,
+    dailyJournal: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "dailyJournal"  
+    },
     plantList: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "plant"
