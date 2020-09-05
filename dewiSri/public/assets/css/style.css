@@ -383,6 +383,7 @@ h6 {
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 18px;
 }
 
 .navigation-panel .tanggal {
@@ -1503,6 +1504,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   flex-direction: row;
   justify-content: space-between;
   color: white;
+  font-size: 16px;
 }
 
 .panel-tanaman table {
@@ -1634,13 +1636,12 @@ section#pricing .btn-get-started, .kebutuhan-tanam .btn-get-started {
   border: none;
   outline: none;
   background: none;
-  background: #515e61;
   display: inline-block;
   padding: 6px 30px;
   border-radius: 20px;
   color: #fff;
   transition: none;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   font-family: "Montserrat", sans-serif;
   color: white;
@@ -1654,7 +1655,7 @@ section#pricing .btn-get-started, .kebutuhan-tanam .btn-get-started {
   border-radius: 20px;
   color: #fff;
   transition: none;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   font-family: "Montserrat", sans-serif;
   color: white;
@@ -1747,3 +1748,7 @@ form {
 .display-none {
   display: none;
 }
+
+.card-kebutuhan-tanam .container .nav-fill .nav a {
+  font-size: 18px;
+} 

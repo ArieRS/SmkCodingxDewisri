@@ -11,7 +11,7 @@ export default class Section extends Component {
                     <a href="/login" className="btn-get-started scrollto">Get Started</a>
                 </div>
 
-                <div className="product-screens">
+                {/* <div className="product-screens">
 
                     <div className="product-screen-1 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.6s">
                         <img src="assets/img/product-screen-1.png" alt="" />
@@ -25,7 +25,7 @@ export default class Section extends Component {
                         <img src="assets/img/product-screen-3.png" alt="" />
                     </div>
 
-                </div>
+                </div> */}
 
             </section>
         )

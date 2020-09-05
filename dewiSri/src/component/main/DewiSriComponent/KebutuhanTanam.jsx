@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { API_ADDRESS, ADD_BIBIT, ADD_PESTISIDA, ADD_PUPUK } from '../../../system/Strings';
 import { postFunction, responseData } from '../../../models/Model';
+import EnhancedTable from './Table';
 
 const Modal = ({ handleClose, show, children, state, method }) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
@@ -131,7 +132,7 @@ export default class KebutuhanTaman extends Component {
                     </div>
                     <a href="#" className="btn-get-started">Download Data</a>
                     <div className="container mt-3">
-                        <nav className="nav-fill">
+                        <nav className="nav-fill mb-3">
                             <div className="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a className="nav-link active" id="nav-bibit-tab" onClick={() => this.setState({type: 'bibit'})} data-toggle="tab" href="#nav-bibit" role="tab" aria-controls="nav-bibit" aria-selected="true">Bibit</a>
                                 <a className="nav-link" id="nav-pupuk-tab" onClick={() => this.setState({type: 'pupuk'})}  data-toggle="tab" href="#nav-pupuk" role="tab" aria-controls="nav-pupuk" aria-selected="false">Pupuk</a>
@@ -141,6 +142,7 @@ export default class KebutuhanTaman extends Component {
                         </nav>
                         <div className="tab-content" id="nav-tabContent">   
                             <div className="tab-pane fade show active" id="nav-bibit" role="tabpanel" aria-labelledby="nav-bibit-tab">
+                              <EnhancedTable tab="Bibit"/>
                                 <button className="btn-get-started mt-3" onClick={this.modalShowHide}>
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
@@ -149,6 +151,7 @@ export default class KebutuhanTaman extends Component {
                                 </button>
                             </div>
                             <div className="tab-pane fade" id="nav-pupuk" role="tabpanel" aria-labelledby="nav-pupuk-tab">
+                              <EnhancedTable tab="Pupuk"/>
                             <button className="btn-get-started mt-3"  onClick={this.modalShowHide}>
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
@@ -157,6 +160,7 @@ export default class KebutuhanTaman extends Component {
                                 </button>
                             </div>
                             <div className="tab-pane fade " id="nav-bbm" role="tabpanel" aria-labelledby="nav-mmb-tab">
+                              <EnhancedTable tab="Bbm" />
                             <button className="btn-get-started mt-3"  onClick={this.modalShowHide}>
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
@@ -165,12 +169,13 @@ export default class KebutuhanTaman extends Component {
                                 </button>
                             </div>
                             <div className="tab-pane fade" id="nav-pestisida" role="tabpanel" aria-labelledby="nav-pestisida-tab">
-                            <button className="btn-get-started mt-3" onClick={this.modalShowHide}>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                    </svg>
-                                    <span class="d-none d-md-inline text-light ml-1">Tambah Data</span>
-                                </button>
+                              <EnhancedTable tab="Pestisida" />
+                              <button className="btn-get-started mt-3" onClick={this.modalShowHide}>
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                </svg>
+                                <span class="d-none d-md-inline text-light ml-1">Tambah Data</span>
+                              </button>
                             </div>
                         </div>
                     </div>

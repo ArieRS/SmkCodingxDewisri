@@ -14,13 +14,13 @@ export default class HomePages extends Component {
         return (
             <div>
                 <Section></Section>
-                {
+                {/* {
                     this.state.isLogin ? 
                     <Main />
                     :
                     <div/>
-                }
-                {/* <Main/> */}
+                } */}
+                <Main/>
             </div>
         )
     }
