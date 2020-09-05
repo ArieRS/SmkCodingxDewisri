@@ -133,7 +133,7 @@ export default class HomePages extends Component {
         return (
             <div>
                 <Section></Section>
-                {/* {
+                {
                     this.state.isLogin ? 
                     <main id="main">
                         {
@@ -160,8 +160,7 @@ export default class HomePages extends Component {
                     </main>
                     :
                     <div/>
-                } */}
-                <Main/>
+                    }
             </div>
         )
     }
