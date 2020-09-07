@@ -97,24 +97,9 @@ export default class KebutuhanTaman extends Component {
     }
 
     async _addData({e, type}){
-        // alert(type);
-        // e.preventDefault()
         
         var data = new FormData()
-        // var dataNonBBM = (
-        //     data.append('date_input', this.state.dateInput),
-        //     data.append('quantity', this.state.quantity),
-        //     data.append('price', this.state.price),
-        //     data.append('keterangan', this.state.keterangan),
-        //     data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
-        // )
-        // var dataBBM = (
-            // data.append('date_input', this.state.dateInput),
-            // data.append('diesel_duration', this.state.quantity),
-            // data.append('price', this.state.price),
-            // data.append('keterangan', this.state.keterangan),
-            // data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
-        // )
+
         if (type === 'bibit') {
             var insertType = ADD_BIBIT
             data.append('date_input', this.state.dateInput)
