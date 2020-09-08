@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { LOGIN_END } from '../../../system/Strings';
-import { responseData, postFunction } from '../../../models/Model';
+import { LOGIN_END } from '../../system/Strings';
+import { responseData, postFunction } from '../../models/Model';
 
 export default class Login extends Component {
     constructor(props) {

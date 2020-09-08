@@ -31,13 +31,11 @@ export default class CatatanPertanian extends Component {
 
     render() {
         return (
-            <section id="pricing">
+            <section id="content">
                 <div className="card-catatan-pertanian">
-                    <div className="container">
-                        <div className="section-header">
-                            <h3 className="section-title">Hasil Panen</h3>
-                            <span className="section-divider"></span>
-                        </div>
+                    <div className="section-header">
+                        <h3 className="section-title">Hasil Panen</h3>
+                        <span className="section-divider"></span>
                     </div>
                     <button className="btn-get-started mt-2" data-toggle="modal" data-target="#staticBackdropPanen" onClick={this.showModal}>
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

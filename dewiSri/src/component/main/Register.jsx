@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { postFunction, responseData } from '../../../models/Model';
-import { REGISTER_END } from '../../../system/Strings';
+import { postFunction, responseData } from '../../models/Model';
+import { REGISTER_END } from '../../system/Strings';
 
 export default class Register extends Component {
     constructor(props) {

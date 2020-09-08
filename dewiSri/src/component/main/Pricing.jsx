@@ -28,7 +28,7 @@ export default class Pricing extends Component {
         </div>
         `
         modalFooter.innerHTML = `
-                <button type="submit" id="btn-pricing-next-validation" class="btn btn-custom" title="Send Message">Beli / Langganan</button>
+                <button type="submit" id="btn-content-next-validation" class="btn btn-custom" title="Send Message">Beli / Langganan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
             `
     }
@@ -39,50 +39,53 @@ export default class Pricing extends Component {
 
     render() {
         return (
-            <section id="pricing" className="section-bg">
-                <div className="section-header-pricing">
+            <section id="content" className="section-bg">
+                <div className="section-header-content">
                     <div className="foto-petani">
-                        <img src="../../assets/img/petani/petani1.jpg" alt=""/>
-                        <img src="../../assets/img/petani/petani2.jpg" alt=""/>
+                        {/* <img src="../../assets/img/petani/petani1.jpg" alt=""/> */}
+                        {/* <img src="../../assets/img/petani/petani2.jpg" alt=""/>
                         <img src="../../assets/img/petani/petani3.jpg" alt=""/>
-                        <img src="../../assets/img/petani/petani4.jpg" alt=""/>
-                    <h1 className="section-title-pricing">Plant It Premium</h1>
+                        <img src="../../assets/img/petani/petani4.jpg" alt=""/> */}
+                        <h1 className="section-title-content">Plant It Premium</h1>
                     </div>
                     <span className="section-divider"></span>
                 </div>
                 <div className="container">
-                    <div className="row mt-3">
-                        <table className="table-striped table-pricing">
-                            <thead className="table-header">
-                                <tr>
-                                    <td>Fitur</td>
-                                    <td>Gratis</td>
-                                    <td>Premium</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Analisis Keuntungan Bersih</td>
-                                    <td>-</td>
-                                    <td><img src="assets/img/leaf.svg" alt=""/></td>
-                                </tr>
-                                <tr>
-                                    <td>Download Jurnal</td>
-                                    <td>-</td>
-                                    <td><img src="assets/img/leaf.svg" alt=""/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className="row btn-pricing">
-                        <button className="btn btn-dark" onClick={this.showPricing} data-toggle="modal" data-target="#staticBackdropPricng">Rp29.999,-/bulan</button>
-                        <button className="btn btn-dark">Rp85.000,_/musim</button>
-                        <button className="btn btn-dark">Rp320.000,_/tahun</button>
-                        <button className="btn btn-dark">Rp1.800.000,_/selamanya</button>
-                        <button id="btn-not" className="btn btn-dark">Nanti Dulu</button>
+                    <div className="container">
+                        <div className="row">
+                            <table className="table-striped table-content">
+                                <thead className="table-header">
+                                    <tr>
+                                        <td>Fitur</td>
+                                        <td>Gratis</td>
+                                        <td>Premium</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Analisis Keuntungan Bersih</td>
+                                        <td>-</td>
+                                        <td><img src="assets/img/leaf.svg" alt=""/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Download Jurnal</td>
+                                        <td>-</td>
+                                        <td><img src="assets/img/leaf.svg" alt=""/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div className="row btn-content">
+                            <button className="btn btn-dark" onClick={this.showPricing} data-toggle="modal" data-target="#staticBackdropPricng">Rp29.999,-/bulan</button>
+                            <button className="btn btn-dark">Rp85.000,_/musim</button>
+                            <button className="btn btn-dark">Rp320.000,_/tahun</button>
+                            <button className="btn btn-dark">Rp1.800.000,_/selamanya</button>
+                            <button id="btn-not" className="btn btn-dark">Nanti Dulu</button>
+                        </div>
                     </div>
                 </div>
             </section>
+        
         )
     }
 }

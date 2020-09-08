@@ -15,9 +15,9 @@ export function getDataFunction (route) {
       }).then((response)=> response.json())
       .then((responseJson)=>{
         responseData = responseJson;
-        console.log(responseJson);
+        // console.log(responseJson);
         
-        console.log(API_ADDRESS+route);
+        // console.log(API_ADDRESS+route);
       
         resolve(true);
       }).catch((error) => {
@@ -49,7 +49,7 @@ export function postFunction(data,route) {
           resolve(true)
 
       }).catch((error) => {
-          console.error(error);
+        //   console.error(error);
 
           reject(true)
       });
@@ -78,7 +78,7 @@ export function addtocart() {
   
             responseData = responseJson
             resolve(true)
-            console.log(API_ADDRESS+'postToCart','API_ADDRESS');
+            // console.log(API_ADDRESS+'postToCart','API_ADDRESS');
             
         }).catch((error) => {
             console.error(error);

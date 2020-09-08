@@ -3,12 +3,12 @@ import Section from '../component/main/Section'
 import Main from '../component/Main'
 
 import Pricing from '../component/main/Pricing'
-import Navigation from '../component/main/DewiSriComponent/Navigation'
-import Tanaman from '../component/main/DewiSriComponent/Tanaman'
-import KebutuhanTanam from '../component/main/DewiSriComponent/KebutuhanTanam'
-import JurnalHarian from '../component/main/DewiSriComponent/JurnalHarian'
-import CatatanPertanian from '../component/main/DewiSriComponent/CatatanPertanian'
-import Other from '../component/main/DewiSriComponent/Other'
+import Navigation from '../component/main/Navigation'
+import Tanaman from '../component/main/Tanaman'
+import KebutuhanTanam from '../component/main/KebutuhanTanam'
+import JurnalHarian from '../component/main/JurnalHarian'
+import CatatanPertanian from '../component/main/CatatanPertanian'
+import Other from '../component/main/Other'
 import { LOGIN_END, GET_JOURNAL_BY_DATE, GET_PLANTING_NEEDS, ADD_JOURNAL } from '../system/Strings'
 import { postFunction, responseData, getDataFunction } from '../models/Model'
 import moment from 'moment';
@@ -51,7 +51,7 @@ export default class HomePages extends Component {
 
         await postFunction(data, LOGIN_END).then(() => {
             if (responseData.status == 200) {
-                console.log("success");
+                // console.log("success");
                 this.setState({
                     userData: responseData.data,
                     journalData: responseData.data.journalList
@@ -78,7 +78,7 @@ export default class HomePages extends Component {
     dateDecrement(d) {
         var newDateFormat = moment(d, "MM-DD-YYYY").subtract('days', 1).format('L');
         var newDate = moment(d, "MM-DD-YYYY").subtract('days', 1);
-        console.log("current date state : " + d);
+        // console.log("current date state : " + d);
         this.setState({
             currentDate: newDate.format('LL'),
             dateFormat: newDateFormat
@@ -88,7 +88,7 @@ export default class HomePages extends Component {
     dateIncrement(d) {
         var newDateFormat = moment(d, "MM-DD-YYYY").add('days', 1).format('L');
         var newDate = moment(d, "MM-DD-YYYY").add('days', 1);
-        console.log("current date state : " + d);
+        // console.log("current date state : " + d);
         this.setState({
             currentDate: newDate.format('LL'),
             dateFormat: newDateFormat
@@ -101,7 +101,7 @@ export default class HomePages extends Component {
 
         var query = GET_JOURNAL_BY_DATE+this.state.dateIsoFormat;
 
-        console.log(query);
+        // console.log(query);
         await getDataFunction(query).then(() => {
             if (responseData.status == 200) {
                 
@@ -115,10 +115,10 @@ export default class HomePages extends Component {
                     journalDataByDate: responseData.data,
 
                     },() => {
-                        console.log("dataaaaa: "+ this.state.journalDataByDate);
-                        console.log(query);
+                        // console.log("dataaaaa: "+ this.state.journalDataByDate);
+                        // console.log(query);
                         if (this.state.journalDataByDate.length != 0) {   
-                            this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
+                            // this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
                         }
                     })
                 }
@@ -130,7 +130,7 @@ export default class HomePages extends Component {
 
     async getPlantingNeeds(idPlant){
         var query = GET_PLANTING_NEEDS+idPlant;
-        console.log(query);
+        // console.log(query);
         await getDataFunction(query).then(() => {
             if (responseData.status == 200) {
                 this.setState({
@@ -138,7 +138,7 @@ export default class HomePages extends Component {
                     bbmData: responseData.data[0]._idBBMList,
                     pupukData: responseData.data[0]._idPupukList,
                     pestisidaData: responseData.data[0]._idPestisidaList,
-                },() => {console.log("dataaaaa: "+ this.state.pupukData);console.log(query)})
+                },() => {/*console.log("dataaaaa: "+ this.state.pupukData);console.log(query)*/})
             }else{
                 alert("galgagal")
             }

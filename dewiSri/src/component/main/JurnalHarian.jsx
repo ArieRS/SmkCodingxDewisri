@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { ADD_DAILY_JOURNAL } from '../../../system/Strings';
-import { postFunction, responseData } from '../../../models/Model';
+import { ADD_DAILY_JOURNAL } from '../../system/Strings';
+import { postFunction, responseData } from '../../models/Model';
 
 
 const Modal = ({ handleClose, show, children, state, method }) => {
@@ -106,15 +106,15 @@ export default class JurnalHarian extends Component {
 
     render() {
         return (
-            <section id="pricing" className="container">
-                <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}></Modal>
-                <div className="container">
+            <div className="container">
+                <section id="content" className="card-jurnal-harian">
+                    <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}></Modal>
                     <div className="section-header">
                         <h3 className="section-title">Jurnal Harian</h3>
                         <h2 className="text-center">{this.props.state.currentDate}</h2>
                         <span className="section-divider"></span>
                     </div>
-
+    
                     <div className="tab-pane fade show active" id="nav-bibit" role="tabpanel" aria-labelledby="nav-bibit-tab">  
                         <a href="3" className="btn-get-started">Download Data</a>
                     </div>
@@ -152,8 +152,8 @@ export default class JurnalHarian extends Component {
                             <span class="d-none d-md-inline text-light ml-1">Tambah Data</span>
                         </button>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         )
     }
 }

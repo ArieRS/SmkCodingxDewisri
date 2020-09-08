@@ -5,9 +5,9 @@ import Header2 from '../component/Header2';
 import HomePages from '../pages/HomePages';
 import Footer from '../component/Footer';
 import MainPage from '../pages/MainPage';
-import Login from '../component/main/DewiSriComponent/Login';
-import Register from '../component/main/DewiSriComponent/Register';
-import Profile from '../component/main/DewiSriComponent/Profile';
+import Login from '../component/main/Login';
+import Register from '../component/main/Register';
+import Profile from '../component/main/Profile';
 
 export const MainApp = (auth) => {
     return (

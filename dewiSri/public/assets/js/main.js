@@ -6,6 +6,7 @@
 */
 $(document).ready(function() {
   // Header fixed and Back to top button
+  console.log($('.panel-tanaman .btn-right'))
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
       $('.back-to-top').fadeIn('slow');
@@ -80,7 +81,6 @@ $(document).ready(function() {
   // }
   $(".profile-sidebar .menu-toggle").on("click", () => {
     $(".profile-sidebar").toggleClass("profile-bar-active");
-    // alert("Oke")
   })
   // Smooth scroll for the navigation menu and links with .scrollto classes
   var scrolltoOffset = $('#header').outerHeight() - 21;
@@ -148,7 +148,4 @@ $(document).ready(function() {
   });
 
   // Initiate venobox (lightbox feature used in portofilo)
-  $(document).ready(function() {
-    $('.venobox').venobox();
-  });
 })

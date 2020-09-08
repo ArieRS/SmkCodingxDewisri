@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import Pricing from './main/Pricing'
-import Navigation from './main/DewiSriComponent/Navigation'
-import Tanaman from './main/DewiSriComponent/Tanaman'
-import KebutuhanTanam from './main/DewiSriComponent/KebutuhanTanam'
-import JurnalHarian from './main/DewiSriComponent/JurnalHarian'
-import CatatanPertanian from './main/DewiSriComponent/CatatanPertanian'
-import Other from './main/DewiSriComponent/Other'
+import Navigation from './main/Navigation'
+import Tanaman from './main/Tanaman'
+import KebutuhanTanam from './main/KebutuhanTanam'
+import JurnalHarian from './main/JurnalHarian'
+import CatatanPertanian from './main/CatatanPertanian'
+import Other from './main/Other'
 
 export default class Main extends Component {
     render() {
         return (
-            <main id="main">
+            <main id="main" className="container">
                 <Navigation />
                 <Tanaman />
                 <KebutuhanTanam />

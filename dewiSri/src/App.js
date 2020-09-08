@@ -22,7 +22,7 @@ export default class App extends React.Component {
     this.setState({
       isLogin: authLocalStorage
     })
-    console.log("ndekApp:" +this.state.isLogin);
+    // console.log("ndekApp:" +this.state.isLogin);
     // console.log("ndekApp:" +authLocalStorage);
   }
 
