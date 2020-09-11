@@ -38,27 +38,25 @@ export default class Pricing extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showModal: false
+            showModal: false,
+            money: "0"
         }
         this.showModal = this.showModal.bind(this)
     }
 
-    showModal() {
+    showModal(money) {
         this.setState({
-            showModal: !this.state.showModal
+            showModal: !this.state.showModal,
+            money: money
         })
     }
 
     render() {
         return (
             <section id="content" className="section-bg">
-                <ModalPricing show={this.state.showModal} state={this.state} handleClose={this.showModal} />
+                <ModalPricing show={this.state.showModal} state={this.state} handleClose={this.showModal.bind(this, 'hide')} uang={this.state.money} />
                 <div className="section-header-content">
                     <div className="foto-petani">
-                        {/* <img src="../../assets/img/petani/petani.jpg" alt=""/> */}
-                        {/* <img src="../../assets/img/petani/petani2.jpg" alt=""/>
-                        <img src="../../assets/img/petani/petani3.jpg" alt=""/>
-                        <img src="../../assets/img/petani/petani4.jpg" alt=""/> */}
                         <h1 className="section-title-content">Plant It Premium</h1>
                     </div>
                     <span className="section-divider"></span>
@@ -89,10 +87,10 @@ export default class Pricing extends Component {
                             </table>
                         </div>
                         <div className="row btn-content">
-                            <button className="btn btn-dark" data-toggle="modal" onClick={this.showModal}>Rp29.999,-/bulan</button>
-                            <button className="btn btn-dark">Rp85.000,_/musim</button>
-                            <button className="btn btn-dark">Rp320.000,_/tahun</button>
-                            <button className="btn btn-dark">Rp1.800.000,_/selamanya</button>
+                            <button className="btn btn-dark" data-toggle="modal" onClick={this.showModal.bind(this, 'Rp29.999')}>Rp29.999,-/bulan</button>
+                            <button className="btn btn-dark" onClick={this.showModal.bind(this, 'Rp85.000')}>Rp85.000,_/musim</button>
+                            <button className="btn btn-dark" onClick={this.showModal.bind(this, 'Rp320.000')}>Rp320.000,_/tahun</button>
+                            <button className="btn btn-dark" onClick={this.showModal.bind(this, 'Rp1.800.000')}>Rp1.800.000,_/selamanya</button>
                             <button id="btn-not" className="btn btn-dark">Nanti Dulu</button>
                         </div>
                     </div>

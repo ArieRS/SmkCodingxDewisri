@@ -22,7 +22,7 @@ export default class Coba extends Component {
                     <li>Pembayaran berikutnya tanggal 17 September 2020</li>
                 </ul>
                 <div className="footer">
-                    <button className="btn btn-custom" onClick={this.slide}>Lanjut</button>
+                    <button className="btn btn-custom mx-2" onClick={this.slide}>Lanjut</button>
                     <button className="btn btn-secondary" onClick={this.left}>Kembali</button>
                 </div>
             </div>

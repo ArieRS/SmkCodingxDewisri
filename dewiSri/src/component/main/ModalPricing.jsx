@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Coba from './Coba';
 import Modal from './Modal'
 
-export default function ModalPricing({handleClose, show, children, state, method}) {
+export default function ModalPricing({handleClose, show, children, state, method, uang, koin}) {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
 
     return (
@@ -20,7 +20,7 @@ export default function ModalPricing({handleClose, show, children, state, method
                     <div class="modal-body">
                         <div className="container">
                             <div id="modal-content" className="content">
-                                <Modal />
+                                <Modal uang={uang} koin={koin}/>
                             </div>
                         </div>
                     </div>
