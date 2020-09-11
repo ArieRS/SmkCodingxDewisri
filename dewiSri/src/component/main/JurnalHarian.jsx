@@ -106,7 +106,7 @@ export default class JurnalHarian extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container mt-5">
                 <section id="content" className="card-jurnal-harian">
                     <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}></Modal>
                     <div className="section-header">
@@ -119,16 +119,31 @@ export default class JurnalHarian extends Component {
                         <a href="3" className="btn-get-started">Download Data</a>
                     </div>
                     <div className="my-3">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-striped">
                             <thead>
-                                <tr>
-                                    <th className="text-center">Tanggal Input</th>
-                                    <th className="text-center">Kegiatan</th>
-                                    <th className="text-center">Permasalahan</th>
+                                <tr className="table-header">
+                                    <th>Tanggal Input</th>
+                                    <th>Kegiatan</th>
+                                    <th>Permasalahan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {(() => {
+                                <tr>
+                                    <td>10 - 10 - 2010</td>
+                                    <td>Lorem, ipsum dolor.</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, maiores.</td>
+                                </tr>
+                                <tr>
+                                    <td>10 - 10 - 2010</td>
+                                    <td>Lorem, ipsum dolor.</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, maiores.</td>
+                                </tr>
+                                <tr>
+                                    <td>10 - 10 - 2010</td>
+                                    <td>Lorem, ipsum dolor.</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, maiores.</td>
+                                </tr>
+                                {/* {(() => {
                                     if (this.props.state.journalDataByDate[0].dailyJournal != null || this.props.state.journalDataByDate[0].dailyJournal != undefined) {
                                         let data = this.props.state.journalDataByDate[0].dailyJournal  ;
                                         return(
@@ -140,7 +155,7 @@ export default class JurnalHarian extends Component {
                                         )
                                     }
                                     
-                                })()}
+                                })()} */}
                             </tbody>
                         </table>
                     </div>

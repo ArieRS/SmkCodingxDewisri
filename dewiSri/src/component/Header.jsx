@@ -26,7 +26,8 @@ export default class Header extends Component {
       <header id="header" className="header-transparent bg-transparent">
         <div className="container">
           <div id="logo" className="pull-left">
-            <h1><a href="/" className="scrollto"><img src="../assets/img/logo.png" alt=""/></a></h1>
+            <a href="/" className="scrollto"><img src="../assets/img/icon/logo.jpeg" alt=""/></a>
+            <h1 style={{display: "inline-block", color: 'white'}}>DEWISRI</h1>
           </div>
           <nav id="nav-menu-container">
             <ul className="nav-menu">

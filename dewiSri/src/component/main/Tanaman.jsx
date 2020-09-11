@@ -11,7 +11,7 @@ export default class Tanaman extends Component {
         }
     }
 
-    coba() {
+    slide() {
         const el = document.querySelector('.panel-tanaman #rincian-table');
         console.log(el)
         el.style.top = '-100px';
@@ -71,7 +71,7 @@ export default class Tanaman extends Component {
                     </div>
 
                     <div id="button" className="btn-right" >
-                        <svg viewBox="0 0 16 16" className="bi bi-chevron-double-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg" onClick={this.coba}>
+                        <svg viewBox="0 0 16 16" className="bi bi-chevron-double-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg" onClick={this.slide}>
                             <path fillRule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
                             <path fillRule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
                         </svg>

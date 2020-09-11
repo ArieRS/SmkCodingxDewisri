@@ -167,9 +167,8 @@ export default class KebutuhanTaman extends Component {
 
     render() {
         return (
-            <section id="content">
+            <section id="content" className="my-5">
                 <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}>
-
                 </Modal>
                 <div className="card-kebutuhan-tanam my-3">
                     <div className="section-header">
@@ -191,7 +190,7 @@ export default class KebutuhanTaman extends Component {
 
                               {/* <EnhancedTable rows={} tab="Bibit"/> */}
                               {/* <h2 className="text-center">Bibit</h2> */}
-                              <table class="table table-bordered">
+                              <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th scope="col">Tanggal Input</th>
@@ -201,6 +200,24 @@ export default class KebutuhanTaman extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr>
+                                        <td>10 - 8 - 2000</td>
+                                        <td>100</td>
+                                        <td>1.000.000</td>
+                                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 - 8 - 2000</td>
+                                        <td>100</td>
+                                        <td>1.000.000</td>
+                                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 - 8 - 2000</td>
+                                        <td>100</td>
+                                        <td>1.000.000</td>
+                                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
+                                    </tr>
                                     {
                                         this.props.state.bibitData.map((item, index) => {
                                             return(
@@ -214,8 +231,8 @@ export default class KebutuhanTaman extends Component {
                                         })
                                     }
                                 </tbody>
-                                </table>
-                                <button className="btn-get-started mt-3" onClick={this.modalShowHide}>
+                            </table>
+                                <button className="btn-get-started mt-1" onClick={this.modalShowHide}>
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                                     </svg>
