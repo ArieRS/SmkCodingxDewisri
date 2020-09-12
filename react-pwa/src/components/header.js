@@ -30,7 +30,7 @@ export default class Header extends PureComponent {
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="container">
             <div className="navbar-brand">
-              <Link to="/" className=" navbar-item"><strong>ReactPWA</strong></Link>
+              <Link to="/" className=" navbar-item"><strong>Dewisri</strong></Link>
               <button
                 type="button"
                 onClick={e => this.toggleMenuBar(e)}
