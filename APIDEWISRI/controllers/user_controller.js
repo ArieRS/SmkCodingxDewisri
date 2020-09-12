@@ -105,3 +105,66 @@ exports.updateUser = function (req, res) {
         });
     });
 };
+
+exports.updateToPremium = function (req, res) {
+
+    User.findById(req.body.userId, function (err, user) {
+        if (err)
+            res.send(err);
+
+        var premiumType = req.body.premiumType;
+        var date = new Date();
+
+        var message = ""
+
+        if (user.isPremiumForever == false) {
+            if (premiumType == 'bulan') {
+                if (user.coins >= 90) {
+                    var months = date.setDate(date.getDate() + 30)
+                    user.lamaPremium = months
+                    user.coins = user.coins - 90
+                    user.isPremium = true;
+
+                }else{
+                    message = "Koin Kurang"
+                }
+            } else if (premiumType == 'musim') {
+                if (user.coins >=200) {
+                    var musim = date.setDate(date.getDate() + 120)
+                    user.lamaPremium = musim
+                    user.coins = user.coins - 200
+                    user.isPremium = true;
+                } else {
+                    message = "Koin Kurang"
+                }
+            } else if (premiumType == 'tahun') {
+                if (user.coins >= 365) {
+                    var tahun = date.setDate(date.getDate() + 360)
+                    user.lamaPremium = tahun
+                    user.coins = user.coins - 365
+                    user.isPremium = true;
+                } else {
+                    message = "Koin Kurang"
+                }
+            } else if (premiumType == "forever") {
+                if (user.coins >= 877) {
+                    user.isPremiumForever = true
+                    user.coins = user.coins - 877
+                    user.isPremium = true;
+                } else {
+                    message = "Koin Kurang"
+                }
+            }
+        }
+        
+        user.save(function (err) {
+            if (err)
+                res.json(err);
+            res.json({
+                status: 200,
+                message: 'Update to Premium',
+                data: user
+            });
+        });
+    });
+};

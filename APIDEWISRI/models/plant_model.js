@@ -19,6 +19,10 @@ var plantSchema = mongoose.Schema({
     plantingNeeds: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "plantingNeed"
+    },
+    hasilPanen: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "hasilPanen"
     }
 });
 

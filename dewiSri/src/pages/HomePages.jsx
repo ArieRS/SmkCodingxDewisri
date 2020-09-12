@@ -4,7 +4,7 @@ import Main from '../component/Main'
 
 import Pricing from '../component/main/Pricing'
 import Navigation from '../component/main/Navigation'
-import Tanaman from '../component/main/Tanaman'
+import Tanaman from '../component/main/DewiSriComponent/Tanaman'
 import KebutuhanTanam from '../component/main/KebutuhanTanam'
 import JurnalHarian from '../component/main/JurnalHarian'
 import CatatanPertanian from '../component/main/CatatanPertanian'

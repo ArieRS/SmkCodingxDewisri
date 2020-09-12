@@ -13,6 +13,7 @@ module.exports = function (app) {
     var bbmController = require('../controllers/bbm_contoller');
     var pupukController = require('../controllers/pupuk_controller');
     var pestisidaController = require('../controllers/pestisida_controller');
+    var hasilPanenController = require('../controllers/hasil_panen_controller');
 
     //Index Controller
     app.route('/')
@@ -38,6 +39,9 @@ module.exports = function (app) {
 
     app.route('/auth/updateUser/:userId')
         .put(userController.updateUser);
+
+    app.route('/auth/updateToPremium')
+        .put(userController.updateToPremium);
 
 
     //Plant
@@ -96,5 +100,9 @@ module.exports = function (app) {
     //Pestisida
     app.route('/pestisida/addPestisida')
     .post(pestisidaController.addPestisida);
+
+    //Hasil Panen
+    app.route('/hasilPanen/addHasilPanen')
+    .post(hasilPanenController.addHasilPanen);
 
 };

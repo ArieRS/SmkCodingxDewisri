@@ -29,6 +29,14 @@ var userSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
+    lamaPremium: {
+        type: String,
+        format: Date
+    },
+    isPremiumForever: {
+        type: Boolean,
+        default: false
+    },
     coins: {
         type: Number,
         default: 0

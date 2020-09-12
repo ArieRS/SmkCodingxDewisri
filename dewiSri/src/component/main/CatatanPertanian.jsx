@@ -1,37 +1,114 @@
 import React, { Component } from 'react'
+import { postFunction, responseData } from '../../models/Model';
+import { ADD_DAILY_JOURNAL } from '../../system/Strings';
+
+
+const Modal = ({ handleClose, show, children, state, method }) => {
+    const showHideClassName = show ? "modal display-block" : "modal display-none";
+  
+    return (
+      <div className={showHideClassName}>
+        <section className="col-md-12">
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Tambah Hasil Panen</h5>
+                  <button type="button" class="close" onClick={handleClose} data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form">
+                        <form class="php-email-form">
+                            <div class="form-group">
+                                <label for="tanggal">Tanggal Panen</label>
+                                <input type="date" name="tanggal" onChange={(text) => method.changeState('tanggalPanen',text)} class="form-control" id="tanggal" placeholder="Tanggal" required={true}/>
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="hargaPasar">Harga Pasar</label>
+                                <input type="number" name="hargaPasar" onChange={(text) => method.changeState('hargaPasar',text)} class="form-control" id="hargaPasar" placeholder="Harga Pasar" required={true}/>
+                                <div class="validate"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="hasilPanen">Hasil Panen</label>
+                                <input type="number" name="hasilPanen" onChange={(text) => method.changeState('hasilPanen',text)} class="form-control" id="hasilPanen" placeholder="Hasil Panen" required={true}/>
+                                <div class="validate"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>
+                  <button type="button" onClick={() => method.addData()} class="btn btn-custom">Tambah Data</button>
+                </div>
+              </div>
+            </div>
+        </section>
+      </div>
+    );
+  };
+
+
 
 export default class CatatanPertanian extends Component {
-    showModal() {
-        const modalTitle = document.querySelector('#staticBackdropPanen .modal-title');
-        const modalContent = document.querySelector('#staticBackdropPanen .modal-body');
-        const modalFooter = document.querySelector('#staticBackdropPanen .modal-footer');
+    constructor(props){
+        super(props);
+        this.state = {
+            tanggalPanen: '',
+            showModal: false,
+            hargaPasar: '',
+            hasilPanen: ''
+        }
+        this.method = {
+            modalShowHide: this.modalShowHide.bind(this),
+            changeState: this._changeState.bind(this),
+            addData: this._addData.bind(this),
+        }
+        this.modalShowHide = this.modalShowHide.bind(this)
+    }
 
-        modalContent.innerHTML = `
-        <form>
-            <div class="form-group">
-                <label for="#tanggalPanen">Tanggal Panen</label>
-                <input type="date" class="form-control" id="tanggalPanen" aria-describedby="tanggalPenen">
-            </div>
-            <div class="form-group">
-                <label for="#hargaPasar">Harga Pasar</label>
-                <input type="number" class="form-control" id="hargaPasar" aria-describedby="hargaPasar">
-            </div>
-            <div class="form-group">
-                <label for="#hasilPanen">Hasil Panen</label>
-                <input type="number" class="form-control" id="hasilPanen" aria-describedby="hasilPanen">
-            </div>
-        </form>
-        `
+    modalShowHide(){
+        this.setState({
+            showModal: !this.state.showModal
+        })
+    }
+    _changeState(state,value){
+        this.setState({
+            [state]: value.target.value
+        })
+    }
 
-        modalFooter.innerHTML = `
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-custom">Tambah Data</button>
-        `
+    async _addData(){
+        var data = new FormData()
+        
+        data.append('activity', this.state.activity)
+        data.append('problem', this.state.problem)
+        data.append('owner_journalId',this.props.state.journalDataByDate[0]._id)
+        data.append('owner_userId',this.props.state.userData._id)
+
+        await postFunction(data, ADD_DAILY_JOURNAL).then(() => {
+            if (responseData.status == 200) {
+                console.log("success");
+                alert("Sukses menambah jurnal harian")
+                this.setState({
+                    showModal: !this.state.showModal,
+                })
+                window.location.reload(false)
+
+            } else {
+                alert(responseData.message)
+            }
+        })
+
     }
 
     render() {
         return (
             <section id="content" className="my-5">
+                <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}></Modal>
+                    
                 <div className="container">
                     <div className="card-catatan-pertanian">
                         <div className="row">
@@ -72,7 +149,7 @@ export default class CatatanPertanian extends Component {
                                     </tr>
                                 </tbody>
                             </table>
-                        <button className="btn-get-started mt-2" data-toggle="modal" data-target="#staticBackdropPanen" onClick={this.showModal}>
+                        <button className="btn-get-started mt-2" onClick={this.modalShowHide}>
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                             </svg>
