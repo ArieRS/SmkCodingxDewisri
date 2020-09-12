@@ -99,20 +99,20 @@ export default class KebutuhanTaman extends Component {
         // e.preventDefault()
         
         var data = new FormData()
-        // var dataNonBBM = (
-        //     data.append('date_input', this.state.dateInput),
-        //     data.append('quantity', this.state.quantity),
-        //     data.append('price', this.state.price),
-        //     data.append('keterangan', this.state.keterangan),
-        //     data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
-        // )
-        // var dataBBM = (
-            // data.append('date_input', this.state.dateInput),
-            // data.append('diesel_duration', this.state.quantity),
-            // data.append('price', this.state.price),
-            // data.append('keterangan', this.state.keterangan),
-            // data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
-        // )
+        var dataNonBBM = (
+            data.append('date_input', this.state.dateInput),
+            data.append('quantity', this.state.quantity),
+            data.append('price', this.state.price),
+            data.append('keterangan', this.state.keterangan),
+            data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+        )
+        var dataBBM = (
+            data.append('date_input', this.state.dateInput),
+            data.append('diesel_duration', this.state.quantity),
+            data.append('price', this.state.price),
+            data.append('keterangan', this.state.keterangan),
+            data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+        )
         if (type === 'bibit') {
             var insertType = ADD_BIBIT
             data.append('date_input', this.state.dateInput)
@@ -202,21 +202,21 @@ export default class KebutuhanTaman extends Component {
                                 <tbody>
                                     <tr>
                                         <td>10 - 8 - 2000</td>
-                                        <td>100</td>
-                                        <td>1.000.000</td>
-                                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
+                                        <td>50</td>
+                                        <td>500.000</td>
+                                        <td>bibit awal</td>
                                     </tr>
                                     <tr>
                                         <td>10 - 8 - 2000</td>
                                         <td>100</td>
                                         <td>1.000.000</td>
-                                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
+                                        <td>test bibit</td>
                                     </tr>
                                     <tr>
                                         <td>10 - 8 - 2000</td>
                                         <td>100</td>
-                                        <td>1.000.000</td>
-                                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
+                                        <td>1.500.000</td>
+                                        <td>test bibit</td>
                                     </tr>
                                     {
                                         this.props.state.bibitData.map((item, index) => {

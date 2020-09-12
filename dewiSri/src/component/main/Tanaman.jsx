@@ -29,16 +29,16 @@ export default class Tanaman extends Component {
                         <div className="table-card">
                             <table>
                                 <tr>
-                                    <th>Tanaman1</th>
+                                    <th>Tanaman</th>
                                     <td>:</td>
                                     {/* <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> */}
-                                    <td>Tanaman</td>
+                                    <td>Kentang Besar</td>
                                 </tr>
                                 <tr>
                                     <th>Komoditas</th>
                                     <td>:</td>
                                     {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
-                                    <td>Komoditas</td>
+                                    <td>Granola Jerman</td>
                                 </tr>
                                 <tr>
                                     <th>Hari Ke</th>

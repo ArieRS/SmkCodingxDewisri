@@ -5,12 +5,14 @@ import Modal from './Modal';
 import ModalPricing from './ModalPricing';
 
 export default class Coba extends Component {
-    slide() {
-        ReactDOM.render(<Coba2 />, document.getElementById("modal-content"))
+    slide(uang) {
+        console.log(uang)
+        ReactDOM.render(<Coba2 uang={uang}/>, document.getElementById("modal-content"))
     }
     
-    left() {
-        ReactDOM.render(<Modal />, document.getElementById("modal-content"))
+    left(uang) {
+        console.log(uang)
+        ReactDOM.render(<Modal uang={uang} />, document.getElementById("modal-content"))
     }
 
     render() {
@@ -22,8 +24,8 @@ export default class Coba extends Component {
                     <li>Pembayaran berikutnya tanggal 17 September 2020</li>
                 </ul>
                 <div className="footer">
-                    <button className="btn btn-custom mx-2" onClick={this.slide}>Lanjut</button>
-                    <button className="btn btn-secondary" onClick={this.left}>Kembali</button>
+                    <button className="btn btn-custom mx-2" onClick={this.slide.bind(this, this.props.uang)}>Lanjut</button>
+                    <button className="btn btn-secondary" onClick={this.left.bind(this, this.props.uang)}>Kembali</button>
                 </div>
             </div>
         )

@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom'
 import Coba from './Coba'
 
 export default class Coba2 extends Component {
-    back() {
-        ReactDOM.render(<Coba />, document.getElementById("modal-content"))
+    back(uang) {
+        console.log(uang)
+        ReactDOM.render(<Coba uang={uang} />, document.getElementById("modal-content"))
     }
     render() {
         return (
@@ -55,7 +56,7 @@ export default class Coba2 extends Component {
                     </div>
                 </div>
                 <div className="footer">
-                    <button className="btn btn-secondary" onClick={this.back}>Kembali</button>
+                    <button className="btn btn-secondary" onClick={this.back.bind(this, this.props.uang)}>Kembali</button>
                 </div>
             </div>
         )

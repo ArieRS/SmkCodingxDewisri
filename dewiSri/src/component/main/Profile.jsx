@@ -26,10 +26,10 @@ export default class Profile extends Component {
                 </div>
                 <nav id="nav-menu-container">
                     <ul className="nav-menu">
-                        <li><a href="#">Ganti Ke Premium</a></li>
-                        <li><a href="#">150 Koin <button className="btn btn-light ml-1">Tukar koin</button></a></li>
-                        <li><a href="#">Tambah Komoditas Baru</a></li>
-                        <li><a href="#">Saran dan tanggapan</a></li>
+                        <li><a href="">Ganti Ke Premium</a></li>
+                        <li><a href="">150 Koin <button className="btn btn-light ml-1">Tukar koin</button></a></li>
+                        <li><a href="">Tambah Komoditas Baru</a></li>
+                        <li><a href="">Saran dan tanggapan</a></li>
                     </ul>
                 </nav>
                 <div className="menu-toggle">

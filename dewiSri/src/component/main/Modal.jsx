@@ -4,8 +4,8 @@ import Coba from './Coba';
 
 export default class Modal extends Component {
 
-    slide() {
-        ReactDOM.render(<Coba />, document.getElementById('modal-content'));
+    slide(uang) {
+        ReactDOM.render(<Coba uang={uang} />, document.getElementById('modal-content'));
     }
 
     render() {
@@ -27,8 +27,7 @@ export default class Modal extends Component {
                     </div>
                 </div>
                 <div className="footer">
-                    <button className="btn btn-custom mx-2" onClick={this.slide}>Lanjut</button>
-                    <button className="btn btn-secondary">Kembali</button>
+                    <button className="btn btn-custom mx-2" onClick={this.slide.bind(this, this.props.uang)}>Lanjut</button>
                 </div>
             </div>
         )
