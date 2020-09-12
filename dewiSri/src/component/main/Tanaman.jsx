@@ -132,35 +132,7 @@ export default class Tanaman extends Component {
                                 </tr>
                             </table>
                         </div>
-                    {
-                            this.props.state.journalDataByDate[0].plantList.map((item, index) => {
-                                return(
-                                    <>
-                                        <div className="table-card">
-                                            <table>
-                                                <tr>
-                                                    <th>Tanaman {index + 1}</th>
-                                                    <td>:</td>
-                                                    <td>{this.props.state.journalDataByDate[0].plantList[index].comodity}</td>
-                                                    {/* <td>Tanaman</td> */}
-                                                </tr>
-                                                <tr>
-                                                    <th>Komoditas</th>
-                                                    <td>:</td>
-                                                    <td>{this.props.state.journalDataByDate[0].plantList[index].variety}</td>
-                                                    {/* <td>Komoditas</td> */}
-                                                </tr>
-                                                <tr>
-                                                    <th>Hari Ke</th>
-                                                    <td>:</td>
-                                                    <td>110</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </>
-                                )
-                            })
-                        }
+                  
                     </div>
 
                     <div id="button" className="btn-right" >

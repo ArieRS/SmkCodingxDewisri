@@ -171,6 +171,7 @@ export default class HomePages extends Component {
                     <main id="main" className='mt-5'>
 
                         <Navigation state={this.state} method={this.method} />
+
                         {
                             this.state.journalDataByDate.length != 0 ? 
                             <>
