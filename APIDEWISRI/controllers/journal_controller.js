@@ -87,7 +87,7 @@ exports.getJournalById = function (req,res) {
 }
 
 exports.getJournalByDate = function (req,res) {
-    Journal.find({'inputDate': req.params.date}, function (err, journal) {
+    Journal.find({'inputDate': req.params.date, 'owner_userId': req.params.userId}, function (err, journal) {
         res.json({
             status: 200,
             data: journal

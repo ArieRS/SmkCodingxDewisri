@@ -66,7 +66,7 @@ module.exports = function (app) {
     app.route('/journal/getJournalById/:journalId')
         .get(journalController.getJournalById);
 
-    app.route('/journal/getJournalByDate/:date')
+    app.route('/journal/getJournalByDate/:userId/:date')
         .get(journalController.getJournalByDate);
 
     //Daily Journal
