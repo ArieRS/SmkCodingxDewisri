@@ -9,8 +9,10 @@ exports.addJournal = function (req, res) {
     var month = date.getMonth()+1;
     var day = date.getDate();
     var newDate =day+"-"+month+"-"+year;
-    journal.inputDate = newDate;
+    // journal.inputDate = newDate;
     var arrayPlantList = [];
+
+    req.body.inputDate ? journal.inputDate = req.body.inputDate : journal.inputDate = newDate;
     // res.json({
     //     journal: journal
     // })
