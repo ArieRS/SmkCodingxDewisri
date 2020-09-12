@@ -67,20 +67,20 @@ exports.addHasilPanen = function (req, res) {
                     
                 })
             }
-            const iteratorPupukListId =  element._idPupukList.values();
-            for (const dataPupuk of iteratorPupukListId) {
-                // console.log("dataPupuk: " + dataPupuk);
-                Pupuk.findById( dataPupuk, function (err, pupukResult) {
+            // const iteratorPupukListId =  element._idPupukList.values();
+            // for (const dataPupuk of iteratorPupukListId) {
+            //     // console.log("dataPupuk: " + dataPupuk);
+            //     Pupuk.findById( dataPupuk, function (err, pupukResult) {
                     
-                    if (pupukResult != null) {
-                        PengeluaranPupuk += pupukResult.price * pupukResult.quantity
-                        console.log(PengeluaranPupuk);
-                    } else {
-                        console.log('kososng');
-                    }
+            //         if (pupukResult != null) {
+            //             PengeluaranPupuk += pupukResult.price * pupukResult.quantity
+            //             console.log(PengeluaranPupuk);
+            //         } else {
+            //             console.log('kososng');
+            //         }
                     
-                })
-            }
+            //     })
+            // }
             
         },
         // res.json({
