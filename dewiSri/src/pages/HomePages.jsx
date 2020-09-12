@@ -84,7 +84,7 @@ export default class HomePages extends Component {
             currentDate: newDate.format('LL'),
             dateFormat: newDateFormat,
             dateIsoFormat: isoDate
-        },() => this.getPlantByDate())
+        },() => this.getPlantByDate(isoDate))
 
     }
 
@@ -97,13 +97,18 @@ export default class HomePages extends Component {
             currentDate: newDate.format('LL'),
             dateFormat: newDateFormat,
             dateIsoFormat: isoDate
-        },() => this.getPlantByDate())
+        },() => this.getPlantByDate(isoDate))
     }
 
-    async getPlantByDate(){
-        var data = new FormData()
-        data.append('owner_userId', this.state.userData._id)
-
+    async getPlantByDate(inputDate){
+        var data = new FormData();
+        data.append('owner_userId', this.state.userData._id);
+        
+        if (inputDate != null || inputDate != undefined) {
+            data.append('inputDate', inputDate)
+        }
+        // inputDate != null || inputDate != undefined ? data.append('inputDate', inputDate) : '';
+        
         var query = GET_JOURNAL_BY_DATE+this.state.userData._id+'/'+this.state.dateIsoFormat;
 
         console.log(query);
@@ -112,8 +117,9 @@ export default class HomePages extends Component {
                 
                 if (responseData.data == undefined || responseData.data == null || responseData.data.length == 0) {
                     postFunction(data, ADD_JOURNAL).then(() => {
-                        alert(responseData.status)
-                        // window.location.reload(false)
+                        // alert(responseData.status)
+                        // alert(ADD_JOURNAL)
+                        window.location.reload()
                     })
                 }{
                     this.setState({
@@ -138,12 +144,15 @@ export default class HomePages extends Component {
         console.log(query);
         await getDataFunction(query).then(() => {
             if (responseData.status == 200) {
-                this.setState({
-                    bibitData: responseData.data[0]._idBibit,
-                    bbmData: responseData.data[0]._idBBMList,
-                    pupukData: responseData.data[0]._idPupukList,
-                    pestisidaData: responseData.data[0]._idPestisidaList,
-                },() => {/*console.log("dataaaaa: "+ this.state.pupukData);console.log(query)*/})
+                if(responseData.data.length != 0) 
+                    this.setState({
+                        bibitData: responseData.data[0]._idBibit,
+                        bbmData: responseData.data[0]._idBBMList,
+                        pupukData: responseData.data[0]._idPupukList,
+                        pestisidaData: responseData.data[0]._idPestisidaList,
+                    },() => {/*console.log("dataaaaa: "+ this.state.pupukData);console.log(query)*/})
+                
+                
             }else{
                 alert("galgagal")
             }
@@ -154,7 +163,7 @@ export default class HomePages extends Component {
         return (
             <div>
                 {
-                    // this.state.isLogin ? <section id="intro"/> : <Section></Section> 
+                    // this.state.isLogin ? <></> : <Section></Section> 
                 }
                 <Section></Section> 
                 {
