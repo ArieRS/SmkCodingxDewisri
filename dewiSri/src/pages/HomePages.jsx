@@ -78,37 +78,42 @@ export default class HomePages extends Component {
     dateDecrement(d) {
         var newDateFormat = moment(d, "MM-DD-YYYY").subtract('days', 1).format('L');
         var newDate = moment(d, "MM-DD-YYYY").subtract('days', 1);
+        var isoDate = moment(d, "MM-DD-YYYY").subtract('days', 1).format('D-M-Y');
         // console.log("current date state : " + d);
         this.setState({
             currentDate: newDate.format('LL'),
-            dateFormat: newDateFormat
-        })
+            dateFormat: newDateFormat,
+            dateIsoFormat: isoDate
+        },() => this.getPlantByDate())
+
     }
 
     dateIncrement(d) {
         var newDateFormat = moment(d, "MM-DD-YYYY").add('days', 1).format('L');
         var newDate = moment(d, "MM-DD-YYYY").add('days', 1);
+        var isoDate = moment(d, "MM-DD-YYYY").add('days', 1).format('D-M-Y');
         // console.log("current date state : " + d);
         this.setState({
             currentDate: newDate.format('LL'),
-            dateFormat: newDateFormat
-        })
+            dateFormat: newDateFormat,
+            dateIsoFormat: isoDate
+        },() => this.getPlantByDate())
     }
 
     async getPlantByDate(){
         var data = new FormData()
         data.append('owner_userId', this.state.userData._id)
 
-        var query = GET_JOURNAL_BY_DATE+this.state.dateIsoFormat;
+        var query = GET_JOURNAL_BY_DATE+this.state.userData._id+'/'+this.state.dateIsoFormat;
 
-        // console.log(query);
+        console.log(query);
         await getDataFunction(query).then(() => {
             if (responseData.status == 200) {
                 
                 if (responseData.data == undefined || responseData.data == null || responseData.data.length == 0) {
                     postFunction(data, ADD_JOURNAL).then(() => {
-                        // alert(responseData.status)
-                        window.location.reload(false)
+                        alert(responseData.status)
+                        // window.location.reload(false)
                     })
                 }{
                     this.setState({
@@ -118,7 +123,7 @@ export default class HomePages extends Component {
                         // console.log("dataaaaa: "+ this.state.journalDataByDate);
                         // console.log(query);
                         if (this.state.journalDataByDate.length != 0) {   
-                            // this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
+                            this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
                         }
                     })
                 }
@@ -130,7 +135,7 @@ export default class HomePages extends Component {
 
     async getPlantingNeeds(idPlant){
         var query = GET_PLANTING_NEEDS+idPlant;
-        // console.log(query);
+        console.log(query);
         await getDataFunction(query).then(() => {
             if (responseData.status == 200) {
                 this.setState({
@@ -155,10 +160,12 @@ export default class HomePages extends Component {
                 {
                     this.state.isLogin ? 
                     <main id="main" className='mt-5'>
+
+                        <Navigation state={this.state} method={this.method} />
                         {
                             this.state.journalDataByDate.length != 0 ? 
                             <>
-                                <Navigation state={this.state} method={this.method} />
+                                {/* <Navigation state={this.state} method={this.method} /> */}
                                 <Tanaman state={this.state} method={this.method} />
                                 <KebutuhanTanam state={this.state} method={this.method}/>
                                 <JurnalHarian state={this.state} method={this.method}/>
@@ -169,13 +176,7 @@ export default class HomePages extends Component {
                             :
                             <div></div>
                         }
-                        {/* <Navigation state={this.state} method={this.method} />
-                        <Tanaman state={this.state} method={this.method} />
-                        <KebutuhanTanam />
-                        <JurnalHarian />
-                        <CatatanPertanian />
-                        <Other />
-                        <Pricing /> */}
+                        
                     </main>
                     :
                     <div/>

@@ -41,7 +41,7 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                         </div>
                     }
                     <div class="form-group">
-                        <label for="harga">Harga Bahan Bakar</label>
+                        <label for="harga">Harga {state.type == 'bbm'  ? 'Bahan Bakar' : ''}</label>
                         <input type="Number" class="form-control"  onChange={(text) => method.changeState('price',text)} name="harga" id="harga" placeholder="Harga" required={true}/>
                         <div class="validate"></div>
                     </div>
