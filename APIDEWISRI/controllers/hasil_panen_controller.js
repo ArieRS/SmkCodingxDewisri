@@ -67,34 +67,21 @@ exports.addHasilPanen = function (req, res) {
                     
                 })
             }
+            const iteratorPupukListId =  element._idPupukList.values();
+            for (const dataPupuk of iteratorPupukListId) {
+                // console.log("dataPupuk: " + dataPupuk);
+                Pupuk.findById( dataPupuk, function (err, pupukResult) {
+                    
+                    if (pupukResult != null) {
+                        PengeluaranPupuk += pupukResult.price * pupukResult.quantity
+                        console.log(PengeluaranPupuk);
+                    } else {
+                        console.log('kososng');
+                    }
+                    
+                })
+            }
             
-            // Pestisida.find({'_id': element._idPestisidaList}, function (err, pestisidaResult) {
-            //     // var listElementpestisida = [];
-            //     // pestisidaResult.forEach(elementpestisida => {
-            //     //     // listElementpestisida.push(elementpestisida);
-                    
-            //     // });
-            //     console.log('pestisidaResult :'+ pestisidaResult);  
-                
-            // })
-            // BBM.find({'_id': element._idBBMList}, function (err, bbmResult) {
-            //     // var listElementbbm = [];
-            //     // bbmResult.forEach(elementbbm => {
-            //     //     // listElementbbm.push(elementbbm);
-                    
-            //     // });
-            //     console.log(bbmResult);  
-                
-            // })
-            // Bibit.find({'_id': element._idBibitList}, function (err, bibitResult) {
-            //     // var listElementbibit = [];
-            //     // bibitResult.forEach(elementbibit => {
-            //     //     // listElementbibit.push(elementbibit);
-                    
-            //     // });
-            //     console.log("bibitResult: "+bibitResult);  
-                
-            // })
         },
         // res.json({
         //     status: 200,
