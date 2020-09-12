@@ -345,6 +345,10 @@ h6 {
   margin-top: 1px;
 }
 
+.navigation-panel .tanggal span b {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/

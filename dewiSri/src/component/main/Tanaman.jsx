@@ -50,21 +50,21 @@ export default class Tanaman extends Component {
                         <div className="table-card">
                             <table>
                                 <tr>
-                                    <th>Tanaman2</th>
+                                    <th>Tanaman</th>
                                     <td>:</td>
                                     {/* { <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> } */}
-                                    <td>Tanaman</td>
+                                    <td>Wortel</td>
                                 </tr>
                                 <tr>
                                     <th>Komoditas</th>
                                     <td>:</td>
                                     {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
-                                    <td>Komoditas</td>
+                                    <td>Wortel Lokal</td>
                                 </tr>
                                 <tr>
                                     <th>Hari Ke</th>
                                     <td>:</td>
-                                    <td>110</td>
+                                    <td>35</td>
                                 </tr>
                             </table>
                         </div>

@@ -200,24 +200,6 @@ export default class KebutuhanTaman extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>10 - 8 - 2000</td>
-                                        <td>50</td>
-                                        <td>500.000</td>
-                                        <td>bibit awal</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10 - 8 - 2000</td>
-                                        <td>100</td>
-                                        <td>1.000.000</td>
-                                        <td>test bibit</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10 - 8 - 2000</td>
-                                        <td>100</td>
-                                        <td>1.500.000</td>
-                                        <td>test bibit</td>
-                                    </tr>
                                     {
                                         this.props.state.bibitData.map((item, index) => {
                                             return(
