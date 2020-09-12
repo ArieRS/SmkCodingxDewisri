@@ -733,7 +733,7 @@ content {
 }
 
 .panel-tanaman #rincian-table {
-  width: 500px;
+  /* width: 500px; */
   height: 80px;
   margin-top: 10px;
   position: relative;
