@@ -35,8 +35,8 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                         </div>
                         :
                         <div class="form-group">
-                            <label for="jumlah">Jumlah</label>
-                            <input type="number" onChange={(text) => method.changeState('quantity',text)} class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah" required={true}/>
+                            <label for="jumlah">Jumlah (kg)</label>
+                            <input type="number" onChange={(text) => method.changeState('quantity',text)} class="form-control" name="jumlah" id="jumlah" placeholder="jumlah (Kg)" required={true}/>
                             <div class="validate"></div>
                         </div>
                     }
@@ -62,7 +62,7 @@ const Modal = ({ handleClose, show, children, state, method }) => {
         </section>
       </div>
     );
-  };
+};
 
 export default class KebutuhanTaman extends Component {
     constructor(props){

@@ -163,7 +163,6 @@ export default class HomePages extends Component {
                                 <KebutuhanTanam state={this.state} method={this.method}/>
                                 <JurnalHarian state={this.state} method={this.method}/>
                                 <CatatanPertanian />
-                                <Other />
                                 <Pricing />
                             </>
                             :

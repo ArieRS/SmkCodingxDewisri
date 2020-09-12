@@ -22,6 +22,7 @@ export const MainApp = (auth) => {
                     <Route exact path="/register" component={Register} />
                 </Switch>
             </Router>
+            <Footer></Footer>
             { auth === false ? <Footer></Footer> : <div></div> }
         </div>
     )

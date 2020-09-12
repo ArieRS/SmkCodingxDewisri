@@ -11,8 +11,8 @@
 
 :root {
   /* Pallete Color */
-  --greenColor: #1de099;
-  --blueColor: #1dc8cd;
+  --greenColor: #19c485;
+  --blueColor: #19b6bb;
 
   /* Font Size */
   --largeFont: 28px;
@@ -84,13 +84,20 @@ h6 {
   top: 0;
   right: 0;
   transition: all 0.5s;
-  z-index: 997;
+  z-index: 99;
   background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
 }
 
-#header #logo {
-  float: left;
+.tanaman {
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
+  width: 100vw;
+  color: white;
+  padding: 10px;
 }
+
+  /* #header #logo {
+    float: left;
+  } */
 
 #header #logo img {
   width: 25px;
@@ -125,23 +132,6 @@ h6 {
   font-family: "Ubuntu";
 }
 
-#header #nav-menu-container ul li .menu-toggle {
-  display: flex;
-  flex-direction: column;
-  height: 20px;
-  justify-content: space-between;
-  display: none;
-}
-
-#header #nav-menu-container ul li .menu-toggle span {
-  display: block;
-  width: 28px;
-  height: 3px;
-  background-color: white;
-  border-radius: 3px;
-  
-}
-
 
 /*--------------------------------------------------------------
 # Profile-bar
@@ -154,13 +144,14 @@ h6 {
   background-color: #343B40E6;
   width: 250px;
   color: white;
-  z-index: 999;
   transition: all .5s;
+  z-index: 9999;
 }
 
 .profile-sidebar .profile {
   margin-bottom: -30px;
   padding: 10px;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .profile-sidebar .profile .user-photo {
@@ -180,6 +171,7 @@ h6 {
   list-style: none;
   width: 250px;
   cursor: pointer;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .profile-sidebar #nav-menu-container ul li a {
@@ -207,10 +199,10 @@ h6 {
   height: 20px;
   justify-content: space-between;
   position: absolute;
-  position: absolute;
   top: 30px;
   right: 280px;
   cursor: pointer;
+  z-index: 999999;
 }
 
 .profile-sidebar .menu-toggle span {
@@ -219,6 +211,7 @@ h6 {
   height: 3px;
   background-color: white;
   border-radius: 3px;
+  z-index: 9999;
 }
 
 .profile-bar-active {
@@ -294,34 +287,12 @@ h6 {
 #intro .product-screens img {
   box-shadow: 0px -2px 19px 4px rgba(0, 0, 0, 0.29);
 }
-
-#intro .product-screens .product-screen-1 {
-  position: absolute;
-  z-index: 30;
-  left: calc(50% + 54px);
-  bottom: 0;
-  top: 30px;
-}
-
-#intro .product-screens .product-screen-2 {
-  position: absolute;
-  z-index: 20;
-  left: calc(50% - 154px);
-  bottom: 0;
-  top: 90px;
-}
-
-#intro .product-screens .product-screen-3 {
-  position: absolute;
-  z-index: 10;
-  left: calc(50% - 374px);
-  bottom: 0;
-  top: 150px;
-}
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
 .navigation-panel {
+  margin-top: -40px;
+  color: white;
   height: 50px;
   padding: 25px 10px;
   display: flex;
@@ -329,6 +300,7 @@ h6 {
   flex-direction: row;
   justify-content: space-between;
   font-size: 18px;
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
 }
 
 .navigation-panel .tanggal {
@@ -365,7 +337,6 @@ h6 {
   display: none;
   top: 100%;
   left: 0;
-  z-index: 99;
 }
 
 .nav-menu li {
@@ -484,7 +455,6 @@ h6 {
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 999;
   margin: 20px 20px 0 0;
   border: 0;
   background: none;
@@ -511,7 +481,6 @@ h6 {
   top: 0;
   padding-top: 18px;
   bottom: 0;
-  z-index: 998;
   background: rgba(52, 59, 64, 0.9);
   left: -260px;
   width: 260px;
@@ -552,7 +521,6 @@ h6 {
 #mobile-nav ul .menu-has-children i {
   position: absolute;
   right: 0;
-  z-index: 99;
   padding: 15px;
   cursor: pointer;
   color: #fff;
@@ -569,7 +537,6 @@ h6 {
 #mobile-body-overly {
   width: 100%;
   height: 100%;
-  z-index: 997;
   top: 0;
   left: 0;
   position: fixed;
@@ -741,12 +708,6 @@ content {
 
 /* Custom Style */
 
-.navigation-panel {
-  padding: 20px 10px;
-  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
-  border: var(--blueColor);
-  color: white;
-}
 
 /* Panel Tanaman */
 
@@ -767,6 +728,8 @@ content {
   overflow: hidden;
   color: white;
   font-size: 16px;
+  right: 0;
+  left: 0;
 }
 
 .panel-tanaman #rincian-table {
@@ -780,6 +743,8 @@ content {
   display: block;
   width: 500px;
   height: 100px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
 }
 
 .panel-tanaman .btn-right {
@@ -817,6 +782,9 @@ content {
   text-align: center;
 }
 
+.icon-premium {
+  width: 50px;
+}
 
 /* content Plant It Prmium */
 
@@ -825,37 +793,38 @@ content {
 }
 
 .section-header-content .foto-petani {
-  background: url('../img/petani/petani.jpg');
-  background-size: cover;
-  height: 65vh;
+  height: 10vh;
   min-height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
   position: relative;
+  overflow: hidden;
 }
 
 .section-header-content .foto-petani h1 {
-  z-index: 999;
   font-size: var(--largeFont);
+  position: absolute;
 }
 
-.section-header-content .foto-petani::after {
+
+/* .section-header-content .foto-petani::after {
   content: '';
   background: linear-gradient(45deg, rgba(20, 138, 95, 0.8), rgba(19, 127, 131, 0.8));
   opacity: .4;
-  z-index: 99;
+  z-index: 10;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-}
+} */
 
 h1.section-title-content {
   color: white;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 10;
 }
 
 
@@ -896,6 +865,22 @@ tbody tr td {
   opacity: .9;
 }
 
+#footer {
+  background-color: black;
+  padding: 20px;
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
+  color: white;
+}
+
+#footer a {
+  color: white;
+  font-weight: bold;
+}
+
+#footer .footer-links a {
+  margin: 0 10px;
+}
+
 #content .btn-get-started {
   border: none;
   outline: none;
@@ -906,7 +891,7 @@ tbody tr td {
   color: #fff;
   transition: none;
   font-weight: 400;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   color: white;
   background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
 }
@@ -962,7 +947,7 @@ form {
   position: fixed;
   top: 0;
   left: 0;
-  width:100%;
+  width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 }
@@ -995,17 +980,6 @@ table thead tr {
   text-align: center;
 }
 
-.modal-dialog {
-  background-color: #d4d4d4;
-}
-
-.modal-body .container {
-  position: relative;
-}
-
-.modal-body .content {
-  
-}
 /* 
 .modal-body .card {
   width: 200px;
@@ -1035,7 +1009,8 @@ table thead tr {
   }
 
   #header #logo img {
-    max-height: 40px;
+    max-height: 35px;
+    max-width: 20px;
   }
 
   #intro {

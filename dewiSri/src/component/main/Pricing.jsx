@@ -3,37 +3,6 @@ import ReactDOM from 'react-dom'
 import Coba from './Coba';
 import ModalPricing from './ModalPricing'
 
-// const Modal = ({ handleClose, show, children, state, method }) => {
-//     const showHideClassName = show ? "modal display-block" : "modal display-none";
-
-
-//     state = {
-//         isCoinActive: true,
-//         isMoneyActive: false
-//     }
-
-//     const click = (type) => {
-//         const money = document.querySelector('.card.money');
-//         const coin = document.querySelector('.card.coin');
-//         if (type === 'money') {
-//             state.isMoneyActive = true;
-//             state.isCoinActive = false;
-//             money.style.backgroundColor = 'red';
-//             coin.style.backgroundColor = 'white'
-//         } else {
-//             state.isMoneyActive = false;
-//             state.isCoinActive = true;
-//             money.style.backgroundColor = 'white';
-//             coin.style.backgroundColor = 'red';
-//         }
-//     }
-    
-//     const slide = (type) => {
-//         console.log(document.getElementById("modal-content"))
-//         ReactDOM.render(<Coba />, document.getElementById("modal-content"))
-//     } 
-// };
-
 export default class Pricing extends Component {
     constructor(props) {
         super(props);
@@ -58,40 +27,76 @@ export default class Pricing extends Component {
                 <div className="section-header-content">
                     <div className="foto-petani">
                         <h1 className="section-title-content">Plant It Premium</h1>
+                        <div className="row">
+                            <div className="col-md-3">
+                                <img src="../../assets/img/petani/1.jpg" alt="" srcset=""/>
+                            </div>
+                            <div className="col-md-3">
+                                <img src="../../assets/img/petani/2.jpg" alt="" srcset=""/>
+                            </div>
+                            <div className="col-md-3">
+                                <img src="../../assets/img/petani/3.jpg" alt="" srcset=""/>
+                            </div>
+                            <div className="col-md-3">
+                                <img src="../../assets/img/petani/4.jpg" alt="" srcset=""/>
+                            </div>
+                        </div>
                     </div>
                     <span className="section-divider"></span>
                 </div>
                 <div className="container mt-3">
                     <div className="container">
-                        <div className="row">
-                            <table className="table-striped table-content">
-                                <thead className="table-header">
-                                    <tr>
-                                        <td>Fitur</td>
-                                        <td>Gratis</td>
-                                        <td>Premium</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Analisis Keuntungan Bersih</td>
-                                        <td>-</td>
-                                        <td><img src="assets/img/leaf.svg" alt=""/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Download Jurnal</td>
-                                        <td>-</td>
-                                        <td><img src="assets/img/leaf.svg" alt=""/></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="row btn-content">
-                            <button className="btn btn-dark" data-toggle="modal" onClick={this.showModal.bind(this, 'Rp29.999')}>Rp29.999,-/bulan</button>
-                            <button className="btn btn-dark" onClick={this.showModal.bind(this, 'Rp85.000')}>Rp85.000,_/musim</button>
-                            <button className="btn btn-dark" onClick={this.showModal.bind(this, 'Rp320.000')}>Rp320.000,_/tahun</button>
-                            <button className="btn btn-dark" onClick={this.showModal.bind(this, 'Rp1.800.000')}>Rp1.800.000,_/selamanya</button>
-                            <button id="btn-not" className="btn btn-dark">Nanti Dulu</button>
+                        <div class="row mt-5">
+                            <div class="col-lg-4 column">
+                                <div id="content" class="box wow fadeInLeft">
+                                    <h3>Rencana 1</h3>
+                                    <h4><sup>RP</sup>29.999<span>/ bulan</span></h4>
+                                    <ul>
+                                    <li><i class="ion-android-checkmark-circle"></i> Anda dapat batalkan langganan kapan saja</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
+                                </ul>
+                                    <a href="#" class="btn-get-started" onClick={this.showModal.bind(this, "22.999")}>Get Started</a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="content" class="box featured wow fadeInUp">
+                                <h3>Rencana 2</h3>
+                                <h4><sup>RP</sup>85.000<span>/ bulan</span></h4>
+                                <ul>
+                                    <li><i class="ion-android-checkmark-circle"></i> Anda dapat batalkan langganan kapan saja</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
+                                </ul>
+                                <a href="#" class="btn-get-started" onClick={this.showModal.bind(this, "22.999")}>Get Started</a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div id="content" class="box wow fadeInRight">
+                                <h3>Rencana 3</h3>
+                                <h4><sup>RP</sup>320.000<span>/ bulan</span></h4>
+                                <ul>
+                                    <li><i class="ion-android-checkmark-circle"></i> Anda dapat batalkan langganan kapan saja</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
+                                </ul>
+                                <a href="#" class="btn-get-started" onClick={this.showModal.bind(this, "22.999")}>Get Started</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mx-auto">
+                                <div id="content" class="box wow fadeInRight">
+                                <h3>Rencana 4</h3>
+                                <h4><sup>RP</sup>1.800.000<span>/ selamanya</span></h4>
+                                <ul>
+                                    <li><i class="ion-android-checkmark-circle"></i> Anda dapat batalkan langganan kapan saja</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
+                                    <li><i class="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
+                                </ul>
+                                <a href="#" class="btn-get-started" onClick={this.showModal.bind(this, "22.999")}>Get Started</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

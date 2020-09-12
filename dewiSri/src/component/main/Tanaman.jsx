@@ -4,17 +4,17 @@ export default class Tanaman extends Component {
     constructor(props){
         super(props);
         this.state = {
-
+            position: 10
         }
-        this.method = {
-
-        }
+        this.slide = this.slide.bind(this)
     }
 
     slide() {
         const el = document.querySelector('.panel-tanaman #rincian-table');
-        console.log(el)
-        el.style.top = '-100px';
+        const ukuran = document.querySelectorAll('.panel-tanaman #rincian-table .table-card').length;
+
+        el.style.top = `-${this.state.position}px`;
+        this.setState({position: this.state.position + 100})
     }
 
     componentWillMount(){
@@ -23,8 +23,8 @@ export default class Tanaman extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="panel-tanaman mt-3">
+            // <div className="container">
+                <div id="panel-tanaman" className="panel-tanaman mt-3">
                     <div id="rincian-table">
                         <div className="table-card">
                             <table>
@@ -68,6 +68,69 @@ export default class Tanaman extends Component {
                                 </tr>
                             </table>
                         </div>
+                        <div className="table-card">
+                            <table>
+                                <tr>
+                                    <th>Tanaman3</th>
+                                    <td>:</td>
+                                    {/* { <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> } */}
+                                    <td>Wortel</td>
+                                </tr>
+                                <tr>
+                                    <th>Komoditas</th>
+                                    <td>:</td>
+                                    {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
+                                    <td>Wortel Lokal</td>
+                                </tr>
+                                <tr>
+                                    <th>Hari Ke</th>
+                                    <td>:</td>
+                                    <td>35</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div className="table-card">
+                            <table>
+                                <tr>
+                                    <th>Tanaman4</th>
+                                    <td>:</td>
+                                    {/* { <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> } */}
+                                    <td>Wortel</td>
+                                </tr>
+                                <tr>
+                                    <th>Komoditas</th>
+                                    <td>:</td>
+                                    {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
+                                    <td>Wortel Lokal</td>
+                                </tr>
+                                <tr>
+                                    <th>Hari Ke</th>
+                                    <td>:</td>
+                                    <td>35</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div className="table-card">
+                            <table>
+                                <tr>
+                                    <th>Tanaman5</th>
+                                    <td>:</td>
+                                    {/* { <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> } */}
+                                    <td>Wortel</td>
+                                </tr>
+                                <tr>
+                                    <th>Komoditas</th>
+                                    <td>:</td>
+                                    {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
+                                    <td>Wortel Lokal</td>
+                                </tr>
+                                <tr>
+                                    <th>Hari Ke</th>
+                                    <td>:</td>
+                                    <td>35</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
 
                     <div id="button" className="btn-right" >
@@ -77,7 +140,7 @@ export default class Tanaman extends Component {
                         </svg>
                     </div>
                 </div>
-            </div>
+            // </div>
         )
     }
 }

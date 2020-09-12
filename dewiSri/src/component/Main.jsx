@@ -16,7 +16,6 @@ export default class Main extends Component {
                 <KebutuhanTanam />
                 <JurnalHarian />
                 <CatatanPertanian />
-                <Other />
                 <Pricing />
             </main>
         )

@@ -6,7 +6,6 @@
 */
 $(document).ready(function() {
   // Header fixed and Back to top button
-  console.log($('.panel-tanaman .btn-right'))
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
       $('.back-to-top').fadeIn('slow');
