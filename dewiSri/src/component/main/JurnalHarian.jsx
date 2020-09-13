@@ -26,14 +26,18 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                                 <div class="validate"></div>
                             </div> */}
                             <div class="form-group">
-                                <label for="keterangan">Kegiatan</label>
+                                <label for="kegiatan">Kegiatan</label>
                                 <textarea class="form-control" id="kegiatan" onChange={(text) => method.changeState('activity',text)} name="activity" rows="5" data-rule="required" placeholder="Kegiatan" required={true}></textarea>
-                                <div class="validate"></div>
+                                <div class="invalid-feedback">
+                                    Kegiatan tidak boleh kosong
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="keterangan">Permasalahan</label>
-                                <textarea class="form-control" id="Permasalahan" onChange={(text) => method.changeState('problem',text)} name="keterangan" rows="5" data-rule="required" placeholder="Permasalahan" required={true}></textarea>
-                                <div class="validate"></div>
+                                <label for="permasalahan">Permasalahan</label>
+                                <textarea class="form-control" id="permasalahan" onChange={(text) => method.changeState('problem',text)} name="keterangan" rows="5" data-rule="required" placeholder="Permasalahan" required={true}></textarea>
+                                <div class="invalid-feedback">
+                                    Permasalahan tidak boleh kosong
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -44,7 +48,6 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                 </div>
               </div>
             </div>
-        
           <button onClick={handleClose}>close</button>
         </section>
       </div>
@@ -69,11 +72,31 @@ export default class JurnalHarian extends Component {
         this.modalShowHide = this.modalShowHide.bind(this)
     }
 
+    _clear() {
+        document.querySelector('#kegiatan').classList.remove('is-invalid');
+        document.querySelector('#permasalahan').classList.remove('is-invalid');
+    }
+    
+    _validate() {
+        if (this.state.activity === '') {
+            document.querySelector('#kegiatan').classList.add('is-invalid');
+            return false;
+        } 
+        
+        if (this.state.problem === '') {
+            document.querySelector('#permasalahan').classList.add('is-invalid');
+            return false;
+        }
+
+        return true;
+    }
+
     modalShowHide(){
         this.setState({
             showModal: !this.state.showModal
         })
     }
+
     _changeState(state,value){
         this.setState({
             [state]: value.target.value
@@ -81,27 +104,26 @@ export default class JurnalHarian extends Component {
     }
 
     async _addData(){
-        var data = new FormData()
-        
-        data.append('activity', this.state.activity)
-        data.append('problem', this.state.problem)
-        data.append('owner_journalId',this.props.state.journalDataByDate[0]._id)
-        data.append('owner_userId',this.props.state.userData._id)
-
-        await postFunction(data, ADD_DAILY_JOURNAL).then(() => {
-            if (responseData.status == 200) {
-                console.log("success");
-                alert("Sukses menambah jurnal harian")
-                this.setState({
-                    showModal: !this.state.showModal,
-                })
-                window.location.reload(false)
-
-            } else {
-                alert(responseData.message)
-            }
-        })
-
+        if (this._validate()) {
+            this._clear();
+            var data = new FormData()
+            data.append('activity', this.state.activity)
+            data.append('problem', this.state.problem)
+            data.append('owner_journalId',this.props.state.journalDataByDate[0]._id)
+            data.append('owner_userId',this.props.state.userData._id)
+            await postFunction(data, ADD_DAILY_JOURNAL).then(() => {
+                if (responseData.status == 200) {
+                    console.log("success");
+                    alert("Sukses menambah jurnal harian")
+                    this.setState({
+                        showModal: !this.state.showModal,
+                    })
+                    window.location.reload(false)
+                } else {
+                    alert(responseData.message)
+                }
+            })
+        }
     }
 
     render() {

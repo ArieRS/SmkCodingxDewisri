@@ -129,7 +129,7 @@ export default class HomePages extends Component {
                         // console.log("dataaaaa: "+ this.state.journalDataByDate);
                         // console.log(query);
                         if (this.state.journalDataByDate.length != 0) {   
-                            this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
+                            // this.getPlantingN    eeds(this.state.journalDataByDate[0].plantList[0]._id)
                         }
                     })
                 }
@@ -170,13 +170,13 @@ export default class HomePages extends Component {
                     this.state.isLogin ? 
                     <main id="main" className='mt-5'>
 
-                        <Navigation state={this.state} method={this.method} />
+                        {/* <Navigation state={this.state} method={this.method} /> */}
 
                         {
                             this.state.journalDataByDate.length != 0 ? 
                             <>
                                 {/* <Navigation state={this.state} method={this.method} /> */}
-                                <Tanaman state={this.state} method={this.method} />
+                                {/* <Tanaman state={this.state} method={this.method} /> */}
                                 <KebutuhanTanam state={this.state} method={this.method}/>
                                 <JurnalHarian state={this.state} method={this.method}/>
                                 <CatatanPertanian />

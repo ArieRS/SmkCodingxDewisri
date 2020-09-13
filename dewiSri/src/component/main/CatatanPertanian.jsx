@@ -20,22 +20,31 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="#tanggalPanen">Tanggal Panen</label>
-                            <input type="date" name="tanggal" onChange={(text) => method.changeState('tanggalPanen',text)} class="form-control" id="tanggal" placeholder="Tanggal" required={true}/>
+                            <label for="#tanggaPanen">Tanggal Panen</label>
+                            <input type="date" name="tanggal" onChange={(text) => method.changeState('tanggalPanen',text)} class="form-control" id="tanggalPanen" placeholder="Tanggal" required={true}/>
+                            <div class="invalid-feedback">
+                                Tanggal tidak boleh kosong
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="#hargaPasar">Harga Pasar</label>
                             <input type="number" name="hargaPasar" onChange={(text) => method.changeState('hargaPasar',text)} class="form-control" id="hargaPasar" placeholder="Harga Pasar" required={true}/>
+                            <div class="invalid-feedback">
+                                Harga Pasar tidak boleh kosong
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="#hasilPanen">Hasil Panen (Kwintal)</label>
                             <input type="number" name="hasilPanen" onChange={(text) => method.changeState('hasilPanen',text)} class="form-control" id="hasilPanen" placeholder="Hasil Panen" required={true}/>
+                            <div class="invalid-feedback">
+                                Hasil Panen tidak boleh kosong
+                            </div>
                         </div>
                     </form>                
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>
-                  <button type="button" onClick={() => method.addData({type: state.type})} class="btn btn-custom">Tambah Data</button>
+                  <button type="submit" onClick={() => method.addData({type: state.type})} class="btn btn-custom">Tambah Data</button>
                 </div>
               </div>
             </div>
@@ -63,6 +72,30 @@ export default class CatatanPertanian extends Component {
         this.modalShowHide = this.modalShowHide.bind(this)
     }
 
+    _validate() {
+        if (this.state.tanggalPanen === '') {
+            document.querySelector('#tanggalPanen').classList.add('is-invalid');
+            return false;
+        } 
+        
+        if (this.state.hargaPasar === '') {
+            document.querySelector('#hargaPasar').classList.add('is-invalid');
+            return false;
+        }
+        
+        if (this.state.hasilPanen === '') {
+            document.querySelector('#hasilPanen').classList.add('is-invalid');
+            return false;
+        }
+        return true;
+    }
+
+    _clear() {
+        document.querySelector('#tanggalPanen').classList.remove('is-invalid');
+        document.querySelector('#hargaPasar').classList.remove('is-invalid');
+        document.querySelector('#hasilPanen').classList.remove('is-invalid');
+    }
+
     modalShowHide(){
         this.setState({
             showModal: !this.state.showModal
@@ -75,34 +108,34 @@ export default class CatatanPertanian extends Component {
     }
 
     async _addData(){
-        var data = new FormData()
-        
-        data.append('activity', this.state.activity)
-        data.append('problem', this.state.problem)
-        data.append('owner_journalId',this.props.state.journalDataByDate[0]._id)
-        data.append('owner_userId',this.props.state.userData._id)
-
-        await postFunction(data, ADD_DAILY_JOURNAL).then(() => {
-            if (responseData.status == 200) {
-                console.log("success");
-                alert("Sukses menambah jurnal harian")
-                this.setState({
-                    showModal: !this.state.showModal,
-                })
-                window.location.reload(false)
-
-            } else {
-                alert(responseData.message)
-            }
-        })
-
+        if (this._validate()) {
+            console.log("berhasil")
+            // this._clear();
+            // var data = new FormData()
+            // data.append('activity', this.state.activity)
+            // data.append('problem', this.state.problem)
+            // data.append('owner_journalId',this.props.state.journalDataByDate[0]._id)
+            // data.append('owner_userId',this.props.state.userData._id)
+            // await postFunction(data, ADD_DAILY_JOURNAL).then(() => {
+            //     if (responseData.status == 200) {
+            //         console.log("success");
+            //         alert("Sukses menambah jurnal harian")
+            //         this.setState({
+            //             showModal: !this.state.showModal,
+            //         })
+            //         window.location.reload(false)
+    
+            //     } else {
+            //         alert(responseData.message)
+            //     }
+            // })
+        }
     }
 
     render() {
         return (
             <section id="content" className="my-5">
-                <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}></Modal>
-                    
+                <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}></Modal>    
                 <div className="container">
                     <div className="card-catatan-pertanian">
                         <div className="row">
@@ -113,7 +146,8 @@ export default class CatatanPertanian extends Component {
                                 </div>
                             </div>
                         </div>
-                        <table class="table table-bordered table-striped">
+                        <div className="table-responsive-xl">
+                            <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Tanggal Input</th>
@@ -147,6 +181,7 @@ export default class CatatanPertanian extends Component {
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
                         <button className="btn-get-started mt-2" onClick={this.modalShowHide}>
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>

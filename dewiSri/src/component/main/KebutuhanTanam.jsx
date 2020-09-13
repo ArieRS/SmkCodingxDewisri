@@ -5,7 +5,6 @@ import EnhancedTable from './Table';
 
 const Modal = ({ handleClose, show, children, state, method }) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
-  
     return (
       <div className={showHideClassName}>
         <section className="col-md-12">
@@ -23,7 +22,9 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                     <div class="form-group">
                         <label for="tanggal">Tanggal</label>
                         <input type="date" name="tanggal" onChange={(text) => method.changeState('dateInput',text)} class="form-control" id="tanggal" placeholder="Tanggal" required={true}/>
-                        <div class="validate"></div>
+                        <div class="invalid-feedback">
+                            Tanggal tidak boleh kosong
+                        </div>
                     </div>
                     {
                         state.type == 'bbm' 
@@ -31,24 +32,32 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                         <div class="form-group">
                             <label for="jumlah">Durasi Diesel (Menit)</label>
                             <input type="number" onChange={(text) => method.changeState('quantity',text)} class="form-control" name="jumlah" id="jumlah" placeholder="Durasi" required={true}/>
-                            <div class="validate"></div>
+                            <div class="invalid-feedback">
+                                Durasi tidak boleh kosong
+                            </div>
                         </div>
                         :
                         <div class="form-group">
                             <label for="jumlah">Jumlah (kg)</label>
                             <input type="number" onChange={(text) => method.changeState('quantity',text)} class="form-control" name="jumlah" id="jumlah" placeholder="jumlah (Kg)" required={true}/>
-                            <div class="validate"></div>
+                            <div class="invalid-feedback">
+                                Jumlah tidak boleh kosong
+                            </div>
                         </div>
                     }
                     <div class="form-group">
                         <label for="harga">Harga {state.type == 'bbm'  ? 'Bahan Bakar' : ''}</label>
                         <input type="Number" class="form-control"  onChange={(text) => method.changeState('price',text)} name="harga" id="harga" placeholder="Harga" required={true}/>
-                        <div class="validate"></div>
+                        <div class="invalid-feedback">
+                            Harga tidak boleh kosong
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
                         <textarea class="form-control" id="keterangan" onChange={(text) => method.changeState('keterangan',text)} name="keterangan" rows="5" data-rule="required" placeholder="Keterangan" required={true}></textarea>
-                        <div class="validate"></div>
+                        <div class="invalid-feedback">
+                            Keterangan tidak boleh kosong
+                        </div>
                     </div>
                 </form>
             </div>
@@ -73,17 +82,54 @@ export default class KebutuhanTaman extends Component {
             quantity: '',
             price: '',
             keterangan: '',
-            type: 'bibit'
+            type: 'bibit',
+            error: false
         }
         this.method = {
             changeState: this._changeState.bind(this),
             testAlert: this._testAlert.bind(this),
-            addData: this._addData.bind(this)
+            addData: this._addData.bind(this),
+            validate: this._validate.bind(this),
+            clear: this._clear.bind(this)
         }
         this.modalShowHide = this.modalShowHide.bind(this)
     }
     
-    
+    _clear() {
+        document.querySelector('#tanggal').classList.remove('is-invalid');
+        document.querySelector('#jumlah').classList.remove('is-invalid');
+        document.querySelector('#harga').classList.remove('is-invalid');
+        document.querySelector('#keterangan').classList.remove('is-invalid');
+    }
+
+    _validate() {
+        if (this.state.dateInput === '') {
+            this.setState({error: true})
+            document.querySelector('#tanggal').classList.add('is-invalid');
+            return false;
+        } 
+        
+        if (this.state.quantity === '') {
+            this.setState({error: true})
+            document.querySelector('#jumlah').classList.add('is-invalid');
+            return false;
+        }
+        
+        if (this.state.price === '') {
+            this.setState({error: true})
+            document.querySelector('#harga').classList.add('is-invalid');
+            return false;
+        }
+        
+        if (this.state.keterangan === '') {
+            this.setState({error: true})
+            document.querySelector('#keterangan').classList.add('is-invalid');
+            return false;
+        }
+
+        return true;
+    }
+
     _changeState(state,value){
         this.setState({
             [state]: value.target.value
@@ -95,68 +141,67 @@ export default class KebutuhanTaman extends Component {
     }
 
     async _addData({e, type}){
-        // alert(type);
-        // e.preventDefault()
-        
-        var data = new FormData()
-        var dataNonBBM = (
-            data.append('date_input', this.state.dateInput),
-            data.append('quantity', this.state.quantity),
-            data.append('price', this.state.price),
-            data.append('keterangan', this.state.keterangan),
-            data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
-        )
-        var dataBBM = (
-            data.append('date_input', this.state.dateInput),
-            data.append('diesel_duration', this.state.quantity),
-            data.append('price', this.state.price),
-            data.append('keterangan', this.state.keterangan),
-            data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
-        )
-        if (type === 'bibit') {
-            var insertType = ADD_BIBIT
-            data.append('date_input', this.state.dateInput)
-            data.append('quantity', this.state.quantity)
-            data.append('price', this.state.price)
-            data.append('keterangan', this.state.keterangan)
-            data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
-        } else if (type === 'pupuk') {
-            var insertType = ADD_PUPUK
-            data.append('date_input', this.state.dateInput)
-            data.append('quantity', this.state.quantity)
-            data.append('price', this.state.price)
-            data.append('keterangan', this.state.keterangan)
-            data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
-        }else if (type === 'pestisida') {
-            var insertType = ADD_PESTISIDA
-            data.append('date_input', this.state.dateInput)
-            data.append('quantity', this.state.quantity)
-            data.append('price', this.state.price)
-            data.append('keterangan', this.state.keterangan)
-            data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
-        }else if (type === 'bbm') {
-            var insertType = ADD_BBM
-            data.append('date_input', this.state.dateInput)
-            data.append('diesel_duration', this.state.quantity)
-            data.append('price', this.state.price)
-            data.append('keterangan', this.state.keterangan)
-            data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+        if (this._validate()) {
+            this._clear()
+            // var data = new FormData()
+            // var dataNonBBM = (
+            //     data.append('date_input', this.state.dateInput),
+            //     data.append('quantity', this.state.quantity),
+            //     data.append('price', this.state.price),
+            //     data.append('keterangan', this.state.keterangan),
+            //     data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+            // )
+            // var dataBBM = (
+            //     data.append('date_input', this.state.dateInput),
+            //     data.append('diesel_duration', this.state.quantity),
+            //     data.append('price', this.state.price),
+            //     data.append('keterangan', this.state.keterangan),
+            //     data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+            // )
+            // if (type === 'bibit') {
+            //     var insertType = ADD_BIBIT
+            //     data.append('date_input', this.state.dateInput)
+            //     data.append('quantity', this.state.quantity)
+            //     data.append('price', this.state.price)
+            //     data.append('keterangan', this.state.keterangan)
+            //     data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+            // } else if (type === 'pupuk') {
+            //     var insertType = ADD_PUPUK
+            //     data.append('date_input', this.state.dateInput)
+            //     data.append('quantity', this.state.quantity)
+            //     data.append('price', this.state.price)
+            //     data.append('keterangan', this.state.keterangan)
+            //     data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+            // }else if (type === 'pestisida') {
+            //     var insertType = ADD_PESTISIDA
+            //     data.append('date_input', this.state.dateInput)
+            //     data.append('quantity', this.state.quantity)
+            //     data.append('price', this.state.price)
+            //     data.append('keterangan', this.state.keterangan)
+            //     data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+            // }else if (type === 'bbm') {
+            //     var insertType = ADD_BBM
+            //     data.append('date_input', this.state.dateInput)
+            //     data.append('diesel_duration', this.state.quantity)
+            //     data.append('price', this.state.price)
+            //     data.append('keterangan', this.state.keterangan)
+            //     data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+            // }
+
+            // await postFunction(data, insertType).then(() => {
+            //     if (responseData.status == 200) {
+            //         console.log("success");
+            //         alert("Sukses menambah "+type)
+            //         this.setState({
+            //             showModal: !this.state.showModal,
+            //         })
+            //         window.location.reload(false)
+            //     } else {
+            //         alert(responseData.message)
+            //     }
+            // })
+            console.log("Berhasil")
         }
-        
-
-        await postFunction(data, insertType).then(() => {
-            if (responseData.status == 200) {
-                console.log("success");
-                alert("Sukses menambah "+type)
-                this.setState({
-                    showModal: !this.state.showModal,
-                })
-                window.location.reload(false)
-            } else {
-                alert(responseData.message)
-            }
-        })
-
     }
 
     modalShowHide(){

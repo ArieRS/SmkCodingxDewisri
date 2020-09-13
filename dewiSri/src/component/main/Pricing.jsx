@@ -28,16 +28,16 @@ export default class Pricing extends Component {
                     <div className="foto-petani">
                         <h1 className="section-title-content">Plant It Premium</h1>
                         <div className="row">
-                            <div className="col-md-3">
+                            <div className="col-sm-3">
                                 <img src="../../assets/img/petani/1.jpg" alt="" srcset=""/>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-sm-3">
                                 <img src="../../assets/img/petani/2.jpg" alt="" srcset=""/>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-sm-3">
                                 <img src="../../assets/img/petani/3.jpg" alt="" srcset=""/>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-sm-3">
                                 <img src="../../assets/img/petani/4.jpg" alt="" srcset=""/>
                             </div>
                         </div>
