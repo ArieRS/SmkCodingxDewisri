@@ -43,6 +43,9 @@ module.exports = function (app) {
     app.route('/auth/updateToPremium')
         .put(userController.updateToPremium);
 
+    app.route('/auth/tambahKoin')
+        .put(userController.tambahKoin);
+
 
     //Plant
     app.route('/plant/addPlant')

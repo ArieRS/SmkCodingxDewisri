@@ -92,6 +92,7 @@ exports.updateUser = function (req, res) {
         user.name = req.body.name ? req.body.name : user.name;
         user.phone = req.body.phone ? req.body.phone : user.phone;
         user.avatar = req.body.avatar ? req.body.avatar : user.avatar;
+        // user.isPremium = req.body.isPremium ? req.body.isPremium : user.isPremium;
         user.password = req.body.password ? bcrypt.hashSync(req.body.password, 10) : user.password;
 
         user.save(function (err) {
@@ -114,55 +115,80 @@ exports.updateToPremium = function (req, res) {
 
         var premiumType = req.body.premiumType;
         var date = new Date();
+        user.lamaPremium = date
 
-        var message = ""
+        var message = "Success"
 
-        if (user.isPremiumForever == false) {
-            if (premiumType == 'bulan') {
-                if (user.coins >= 90) {
-                    var months = date.setDate(date.getDate() + 30)
-                    user.lamaPremium = months
-                    user.coins = user.coins - 90
-                    user.isPremium = true;
+        // if (user.isPremium == false) {  
+            if (user.isPremiumForever == false) {
+                if (premiumType == 'bulan') {
+                    if (user.coins >= 90) {
+                        // var months = date.setDate(date.getDate() + 30)
+                        
+                        user.lamaPremium = new Date(date.setDate(date.getDate() + 30)).toString()
+                        user.coins = user.coins - 90
+                        user.isPremium = true;
 
-                }else{
-                    message = "Koin Kurang"
-                }
-            } else if (premiumType == 'musim') {
-                if (user.coins >=200) {
-                    var musim = date.setDate(date.getDate() + 120)
-                    user.lamaPremium = musim
-                    user.coins = user.coins - 200
-                    user.isPremium = true;
-                } else {
-                    message = "Koin Kurang"
-                }
-            } else if (premiumType == 'tahun') {
-                if (user.coins >= 365) {
-                    var tahun = date.setDate(date.getDate() + 360)
-                    user.lamaPremium = tahun
-                    user.coins = user.coins - 365
-                    user.isPremium = true;
-                } else {
-                    message = "Koin Kurang"
-                }
-            } else if (premiumType == "forever") {
-                if (user.coins >= 877) {
-                    user.isPremiumForever = true
-                    user.coins = user.coins - 877
-                    user.isPremium = true;
-                } else {
-                    message = "Koin Kurang"
+                    }else{
+                        message = "Koin Kurang"
+                    }
+                } else if (premiumType == 'musim') {
+                    if (user.coins >=200) {
+                        var musim = date.setDate(date.getDate() + 120)
+                        user.lamaPremium = musim
+                        user.coins = user.coins - 200
+                        user.isPremium = true;
+                    } else {
+                        message = "Koin Kurang"
+                    }
+                } else if (premiumType == 'tahun') {
+                    if (user.coins >= 365) {
+                        var tahun = date.setDate(date.getDate() + 360)
+                        user.lamaPremium = tahun
+                        user.coins = user.coins - 365
+                        user.isPremium = true;
+                    } else {
+                        message = "Koin Kurang"
+                    }
+                } else if (premiumType == "forever") {
+                    if (user.coins >= 877) {
+                        user.isPremiumForever = true
+                        user.coins = user.coins - 877
+                        user.isPremium = true;
+                    } else {
+                        message = "Koin Kurang"
+                    }
                 }
             }
-        }
-        
+        // } else {
+        //     message = "Anda Sudah Premium"
+        // }
         user.save(function (err) {
             if (err)
                 res.json(err);
             res.json({
                 status: 200,
-                message: 'Update to Premium',
+                message: message,
+                data: user
+            });
+        });
+    });
+};
+
+exports.tambahKoin = function (req, res) {
+
+    User.findById(req.body.userId, function (err, user) {
+        if (err)
+            res.send(err);
+
+        user.coins = parseInt(user.coins) + parseInt(req.body.coins);
+        // user.coins = 10
+        user.save(function (err) {
+            if (err)
+                res.json(err);
+            res.json({
+                status: 200,
+                message: "scucususa",
                 data: user
             });
         });

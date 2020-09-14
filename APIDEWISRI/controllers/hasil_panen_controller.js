@@ -47,7 +47,7 @@ exports.addHasilPanen = function (req, res) {
         //     data: result
         // })
         var PengeluaranPupuk = 0
-        var listPengeluaranPestisida = []
+        var PengeluaranBibit = 0
         var listPengeluaranBBM = []
         var listPengeluaranBibit = []
 
@@ -59,36 +59,37 @@ exports.addHasilPanen = function (req, res) {
                 Pupuk.findById( dataPupuk, function (err, pupukResult) {
                     
                     if (pupukResult != null) {
-                        PengeluaranPupuk += pupukResult.price * pupukResult.quantity
+                        PengeluaranPupuk = PengeluaranPupuk + (pupukResult.price * pupukResult.quantity)
                         console.log(PengeluaranPupuk);
+                        
+                    } else {
+                        console.log('kososng');
+                    }
+                    
+                })
+
+                // res.json({
+                //     status: 200,
+                //     data: PengeluaranPupuk
+                // })
+            }
+            const iteratorBibitListId =  element._idBBMList.values();
+            for (const dataBibit of iteratorBibitListId) {
+                // console.log("dataBibit: " + dataBibit);
+                BBM.findById( dataBibit, function (err, bibitResult) {
+                    
+                    if (bibitResult != null) {
+                        PengeluaranBibit += bibitResult.price * (bibitResult.dieselDuration/10)
+                        console.log(PengeluaranBibit);
                     } else {
                         console.log('kososng');
                     }
                     
                 })
             }
-            // const iteratorPupukListId =  element._idPupukList.values();
-            // for (const dataPupuk of iteratorPupukListId) {
-            //     // console.log("dataPupuk: " + dataPupuk);
-            //     Pupuk.findById( dataPupuk, function (err, pupukResult) {
-                    
-            //         if (pupukResult != null) {
-            //             PengeluaranPupuk += pupukResult.price * pupukResult.quantity
-            //             console.log(PengeluaranPupuk);
-            //         } else {
-            //             console.log('kososng');
-            //         }
-                    
-            //     })
-            // }
-            
-        },
-        // res.json({
-        //     status: 200,
-        //     data: listPengeluaranPupuk
-        // })
-        );
+        });
 
+        
 
           
     })
