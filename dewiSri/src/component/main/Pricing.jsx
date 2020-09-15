@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
-import Coba from './Coba';
+import ModalSyarat from './ModalSyarat';
 import ModalPricing from './ModalPricing'
 
 export default class Pricing extends Component {
@@ -46,55 +46,55 @@ export default class Pricing extends Component {
                 </div>
                 <div className="container mt-3">
                     <div className="container">
-                        <div class="row mt-5">
-                            <div class="col-lg-4 column">
-                                <div id="content" class="box wow fadeInLeft">
+                        <div className="row mt-5">
+                            <div className="col-lg-4 column">
+                                <div id="content" className="box wow fadeInLeft">
                                     <h3>Rencana 1</h3>
                                     <h4><sup>RP</sup>29.999<span>/ bulan</span></h4>
                                     <ul>
-                                    <li><i class="ion-android-checkmark-circle"></i> Anda dapat batalkan langganan kapan saja</li>
-                                    <li><i class="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
-                                    <li><i class="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
+                                    <li><i className="ion-android-checkmark-circle"></i> Anda dapat batalkan langganan kapan saja</li>
+                                    <li><i className="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
+                                    <li><i className="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
                                 </ul>
-                                    <a href="#" class="btn-get-started" onClick={this.showModal.bind(this, "22.999")}>Get Started</a>
+                                    <a href="#" className="btn-get-started" onClick={this.showModal.bind(this, "22.999")}>Beli</a>
                                 </div>
                             </div>
 
-                            <div class="col-lg-4">
-                                <div id="content" class="box featured wow fadeInUp">
+                            <div className="col-lg-4">
+                                <div id="content" className="box featured wow fadeInUp">
                                 <h3>Rencana 2</h3>
                                 <h4><sup>RP</sup>85.000<span>/ bulan</span></h4>
                                 <ul>
-                                    <li><i class="ion-android-checkmark-circle"></i> Anda dapat batalkan langganan kapan saja</li>
-                                    <li><i class="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
-                                    <li><i class="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
+                                    <li><i className="ion-android-checkmark-circle"></i> Anda dapat batalkan langganan kapan saja</li>
+                                    <li><i className="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
+                                    <li><i className="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
                                 </ul>
-                                <a href="#" class="btn-get-started" onClick={this.showModal.bind(this, "22.999")}>Get Started</a>
+                                <a href="#" className="btn-get-started" onClick={this.showModal.bind(this, "85.000")}>Beli</a>
                                 </div>
                             </div>
 
-                            <div class="col-lg-4">
-                                <div id="content" class="box wow fadeInRight">
+                            <div className="col-lg-4">
+                                <div id="content" className="box wow fadeInRight">
                                 <h3>Rencana 3</h3>
                                 <h4><sup>RP</sup>320.000<span>/ bulan</span></h4>
                                 <ul>
-                                    <li><i class="ion-android-checkmark-circle"></i> Anda dapat batalkan langganan kapan saja</li>
-                                    <li><i class="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
-                                    <li><i class="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
+                                    <li><i className="ion-android-checkmark-circle"></i> Anda dapat batalkan langganan kapan saja</li>
+                                    <li><i className="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
+                                    <li><i className="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
                                 </ul>
-                                <a href="#" class="btn-get-started" onClick={this.showModal.bind(this, "22.999")}>Get Started</a>
+                                <a href="#" className="btn-get-started" onClick={this.showModal.bind(this, "320.000")}>Beli</a>
                                 </div>
                             </div>
-                            <div class="col-lg-4 mx-auto">
-                                <div id="content" class="box wow fadeInRight">
+                            <div className="col-lg-4 mx-auto">
+                                <div id="content" className="box wow fadeInRight">
                                 <h3>Rencana 4</h3>
                                 <h4><sup>RP</sup>1.800.000<span>/ selamanya</span></h4>
                                 <ul>
-                                    <li><i class="ion-android-checkmark-circle"></i> Anda dapat batalkan langganan kapan saja</li>
-                                    <li><i class="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
-                                    <li><i class="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
+                                    <li><i className="ion-android-checkmark-circle"></i> Anda dapat batalkan langganan kapan saja</li>
+                                    <li><i className="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
+                                    <li><i className="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
                                 </ul>
-                                <a href="#" class="btn-get-started" onClick={this.showModal.bind(this, "22.999")}>Get Started</a>
+                                <a href="#" className="btn-get-started" onClick={this.showModal.bind(this, "1.800.000")}>Beli</a>
                                 </div>
                             </div>
                         </div>

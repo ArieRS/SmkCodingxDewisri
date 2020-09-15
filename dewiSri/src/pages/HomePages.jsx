@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import Section from '../component/main/Section'
-import Main from '../component/Main'
-
+import Intro from '../component/main/Intro'
 import Pricing from '../component/main/Pricing'
-import Navigation from '../component/main/Navigation'
-import Tanaman from '../component/main/DewiSriComponent/Tanaman'
 import KebutuhanTanam from '../component/main/KebutuhanTanam'
 import JurnalHarian from '../component/main/JurnalHarian'
 import CatatanPertanian from '../component/main/CatatanPertanian'
@@ -12,7 +8,7 @@ import Other from '../component/main/Other'
 import { LOGIN_END, GET_JOURNAL_BY_DATE, GET_PLANTING_NEEDS, ADD_JOURNAL } from '../system/Strings'
 import { postFunction, responseData, getDataFunction } from '../models/Model'
 import moment from 'moment';
-import Header2 from '../component/Header2'
+import Header from '../component/Header';
 
 export default class HomePages extends Component {
     constructor(props){
@@ -150,9 +146,7 @@ export default class HomePages extends Component {
                         bbmData: responseData.data[0]._idBBMList,
                         pupukData: responseData.data[0]._idPupukList,
                         pestisidaData: responseData.data[0]._idPestisidaList,
-                    },() => {/*console.log("dataaaaa: "+ this.state.pupukData);console.log(query)*/})
-                
-                
+                    },() => {/*console.log("dataaaaa: "+ this.state.pupukData);console.log(query)*/})        
             }else{
                 alert("galgagal")
             }
@@ -162,16 +156,12 @@ export default class HomePages extends Component {
     render() {
         return (
             <div>
-                {
-                    // this.state.isLogin ? <></> : <Section></Section> 
-                }
-                <Section></Section> 
+                {/* <Header state={this.state} method={this.method}></Header> */}
+                <Intro></Intro> 
                 {
                     this.state.isLogin ? 
                     <main id="main" className='mt-5'>
-
                         {/* <Navigation state={this.state} method={this.method} /> */}
-
                         {
                             this.state.journalDataByDate.length != 0 ? 
                             <>
@@ -186,7 +176,6 @@ export default class HomePages extends Component {
                             :
                             <div></div>
                         }
-                        
                     </main>
                     :
                     <div/>

@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-import Coba2 from './Coba2';
 import Modal from './Modal';
-import ModalPricing from './ModalPricing';
+import ModalFinal from './ModalFinal';
 
-export default class Coba extends Component {
+export default class ModalSyarat extends Component {
     slide(uang) {
-        console.log(uang)
-        ReactDOM.render(<Coba2 uang={uang}/>, document.getElementById("modal-content"))
+        ReactDOM.render(<ModalFinal />, document.getElementById("modal-content"))
     }
     
     left(uang) {
-        console.log(uang)
         ReactDOM.render(<Modal uang={uang} />, document.getElementById("modal-content"))
     }
 

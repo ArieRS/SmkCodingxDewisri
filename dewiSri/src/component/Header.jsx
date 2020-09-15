@@ -1,18 +1,84 @@
 import React, { Component } from 'react'
-import Tanaman from './main/Tanaman';
-import Navigation from './main/Navigation';
-
+import moment from "moment";
 
 export default class Header extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      isLogin: localStorage.getItem('auth')
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentDate: "",
+            dateFormat: "",
+            isLogin: localStorage.getItem('auth'),
+            position: 100
+        }
+        this.slideBefore = this.slideBefore.bind(this);
+        this.slideNext = this.slideNext.bind(this);
+        this.monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+        ];
+        this.method = {
+            logout: this._logout.bind(this)
+        }
     }
-    this.method = {
-      logout: this._logout.bind(this)
+
+    slideNext() {
+      const el = document.querySelector('.panel-tanaman #rincian-table');
+      const ukuran = document.querySelectorAll('.panel-tanaman #rincian-table .table-card');
+
+      this.setState({position: this.state.position + 100})
+      el.style.top = `-${this.state.position}px`;
+      if (this.state.position > (ukuran.length * 100)) {
+          console.log('kelebihan')
+      } else {
+          this.setState({position: this.state.position + 100})
+          el.style.top = `-${this.state.position}px`;
+          console.log(`position: ${this.state.position}`)
+      }
     }
-  }
+    
+    slideBefore() {
+        const el = document.querySelector('.panel-tanaman #rincian-table');
+        const ukuran = document.querySelectorAll('.panel-tanaman #rincian-table .table-card');
+        if (this.state.position < (ukuran.length * 100)) {
+            console.log('kelebihan')
+        } else {
+            this.setState({position: this.state.position - 100})
+            el.style.top = `-${this.state.position}px`;
+            console.log(`position: ${this.state.position}`)
+        }
+    }
+    
+    componentWillMount() {
+        this.getCurrentDate()
+    }
+
+    getCurrentDate() {
+        var newDateFormat = moment().format('L');
+        var currentDate = moment().format('LL');
+        this.setState({
+            currentDate: currentDate,
+            dateFormat: newDateFormat
+        }, console.log("date: " + newDateFormat))
+    }
+
+    dateDecrement(d) {
+        var newDateFormat = moment(d, "MM-DD-YYYY").subtract('days', 1).format('L');
+        var newDate = moment(d, "MM-DD-YYYY").subtract('days', 1);
+        console.log("current date state : " + d);
+        this.setState({
+            currentDate: newDate.format('LL'),
+            dateFormat: newDateFormat
+        })
+    }
+
+    dateIncrement(d) {
+        var newDateFormat = moment(d, "MM-DD-YYYY").add('days', 1).format('L');
+        var newDate = moment(d, "MM-DD-YYYY").add('days', 1);
+        console.log("current date state : " + d);
+        this.setState({
+            currentDate: newDate.format('LL'),
+            dateFormat: newDateFormat
+        })
+    }
 
   componentWillMount(){
     // console.log(this.props.isLogin);
@@ -49,29 +115,6 @@ export default class Header extends Component {
             </nav>
           </div>
         </div>
-        <div className="tanaman">
-          <div className="container">
-            <table>
-              <tr>
-                <th>Tanaman</th>
-                <td>:</td>
-                {/* <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> */}
-                <td>Kentang Besar</td>
-              </tr>
-              <tr>
-                <th>Komoditas</th>
-                <td>:</td>
-                {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
-                <td>Granola Jerman</td>
-              </tr>
-              <tr>
-                <th>Hari Ke</th>
-                <td>:</td>
-                <td>110</td>
-              </tr>
-            </table>
-          </div>
-        </div>
         <nav className="navigation-panel mt-0"> 
           <div className="container">
             <a className="btn btn-light rounded-pill" >
@@ -87,7 +130,6 @@ export default class Header extends Component {
                         <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
                     </svg>
                 </a>
-
                 {/* <span><b>{this.props.state.currentDate}</b></span> */}
                 <span><b>11 september 2020</b></span>
                 {/* <a onClick={() => this.props.method.dateIncrement(this.props.state.dateFormat)}> */}
@@ -100,6 +142,75 @@ export default class Header extends Component {
             <i className="fa fa-user-circle fa-2x"></i>
           </div>
         </nav>
+        <div id="panel-tanaman" className="panel-tanaman">
+          <div className="container">
+            <div id="button" className="btn-left">
+              <img src="../../assets/img/icon/next.svg" alt="" onClick={this.slideBefore}/>
+            </div>
+            <div id="rincian-table" className="table-wrapper">
+              <table className="table-card">
+                <tr>
+                  <th>Tanaman1</th>
+                  <td>:</td>
+                  {/* <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> */}
+                  <td>Kentang Besar</td>
+                </tr>
+                <tr>
+                  <th>Komoditas</th>
+                  <td>:</td>
+                  {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
+                  <td>Granola Jerman</td>
+                </tr>
+                <tr>
+                  <th>Hari Ke</th>
+                  <td>:</td>
+                  <td>110</td>
+                </tr>
+              </table>
+              <table className="table-card">
+                <tr>
+                  <th>Tanaman2</th>
+                  <td>:</td>
+                  {/* <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> */}
+                  <td>Kentang Besar</td>
+                </tr>
+                <tr>
+                  <th>Komoditas</th>
+                  <td>:</td>
+                  {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
+                  <td>Granola Jerman</td>
+                </tr>
+                <tr>
+                  <th>Hari Ke</th>
+                  <td>:</td>
+                  <td>110</td>
+                </tr>
+              </table>
+              <table className="table-card">
+                <tr>
+                  <th>Tanaman3</th>
+                  <td>:</td>
+                  {/* <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> */}
+                  <td>Kentang Besar</td>
+                </tr>
+                <tr>
+                  <th>Komoditas</th>
+                  <td>:</td>
+                  {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
+                  <td>Granola Jerman</td>
+                </tr>
+                <tr>
+                  <th>Hari Ke</th>
+                  <td>:</td>
+                  <td>110</td>
+                </tr>
+              </table>
+            </div>
+            <div id="button" className="btn-right">
+              <img src="../../assets/img/icon/next.svg" alt="" onClick={this.slideNext}/>
+            </div>
+          </div>
+        </div>
       </header>
     )
   }

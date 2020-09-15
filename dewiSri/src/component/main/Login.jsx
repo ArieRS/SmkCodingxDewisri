@@ -7,8 +7,7 @@ export default class Login extends Component {
         super(props);
         this.state = {
             phone: "",
-            password: "",
-
+            password: ""
         }
     }
 
@@ -43,7 +42,6 @@ export default class Login extends Component {
                 alert(responseData.message)
             }
         })
-
     }
 
     render() {

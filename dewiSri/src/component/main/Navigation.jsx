@@ -2,48 +2,6 @@ import React, { Component } from 'react'
 // import moment from 'moment';
 import moment from 'moment';
 export default class Navigation extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         currentDate: "",
-    //         dateFormat: ""
-    //     }
-    //     this.monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
-    //         "Juli", "Agustus", "September", "Oktober", "November", "Desember"
-    //     ];
-    // }
-    // componentWillMount() {
-    //     this.getCurrentDate()
-    // }
-
-    // getCurrentDate() {
-    //     var newDateFormat = moment().format('L');
-    //     var currentDate = moment().format('LL');
-    //     this.setState({
-    //         currentDate: currentDate,
-    //         dateFormat: newDateFormat
-    //     }, console.log("date: " + newDateFormat))
-    // }
-
-    // dateDecrement(d) {
-    //     var newDateFormat = moment(d, "MM-DD-YYYY").subtract('days', 1).format('L');
-    //     var newDate = moment(d, "MM-DD-YYYY").subtract('days', 1);
-    //     console.log("current date state : " + d);
-    //     this.setState({
-    //         currentDate: newDate.format('LL'),
-    //         dateFormat: newDateFormat
-    //     })
-    // }
-
-    // dateIncrement(d) {
-    //     var newDateFormat = moment(d, "MM-DD-YYYY").add('days', 1).format('L');
-    //     var newDate = moment(d, "MM-DD-YYYY").add('days', 1);
-    //     console.log("current date state : " + d);
-    //     this.setState({
-    //         currentDate: newDate.format('LL'),
-    //         dateFormat: newDateFormat
-    //     })
-    // }
 
     render() {
         return (

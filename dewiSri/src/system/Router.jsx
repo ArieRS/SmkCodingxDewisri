@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from '../component/Header';
-import Header2 from '../component/Header2';
 import HomePages from '../pages/HomePages';
 import Footer from '../component/Footer';
 import MainPage from '../pages/MainPage';

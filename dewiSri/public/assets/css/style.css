@@ -57,22 +57,6 @@ h6 {
   margin: 0 0 20px 0;
   padding: 0;
 }
-
-/* Back to top button */
-.back-to-top {
-  position: fixed;
-  display: none;
-  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
-  color: #fff;
-  padding: 2px 20px 8px 20px;
-  font-size: 16px;
-  border-radius: 4px 4px 0 0;
-  right: 15px;
-  bottom: 0;
-  transition: none;
-  font-family: "Ubuntu", sans-serif;
-}
-
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -82,9 +66,7 @@ h6 {
   left: 0;
   top: 0;
   right: 0;
-  transition: all 0.5s;
   z-index: 99;
-  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
 }
 
 .tanaman {
@@ -109,7 +91,8 @@ h6 {
 }
 
 #header.header-fixed {
-  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
+  /* background: linear-gradient(45deg, var(--greenColor), var(--blueColor)); */
+  background-color: #343B40E6;
   padding: 20px 0;
   transition: all 0.5s;
 }
@@ -698,8 +681,7 @@ content {
 }
 
 
-.panel-tanaman {
-  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
+.panel-tanaman .container {
   padding: 15px 10px;
   display: flex;
   align-items: center;
@@ -714,7 +696,6 @@ content {
 }
 
 .panel-tanaman #rincian-table {
-  /* width: 500px; */
   height: 80px;
   margin-top: 10px;
   position: relative;
@@ -722,16 +703,25 @@ content {
 
 .panel-tanaman #rincian-table .table-card {
   display: block;
-  width: 500px;
+  /* width: 500px; */
   height: 100px;
   font-family: "Ubuntu", sans-serif;
   font-weight: bold;
 }
 
+.panel-tanaman img {
+  width: 50px;
+}
+
+.panel-tanaman .btn-left {
+  cursor: pointer;
+  transition: ease 0.2s;
+  transform: rotate(180deg);
+}
+
 .panel-tanaman .btn-right {
   width: 50px;
   cursor: pointer;
-  opacity: 0.5;
   transition: ease 0.2s;
 }
 
@@ -767,12 +757,15 @@ content {
   width: 50px;
 }
 
-/* content Plant It Prmium */
-
-.section-header-content {
-
+.modal-final {
+  text-align: center;
 }
 
+.modal-final img {
+  width: 50px;
+}
+
+/* content Plant It Prmium */
 .section-header-content .foto-petani {
   height: 10vh;
   min-height: 50vh;
@@ -953,11 +946,14 @@ table thead tr {
   text-align: center;
 }
 
-/* 
-.modal-body .card {
-  width: 200px;
-  margin: 1px;
-} */
+
+.modal-body .card.money, .card.coin {
+  text-align: center;
+}
+
+.card-body div img {
+  width: 58px;
+}
 
 .modal-body .card img {
   width: 70px;
@@ -1144,5 +1140,17 @@ table thead tr {
   .navigation-panel .tanggal {
     margin: 0;
     font-size: var(--smallFont);
+  }
+
+  .panel-tanaman .container .btn-left img, .btn-right img {
+    width: 35px;
+  }
+
+  #rincian-table .table-card {
+    margin-left: 50px;
+  }
+
+  #rincian-table table {
+    font-size: 14px;
   }
 }
