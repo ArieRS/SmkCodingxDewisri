@@ -133,64 +133,66 @@ export default class CatatanPertanian extends Component {
 
     render() {
         return (
-            <section id="content" className="my-5">
-                <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}></Modal>    
-                <div className="container">
-                    <div className="card-catatan-pertanian">
-                        <div className="row">
-                            <div className="col">
-                                <div className="section-header">
-                                    <h3 className="section-title">Hasil Panen</h3>
-                                    <span className="section-divider"></span>
+            <div id="hasilPanen">
+                <section id="content" className="my-5">
+                    <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}></Modal>    
+                    <div className="container">
+                        <div className="card-catatan-pertanian">
+                            <div className="row">
+                                <div className="col">
+                                    <div className="section-header">
+                                        <h3 className="section-title">Hasil Panen</h3>
+                                        <span className="section-divider"></span>
+                                    </div>
                                 </div>
                             </div>
+                            <div className="table-responsive-xl">
+                                <table className="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Tanggal Input</th>
+                                            <th>Jumlah</th>
+                                            <th>Harga Pasar (Kg)</th>
+                                            <th>Keterangan</th>
+                                            <th>Keuntungan Bersih</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>10 - 8 - 2000</td>
+                                            <td>100</td>
+                                            <td>1.000.000</td>
+                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
+                                            <td><img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>10 - 8 - 2000</td>
+                                            <td>100</td>
+                                            <td>1.000.000</td>
+                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
+                                            <td><img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>10 - 8 - 2000</td>
+                                            <td>100</td>
+                                            <td>1.000.000</td>
+                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
+                                            <td><img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button className="btn-get-started mt-2" onClick={this.modalShowHide}>
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                </svg>
+                                <span className="d-none d-md-inline text-light ml-1">Tambah Data</span>
+                            </button>
+                            <a href="#" className="btn-get-started mt-3">Download Data</a>
                         </div>
-                        <div className="table-responsive-xl">
-                            <table className="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Tanggal Input</th>
-                                        <th>Jumlah</th>
-                                        <th>Harga Pasar (Kg)</th>
-                                        <th>Keterangan</th>
-                                        <th>Keuntungan Bersih</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>10 - 8 - 2000</td>
-                                        <td>100</td>
-                                        <td>1.000.000</td>
-                                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
-                                        <td><img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>10 - 8 - 2000</td>
-                                        <td>100</td>
-                                        <td>1.000.000</td>
-                                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
-                                        <td><img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>10 - 8 - 2000</td>
-                                        <td>100</td>
-                                        <td>1.000.000</td>
-                                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
-                                        <td><img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <button className="btn-get-started mt-2" onClick={this.modalShowHide}>
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                            </svg>
-                            <span className="d-none d-md-inline text-light ml-1">Tambah Data</span>
-                        </button>
-                        <a href="#" className="btn-get-started mt-3">Download Data</a>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         )
     }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import ModalSyarat from './ModalSyarat';
 
-export default class Modal extends Component {
+export default class ModalPricing extends Component {
     slide(uang) {
         ReactDOM.render(<ModalSyarat uang={uang} />, document.getElementById('modal-content'));
     }

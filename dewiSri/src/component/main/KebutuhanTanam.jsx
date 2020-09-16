@@ -210,98 +210,31 @@ export default class KebutuhanTaman extends Component {
 
     render() {
         return (
-            <section id="content" className="my-5">
-                <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}>
-                </Modal>
-                <div className="card-kebutuhan-tanam my-3">
-                    <div className="section-header">
-                        <h3 className="section-title">Kebutuhan Tanam</h3>
-                        <span className="section-divider"></span>
-                    </div>
-                    <a href="#" className="btn-get-started">Download Data</a>
-                    <div className="container mt-3">
-                        <nav className="nav-fill mb-3">
-                            <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a className="nav-link active" id="nav-bibit-tab" onClick={() => this.setState({type: 'bibit'})} data-toggle="tab" href="#nav-bibit" role="tab" aria-controls="nav-bibit" aria-selected="true">Bibit</a>
-                                <a className="nav-link" id="nav-pupuk-tab" onClick={() => this.setState({type: 'pupuk'})}  data-toggle="tab" href="#nav-pupuk" role="tab" aria-controls="nav-pupuk" aria-selected="false"><span>Pupuk</span></a>
-                                <a className="nav-link" id="nav-bbm-tab" data-toggle="tab" onClick={() => this.setState({type: 'bbm'})}  href="#nav-bbm" role="tab" aria-controls="nav-bbm" aria-selected="false">BBM</a>
-                                <a className="nav-link" id="nav-pestisida-tab" data-toggle="tab" onClick={() => this.setState({type: 'pestisida'})} href="#nav-pestisida" role="tab" aria-controls="nav-pestisida" aria-selected="false">Pestisida</a>
-                            </div>
-                        </nav>
-                        <div className="tab-content" id="nav-tabContent">   
-                            <div className="tab-pane fade show active" id="nav-bibit" role="tabpanel" aria-labelledby="nav-bibit-tab">
-
-                              {/* <EnhancedTable rows={} tab="Bibit"/> */}
-                              {/* <h2 className="text-center">Bibit</h2> */}
-                              <table className="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Tanggal Input</th>
-                                        <th scope="col">Jumlah</th>
-                                        <th scope="col">Harga</th>
-                                        <th scope="col">Keterangan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        this.props.state.bibitData.map((item, index) => {
-                                            return(
-                                                <tr>
-                                                    <td>{this.props.state.bibitData[index].date_input}</td>
-                                                    <td>{this.props.state.bibitData[index].quantity}</td>
-                                                    <td>{this.props.state.bibitData[index].price}</td>
-                                                    <td>{this.props.state.bibitData[index].keterangan}</td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </table>
-                                <button className="btn-get-started mt-1" onClick={this.modalShowHide}>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                    </svg>
-                                    <span className="d-none d-md-inline text-light ml-1">Tambah Data</span>
-                                </button>
-                                
-                            </div>
-                            <div className="tab-pane fade" id="nav-pupuk" role="tabpanel" aria-labelledby="nav-pupuk-tab">
-
-                                {/* <EnhancedTable tab="Pupuk"/> */}
-                                <table className="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Tanggal Input</th>
-                                        <th scope="col">Jumlah</th>
-                                        <th scope="col">Harga</th>
-                                        <th scope="col">Keterangan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        this.props.state.pupukData.map((item, index) => {
-                                            return(
-                                                <tr>
-                                                    <td>{this.props.state.pupukData[index].date_input}</td>
-                                                    <td>{this.props.state.pupukData[index].quantity}</td>
-                                                    <td>{this.props.state.pupukData[index].price}</td>
-                                                    <td>{this.props.state.pupukData[index].keterangan}</td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                                </table>
-                                <button className="btn-get-started mt-3"  onClick={this.modalShowHide}>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                    </svg>
-                                    <span className="d-none d-md-inline text-light ml-1">Tambah Data</span>
-                                </button>
-                            </div>
-                            <div className="tab-pane fade " id="nav-bbm" role="tabpanel" aria-labelledby="nav-mmb-tab">
-                              {/* <EnhancedTable tab="BBM" /> */}
-                                <table className="table table-bordered">
+            <div id="kebutuhanTanam">
+                <section id="content" className="my-5">
+                    <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}>
+                    </Modal>
+                    <div className="card-kebutuhan-tanam my-3">
+                        <div className="section-header">
+                            <h3 className="section-title">Kebutuhan Tanam</h3>
+                            <span className="section-divider"></span>
+                        </div>
+                        <a href="#" className="btn-get-started">Download Data</a>
+                        <div className="container mt-3">
+                            <nav className="nav-fill mb-3">
+                                <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a className="nav-link active" id="nav-bibit-tab" onClick={() => this.setState({type: 'bibit'})} data-toggle="tab" href="#nav-bibit" role="tab" aria-controls="nav-bibit" aria-selected="true">Bibit</a>
+                                    <a className="nav-link" id="nav-pupuk-tab" onClick={() => this.setState({type: 'pupuk'})}  data-toggle="tab" href="#nav-pupuk" role="tab" aria-controls="nav-pupuk" aria-selected="false"><span>Pupuk</span></a>
+                                    <a className="nav-link" id="nav-bbm-tab" data-toggle="tab" onClick={() => this.setState({type: 'bbm'})}  href="#nav-bbm" role="tab" aria-controls="nav-bbm" aria-selected="false">BBM</a>
+                                    <a className="nav-link" id="nav-pestisida-tab" data-toggle="tab" onClick={() => this.setState({type: 'pestisida'})} href="#nav-pestisida" role="tab" aria-controls="nav-pestisida" aria-selected="false">Pestisida</a>
+                                </div>
+                            </nav>
+                            <div className="tab-content" id="nav-tabContent">   
+                                <div className="tab-pane fade show active" id="nav-bibit" role="tabpanel" aria-labelledby="nav-bibit-tab">
+    
+                                  {/* <EnhancedTable rows={} tab="Bibit"/> */}
+                                  {/* <h2 className="text-center">Bibit</h2> */}
+                                  <table className="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th scope="col">Tanggal Input</th>
@@ -312,30 +245,31 @@ export default class KebutuhanTaman extends Component {
                                     </thead>
                                     <tbody>
                                         {
-                                            this.props.state.bbmData.map((item, index) => {
+                                            this.props.state.bibitData.map((item, index) => {
                                                 return(
                                                     <tr>
-                                                        <td>{this.props.state.bbmData[index].date_input}</td>
-                                                        <td>{this.props.state.bbmData[index].diesel_duration}</td>
-                                                        <td>{this.props.state.bbmData[index].price}</td>
-                                                        <td>{this.props.state.bbmData[index].keterangan}</td>
+                                                        <td>{this.props.state.bibitData[index].date_input}</td>
+                                                        <td>{this.props.state.bibitData[index].quantity}</td>
+                                                        <td>{this.props.state.bibitData[index].price}</td>
+                                                        <td>{this.props.state.bibitData[index].keterangan}</td>
                                                     </tr>
                                                 )
                                             })
                                         }
                                     </tbody>
                                 </table>
-                                <button className="btn-get-started mt-3"  onClick={this.modalShowHide}>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                    </svg>
-                                    <span className="d-none d-md-inline text-light ml-1">Tambah Data</span>
-                                </button>
-                            </div>
-                            <div className="tab-pane fade" id="nav-pestisida" role="tabpanel" aria-labelledby="nav-pestisida-tab">
-                              {/* <EnhancedTable tab="Pestisida" /> */}
-                                {/* <div className="text-center"></div> */}
-                                <table className="table table-bordered">
+                                    <button className="btn-get-started mt-1" onClick={this.modalShowHide}>
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                        </svg>
+                                        <span className="d-none d-md-inline text-light ml-1">Tambah Data</span>
+                                    </button>
+                                    
+                                </div>
+                                <div className="tab-pane fade" id="nav-pupuk" role="tabpanel" aria-labelledby="nav-pupuk-tab">
+    
+                                    {/* <EnhancedTable tab="Pupuk"/> */}
+                                    <table className="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th scope="col">Tanggal Input</th>
@@ -346,30 +280,98 @@ export default class KebutuhanTaman extends Component {
                                     </thead>
                                     <tbody>
                                         {
-                                            this.props.state.pestisidaData.map((item, index) => {
+                                            this.props.state.pupukData.map((item, index) => {
                                                 return(
                                                     <tr>
-                                                        <td>{this.props.state.pestisidaData[index].date_input}</td>
-                                                        <td>{this.props.state.pestisidaData[index].quantity}</td>
-                                                        <td>{this.props.state.pestisidaData[index].price}</td>
-                                                        <td>{this.props.state.pestisidaData[index].keterangan}</td>
+                                                        <td>{this.props.state.pupukData[index].date_input}</td>
+                                                        <td>{this.props.state.pupukData[index].quantity}</td>
+                                                        <td>{this.props.state.pupukData[index].price}</td>
+                                                        <td>{this.props.state.pupukData[index].keterangan}</td>
                                                     </tr>
                                                 )
                                             })
                                         }
                                     </tbody>
-                                </table>
-                                <button className="btn-get-started mt-3" onClick={this.modalShowHide}>
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                    </svg>
-                                    <span className="d-none d-md-inline text-light ml-1">Tambah Data</span>
-                                </button>
+                                    </table>
+                                    <button className="btn-get-started mt-3"  onClick={this.modalShowHide}>
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                        </svg>
+                                        <span className="d-none d-md-inline text-light ml-1">Tambah Data</span>
+                                    </button>
+                                </div>
+                                <div className="tab-pane fade " id="nav-bbm" role="tabpanel" aria-labelledby="nav-mmb-tab">
+                                  {/* <EnhancedTable tab="BBM" /> */}
+                                    <table className="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Tanggal Input</th>
+                                                <th scope="col">Jumlah</th>
+                                                <th scope="col">Harga</th>
+                                                <th scope="col">Keterangan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                this.props.state.bbmData.map((item, index) => {
+                                                    return(
+                                                        <tr>
+                                                            <td>{this.props.state.bbmData[index].date_input}</td>
+                                                            <td>{this.props.state.bbmData[index].diesel_duration}</td>
+                                                            <td>{this.props.state.bbmData[index].price}</td>
+                                                            <td>{this.props.state.bbmData[index].keterangan}</td>
+                                                        </tr>
+                                                    )
+                                                })
+                                            }
+                                        </tbody>
+                                    </table>
+                                    <button className="btn-get-started mt-3"  onClick={this.modalShowHide}>
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                        </svg>
+                                        <span className="d-none d-md-inline text-light ml-1">Tambah Data</span>
+                                    </button>
+                                </div>
+                                <div className="tab-pane fade" id="nav-pestisida" role="tabpanel" aria-labelledby="nav-pestisida-tab">
+                                  {/* <EnhancedTable tab="Pestisida" /> */}
+                                    {/* <div className="text-center"></div> */}
+                                    <table className="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Tanggal Input</th>
+                                                <th scope="col">Jumlah</th>
+                                                <th scope="col">Harga</th>
+                                                <th scope="col">Keterangan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                this.props.state.pestisidaData.map((item, index) => {
+                                                    return(
+                                                        <tr>
+                                                            <td>{this.props.state.pestisidaData[index].date_input}</td>
+                                                            <td>{this.props.state.pestisidaData[index].quantity}</td>
+                                                            <td>{this.props.state.pestisidaData[index].price}</td>
+                                                            <td>{this.props.state.pestisidaData[index].keterangan}</td>
+                                                        </tr>
+                                                    )
+                                                })
+                                            }
+                                        </tbody>
+                                    </table>
+                                    <button className="btn-get-started mt-3" onClick={this.modalShowHide}>
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                        </svg>
+                                        <span className="d-none d-md-inline text-light ml-1">Tambah Data</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         )
     }
 }

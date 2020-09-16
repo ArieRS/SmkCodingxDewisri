@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-import Modal from './Modal';
+import ModalPricing from './ModalPricing';
 import ModalFinal from './ModalFinal';
 
 export default class ModalSyarat extends Component {
@@ -9,7 +9,7 @@ export default class ModalSyarat extends Component {
     }
     
     left(uang) {
-        ReactDOM.render(<Modal uang={uang} />, document.getElementById("modal-content"))
+        ReactDOM.render(<ModalPricing uang={uang} />, document.getElementById("modal-content"))
     }
 
     render() {
