@@ -11,7 +11,7 @@ import moment from 'moment';
 import Header from '../component/Header';
 
 export default class HomePages extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             isLogin: localStorage.getItem('auth'),
@@ -21,7 +21,7 @@ export default class HomePages extends Component {
             bbmData: [],
             pupukData: [],
             pestisidaData: [],
-            date:'',
+            date: '',
             index: 0,
             currentDate: "",
             dateFormat: "",
@@ -34,12 +34,12 @@ export default class HomePages extends Component {
         }
     }
 
-    async componentWillMount(){
+    async componentWillMount() {
         await this.getUserData();
         await this.getCurrentDate();
     }
 
-    async getUserData(){
+    async getUserData() {
         var data = new FormData()
 
         data.append('phone', localStorage.getItem('phone'))
@@ -51,15 +51,15 @@ export default class HomePages extends Component {
                 this.setState({
                     userData: responseData.data,
                     journalData: responseData.data.journalList
-                },() => console.log('userData: '+this.state.userData._id))
-                
+                }, () => console.log('userData: ' + this.state.userData._id))
+
             } else {
                 alert(responseData.message)
             }
         })
 
     }
-    
+
     getCurrentDate() {
         var newDateFormat = moment().format('L');
         var currentDate = moment().format('LL');
@@ -68,7 +68,7 @@ export default class HomePages extends Component {
             currentDate: currentDate,
             dateFormat: newDateFormat,
             dateIsoFormat: isoDate
-        },() => this.getPlantByDate())
+        }, () => this.getPlantByDate())
     }
 
     dateDecrement(d) {
@@ -80,7 +80,7 @@ export default class HomePages extends Component {
             currentDate: newDate.format('LL'),
             dateFormat: newDateFormat,
             dateIsoFormat: isoDate
-        },() => this.getPlantByDate(isoDate))
+        }, () => this.getPlantByDate(isoDate))
 
     }
 
@@ -93,61 +93,64 @@ export default class HomePages extends Component {
             currentDate: newDate.format('LL'),
             dateFormat: newDateFormat,
             dateIsoFormat: isoDate
-        },() => this.getPlantByDate(isoDate))
+        }, () => this.getPlantByDate(isoDate))
     }
 
-    async getPlantByDate(inputDate){
+    async getPlantByDate(inputDate) {
         var data = new FormData();
         data.append('owner_userId', this.state.userData._id);
-        
+
         if (inputDate != null || inputDate != undefined) {
             data.append('inputDate', inputDate)
         }
         // inputDate != null || inputDate != undefined ? data.append('inputDate', inputDate) : '';
-        
-        var query = GET_JOURNAL_BY_DATE+this.state.userData._id+'/'+this.state.dateIsoFormat;
+
+        var query = GET_JOURNAL_BY_DATE + this.state.userData._id + '/' + this.state.dateIsoFormat;
 
         console.log(query);
         await getDataFunction(query).then(() => {
             if (responseData.status == 200) {
-                
+
                 if (responseData.data == undefined || responseData.data == null || responseData.data.length == 0) {
                     postFunction(data, ADD_JOURNAL).then(() => {
                         // alert(responseData.status)
                         // alert(ADD_JOURNAL)
                         window.location.reload()
                     })
-                }{
+                } {
                     this.setState({
-                    journalDataByDate: responseData.data,
+                        journalDataByDate: responseData.data,
 
-                    },() => {
+                    }, () => {
                         // console.log("dataaaaa: "+ this.state.journalDataByDate);
                         // console.log(query);
-                        if (this.state.journalDataByDate.length != 0) {   
-                            // this.getPlantingN    eeds(this.state.journalDataByDate[0].plantList[0]._id)
+                        if (this.state.journalDataByDate.length != 0) {
+                            if (this.state.journalDataByDate[0].plantList.length != 0) {
+                                this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
+                            }
+                            console.log('getPlant : '+this.state.journalDataByDate[0].plantList);
                         }
                     })
                 }
-            }else{
+            } else {
                 alert("galgagal")
             }
         })
     }
 
-    async getPlantingNeeds(idPlant){
-        var query = GET_PLANTING_NEEDS+idPlant;
+    async getPlantingNeeds(idPlant) {
+        var query = GET_PLANTING_NEEDS + idPlant;
         console.log(query);
         await getDataFunction(query).then(() => {
             if (responseData.status == 200) {
-                if(responseData.data.length != 0) 
+                if (responseData.data.length != 0)
                     this.setState({
                         bibitData: responseData.data[0]._idBibit,
                         bbmData: responseData.data[0]._idBBMList,
                         pupukData: responseData.data[0]._idPupukList,
                         pestisidaData: responseData.data[0]._idPestisidaList,
-                    },() => {/*console.log("dataaaaa: "+ this.state.pupukData);console.log(query)*/})        
-            }else{
+                    }, () => {/*console.log("dataaaaa: "+ this.state.pupukData);console.log(query)*/ })
+            } else {
                 alert("galgagal")
             }
         })
@@ -156,30 +159,38 @@ export default class HomePages extends Component {
     render() {
         return (
             <div>
-                <Header state={this.state} method={this.method}></Header>
-                <Intro></Intro> 
+
                 {
-                    this.state.isLogin ? 
-                    <main id="main" className='mt-5'>
-                        {/* <Navigation state={this.state} method={this.method} /> */}
-                        {
-                            this.state.journalDataByDate.length != 0 ? 
-                            <>
+                    this.state.isLogin && this.state.journalDataByDate.length != 0 ?
+                        <>
+                            <div className="container-fluid bg-dark" style={{ width: '100vw', height: '50vh' }}>
+                                <Header state={this.state} method={this.method}></Header>
+                                {/* <Intro></Intro>  */}
+                            </div>
+                            <main id="main" className='mt-5'>
                                 {/* <Navigation state={this.state} method={this.method} /> */}
-                                {/* <Tanaman state={this.state} method={this.method} /> */}
-                                <KebutuhanTanam state={this.state} method={this.method}/>
-                                <JurnalHarian state={this.state} method={this.method}/>
-                                <CatatanPertanian />
-                                <Other />
-                                <Pricing />
-                            </>
-                            :
-                            <div></div>
-                        }
-                    </main>
-                    :
-                    <div/>
-                    }
+                                {
+                                    this.state.journalDataByDate.length != 0 ?
+                                        <>
+                                            {/* <Navigation state={this.state} method={this.method} /> */}
+                                            {/* <Tanaman state={this.state} method={this.method} /> */}
+                                            <KebutuhanTanam state={this.state} method={this.method} />
+                                            <JurnalHarian state={this.state} method={this.method} />
+                                            <CatatanPertanian />
+                                            <Other />
+                                            <Pricing />
+                                        </>
+                                        :
+                                        <div></div>
+                                }
+                            </main>
+                        </>
+                        :
+                        <div>
+                            <Header state={this.state} method={this.method}></Header>
+                            <Intro></Intro>
+                        </div>
+                }
             </div>
         )
     }
