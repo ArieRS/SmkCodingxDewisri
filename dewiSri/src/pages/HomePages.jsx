@@ -156,7 +156,7 @@ export default class HomePages extends Component {
     render() {
         return (
             <div>
-                {/* <Header state={this.state} method={this.method}></Header> */}
+                <Header state={this.state} method={this.method}></Header>
                 <Intro></Intro> 
                 {
                     this.state.isLogin ? 

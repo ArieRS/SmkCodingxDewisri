@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Modal from './Modal'
 
 export default function ModalPricing({handleClose, show, children, state, method, uang, koin}) {
+    state = {
+        openModal: <Modal />
+    }
     const showHideClassName = show ? "modal display-block" : "modal display-none";
 
     return (
@@ -18,7 +21,7 @@ export default function ModalPricing({handleClose, show, children, state, method
                         <div className="modal-body">
                             <div className="container">
                                 <div id="modal-content" className="content">
-                                    <Modal uang={uang} koin={koin}/>
+                                    { state.openModal }
                                 </div>
                             </div>
                         </div>

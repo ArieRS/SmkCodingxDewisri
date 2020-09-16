@@ -26,25 +26,25 @@ export default class Header extends Component {
 
       this.setState({position: this.state.position + 100})
       el.style.top = `-${this.state.position}px`;
-      if (this.state.position > (ukuran.length * 100)) {
-          console.log('kelebihan')
-      } else {
-          this.setState({position: this.state.position + 100})
-          el.style.top = `-${this.state.position}px`;
-          console.log(`position: ${this.state.position}`)
-      }
+      // if (this.state.position > (ukuran.length * 100)) {
+      //     console.log('kelebihan')
+      // } else {
+      // }
+      this.setState({position: this.state.position + 100})
+      el.style.top = `-${this.state.position}px`;
+      console.log(`position: ${this.state.position}`)
     }
     
     slideBefore() {
         const el = document.querySelector('.panel-tanaman #rincian-table');
         const ukuran = document.querySelectorAll('.panel-tanaman #rincian-table .table-card');
-        if (this.state.position < (ukuran.length * 100)) {
-            console.log('kelebihan')
-        } else {
-            this.setState({position: this.state.position - 100})
-            el.style.top = `-${this.state.position}px`;
-            console.log(`position: ${this.state.position}`)
-        }
+        // if (this.state.position < (ukuran.length * 100)) {
+        //     console.log('kelebihan')
+        // } else {
+        // }
+        this.setState({position: this.state.position - 100})
+        el.style.top = `-${this.state.position}px`;
+        console.log(`position: ${this.state.position}`)
     }
     
     componentWillMount() {
@@ -124,16 +124,16 @@ export default class Header extends Component {
             </svg> <span className="d-none d-md-inline text-success">Get Premium</span>
             </a>
             <div className="tanggal">
-                {/* <a onClick={() => this.props.method.dateDecrement(this.props.state.dateFormat)}> */}
-                <a href="#">
+                <a onClick={() => this.props.method.dateDecrement(this.props.state.dateFormat)}>
+                {/* <a href="#"> */}
                     <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-caret-left-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
                     </svg>
                 </a>
-                {/* <span><b>{this.props.state.currentDate}</b></span> */}
-                <span><b>11 september 2020</b></span>
-                {/* <a onClick={() => this.props.method.dateIncrement(this.props.state.dateFormat)}> */}
-                <a href="#">
+                <span><b>{this.props.state.currentDate}</b></span>
+                {/* <span><b>11 september 2020</b></span> */}
+                <a onClick={() => this.props.method.dateIncrement(this.props.state.dateFormat)}>
+                {/* <a href="#"> */}
                     <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
                     </svg>

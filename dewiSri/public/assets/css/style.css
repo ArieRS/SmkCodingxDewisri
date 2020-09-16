@@ -761,6 +761,11 @@ content {
   text-align: center;
 }
 
+.modal-final .footer button  {
+  background: linear-gradient(45deg, var(--greenColor), var(--blueColor));
+  color: white;
+}
+
 .modal-final img {
   width: 50px;
 }

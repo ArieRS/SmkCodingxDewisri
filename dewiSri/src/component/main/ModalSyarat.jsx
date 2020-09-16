@@ -4,7 +4,7 @@ import Modal from './Modal';
 import ModalFinal from './ModalFinal';
 
 export default class ModalSyarat extends Component {
-    slide(uang) {
+    slide() {
         ReactDOM.render(<ModalFinal />, document.getElementById("modal-content"))
     }
     
@@ -21,7 +21,8 @@ export default class ModalSyarat extends Component {
                     <li>Pembayaran berikutnya tanggal 17 September 2020</li>
                 </ul>
                 <div className="footer">
-                    <button className="btn btn-custom mx-2" onClick={this.slide.bind(this, this.props.uang)}>Lanjut</button>
+                    {console.log(this.props)}
+                    <button className="btn btn-custom mx-2" onClick={this.slide.bind(this, this.props.uang, this.props.handleClose)}>Lanjut</button>
                     <button className="btn btn-secondary" onClick={this.left.bind(this, this.props.uang)}>Kembali</button>
                 </div>
             </div>
