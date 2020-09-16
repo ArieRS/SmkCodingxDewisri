@@ -128,7 +128,7 @@ export default class JurnalHarian extends Component {
 
     render() {
         return (
-            <div className="container mt-5">
+            <div id="jurnalHarian" className="container mt-5">
                 <section id="content" className="card-jurnal-harian">
                     <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}></Modal>
                     <div className="section-header">

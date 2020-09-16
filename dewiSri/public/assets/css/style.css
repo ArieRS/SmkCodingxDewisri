@@ -118,8 +118,7 @@ h6 {
 }
 
 .profile-sidebar .profile {
-  margin-bottom: -30px;
-  padding: 10px;
+  padding: 0 10px;
   font-family: "Ubuntu", sans-serif;
 }
 
@@ -136,7 +135,7 @@ h6 {
 }
 
 .profile-sidebar #nav-menu-container ul li {
-  padding: 10px;
+  padding: 15px 10px;
   list-style: none;
   width: 250px;
   cursor: pointer;

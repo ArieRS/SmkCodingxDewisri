@@ -165,7 +165,6 @@ export default class HomePages extends Component {
                         <>
                             <div className="container-fluid bg-dark" style={{ width: '100vw', height: '50vh' }}>
                                 <Header state={this.state} method={this.method}></Header>
-                                {/* <Intro></Intro>  */}
                             </div>
                             <main id="main" className='mt-5'>
                                 {/* <Navigation state={this.state} method={this.method} /> */}

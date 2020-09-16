@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-import Modal from './Modal'
 
-export default function ModalPricing({handleClose, show, children, state, method, uang, koin}) {
-    state = {
-        openModal: <Modal />
-    }
+export default function Modal({handleClose, show, children, state, method, uang, koin, title}) {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
 
     return (
-        <div id="modal-pricing" className={showHideClassName}>
+        <div id="modal" className={showHideClassName}>
             <section className="col-md-12">
                 <div className="modal-dialog modal-dialog-scrollable">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h2 className="modal-title" id="staticBackdropLabel">Plant It Premium</h2>
+                            <h2 className="modal-title" id="staticBackdropLabel">{title}</h2>
                             <button type="button" className="close" onClick={handleClose} data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -21,7 +17,7 @@ export default function ModalPricing({handleClose, show, children, state, method
                         <div className="modal-body">
                             <div className="container">
                                 <div id="modal-content" className="content">
-                                    { state.openModal }
+
                                 </div>
                             </div>
                         </div>
