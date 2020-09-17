@@ -136,7 +136,7 @@ export default class HomePages extends Component {
                                        await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[params.index]._id)
                                     }
                                 }
-                                await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[1]._id)
+                                await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
                             }
                             console.log('getPlant : '+this.state.journalDataByDate[0].plantList.length);
                         }
