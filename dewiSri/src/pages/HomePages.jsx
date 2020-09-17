@@ -82,7 +82,7 @@ export default class HomePages extends Component {
             currentDate: newDate.format('LL'),
             dateFormat: newDateFormat,
             dateIsoFormat: isoDate
-        }, () => this.getPlantByDate({inputDate: isoDate}))
+        }, () => this.getPlantByDate({ inputDate: isoDate }))
 
     }
 
@@ -95,7 +95,7 @@ export default class HomePages extends Component {
             currentDate: newDate.format('LL'),
             dateFormat: newDateFormat,
             dateIsoFormat: isoDate
-        }, () => this.getPlantByDate({inputDate: isoDate}))
+        }, () => this.getPlantByDate({ inputDate: isoDate }))
     }
 
     async getPlantByDate(params) {
@@ -103,10 +103,10 @@ export default class HomePages extends Component {
         data.append('owner_userId', this.state.userData._id);
 
         if (params != null || params != undefined) {
-            
-        if (params.inputDate != null || params.inputDate != undefined) {
-            data.append('inputDate', params.inputDate)
-        }
+
+            if (params.inputDate != null || params.inputDate != undefined) {
+                data.append('inputDate', params.inputDate)
+            }
         }
         // inputDate != null || inputDate != undefined ? data.append('inputDate', inputDate) : '';
 
@@ -131,14 +131,14 @@ export default class HomePages extends Component {
                         // console.log(query);
                         if (this.state.journalDataByDate.length != 0) {
                             if (this.state.journalDataByDate[0].plantList.length != 0) {
-                                if (params != null || params != undefined) {        
+                                if (params != null || params != undefined) {
                                     if (params.index != null || params.index != undefined) {
-                                       await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[params.index]._id)
+                                        await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[params.index]._id)
                                     }
                                 }
                                 await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
                             }
-                            console.log('getPlant : '+this.state.journalDataByDate[0].plantList.length);
+                            console.log('getPlant : ' + this.state.journalDataByDate[0].plantList.length);
                         }
                     })
                 }
@@ -160,7 +160,7 @@ export default class HomePages extends Component {
                         pupukData: responseData.data[0]._idPupukList,
                         pestisidaData: responseData.data[0]._idPestisidaList,
                     }, () => {
-                        console.log("dataaaaa: "+ this.state.pupukData);console.log(query)
+                        console.log("dataaaaa: " + this.state.pupukData); console.log(query)
                     })
             } else {
                 alert("galgagal")
@@ -173,10 +173,10 @@ export default class HomePages extends Component {
         const el = document.querySelector('.panel-tanaman #rincian-table');
         const ukuran = document.querySelectorAll('.panel-tanaman #rincian-table .table-card');
 
-        this.setState({ 
-            position: this.state.position + 100, index: this.state.index + 1 
-        },() => {
-            this.getPlantByDate({index: this.state.index})
+        this.setState({
+            position: this.state.position + 100, index: this.state.index + 1
+        }, () => {
+            this.getPlantByDate({ index: this.state.index })
         })
         el.style.top = `-${this.state.position}px`;
         console.log(`position: ${this.state.index}`)
@@ -185,10 +185,10 @@ export default class HomePages extends Component {
     slideBefore() {
         const el = document.querySelector('.panel-tanaman #rincian-table');
         const ukuran = document.querySelectorAll('.panel-tanaman #rincian-table .table-card');
-        this.setState({ 
+        this.setState({
             position: this.state.position - 100, index: this.state.index - 1
-        },() => {
-            this.getPlantByDate({index: this.state.index})
+        }, () => {
+            this.getPlantByDate({ index: this.state.index })
         })
         el.style.top = `-${this.state.position}px`;
         console.log(`position: ${this.state.index}`)
@@ -208,7 +208,7 @@ export default class HomePages extends Component {
                             <main id="main" className='mt-5'>
                                 {/* <Navigation state={this.state} method={this.method} /> */}
                                 {
-                                    this.state.journalDataByDate.length != 0 ?
+                                    this.state.journalDataByDate.length != 0 && this.state.journalDataByDate[0].plantList.length != 0 ?
                                         <>
                                             {/* <Navigation state={this.state} method={this.method} /> */}
                                             {/* <Tanaman state={this.state} method={this.method} /> */}
@@ -219,7 +219,10 @@ export default class HomePages extends Component {
                                             <Pricing />
                                         </>
                                         :
-                                        <div></div>
+
+                                        <div className="container-fluid" style={{ width: '100vw', height: '50vh' }}>
+                                            <h1 className='text-dark text-center'>Tanaman masih kosong, silahkan tambah tanaman</h1>
+                                        </div>
                                 }
                             </main>
                         </>
