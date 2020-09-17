@@ -31,6 +31,8 @@ export default class HomePages extends Component {
             getCurrentDate: this.getCurrentDate.bind(this),
             dateDecrement: this.dateDecrement.bind(this),
             dateIncrement: this.dateIncrement.bind(this),
+            slideBefore: this.slideBefore.bind(this),
+            slideNext: this.slideNext.bind(this)
         }
     }
 
@@ -80,7 +82,7 @@ export default class HomePages extends Component {
             currentDate: newDate.format('LL'),
             dateFormat: newDateFormat,
             dateIsoFormat: isoDate
-        }, () => this.getPlantByDate(isoDate))
+        }, () => this.getPlantByDate({inputDate: isoDate}))
 
     }
 
@@ -93,15 +95,18 @@ export default class HomePages extends Component {
             currentDate: newDate.format('LL'),
             dateFormat: newDateFormat,
             dateIsoFormat: isoDate
-        }, () => this.getPlantByDate(isoDate))
+        }, () => this.getPlantByDate({inputDate: isoDate}))
     }
 
-    async getPlantByDate(inputDate) {
+    async getPlantByDate(params) {
         var data = new FormData();
         data.append('owner_userId', this.state.userData._id);
 
-        if (inputDate != null || inputDate != undefined) {
-            data.append('inputDate', inputDate)
+        if (params != null || params != undefined) {
+            
+        if (params.inputDate != null || params.inputDate != undefined) {
+            data.append('inputDate', params.inputDate)
+        }
         }
         // inputDate != null || inputDate != undefined ? data.append('inputDate', inputDate) : '';
 
@@ -121,14 +126,19 @@ export default class HomePages extends Component {
                     this.setState({
                         journalDataByDate: responseData.data,
 
-                    }, () => {
+                    }, async () => {
                         // console.log("dataaaaa: "+ this.state.journalDataByDate);
                         // console.log(query);
                         if (this.state.journalDataByDate.length != 0) {
                             if (this.state.journalDataByDate[0].plantList.length != 0) {
-                                this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
+                                if (params != null || params != undefined) {        
+                                    if (params.index != null || params.index != undefined) {
+                                       await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[params.index]._id)
+                                    }
+                                }
+                                await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[1]._id)
                             }
-                            console.log('getPlant : '+this.state.journalDataByDate[0].plantList);
+                            console.log('getPlant : '+this.state.journalDataByDate[0].plantList.length);
                         }
                     })
                 }
@@ -149,12 +159,41 @@ export default class HomePages extends Component {
                         bbmData: responseData.data[0]._idBBMList,
                         pupukData: responseData.data[0]._idPupukList,
                         pestisidaData: responseData.data[0]._idPestisidaList,
-                    }, () => {/*console.log("dataaaaa: "+ this.state.pupukData);console.log(query)*/ })
+                    }, () => {
+                        console.log("dataaaaa: "+ this.state.pupukData);console.log(query)
+                    })
             } else {
                 alert("galgagal")
             }
         })
     }
+
+
+    slideNext() {
+        const el = document.querySelector('.panel-tanaman #rincian-table');
+        const ukuran = document.querySelectorAll('.panel-tanaman #rincian-table .table-card');
+
+        this.setState({ 
+            position: this.state.position + 100, index: this.state.index + 1 
+        },() => {
+            this.getPlantByDate({index: this.state.index})
+        })
+        el.style.top = `-${this.state.position}px`;
+        console.log(`position: ${this.state.index}`)
+    }
+
+    slideBefore() {
+        const el = document.querySelector('.panel-tanaman #rincian-table');
+        const ukuran = document.querySelectorAll('.panel-tanaman #rincian-table .table-card');
+        this.setState({ 
+            position: this.state.position - 100, index: this.state.index - 1
+        },() => {
+            this.getPlantByDate({index: this.state.index})
+        })
+        el.style.top = `-${this.state.position}px`;
+        console.log(`position: ${this.state.index}`)
+    }
+
 
     render() {
         return (

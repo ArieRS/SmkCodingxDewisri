@@ -56,6 +56,7 @@ export default class Header extends Component {
   componentWillMount() {
     this.getCurrentDate();
     // console.log(this.props.state.journalDataByDate);
+    console.log('josawisadaks: '+this.props.state.journalDataByDate.length);
   }
 
   getCurrentDate() {
@@ -67,25 +68,6 @@ export default class Header extends Component {
     }, console.log("date: " + newDateFormat))
   }
 
-  dateDecrement(d) {
-    var newDateFormat = moment(d, "MM-DD-YYYY").subtract('days', 1).format('L');
-    var newDate = moment(d, "MM-DD-YYYY").subtract('days', 1);
-    console.log("current date state : " + d);
-    this.setState({
-      currentDate: newDate.format('LL'),
-      dateFormat: newDateFormat
-    })
-  }
-
-  dateIncrement(d) {
-    var newDateFormat = moment(d, "MM-DD-YYYY").add('days', 1).format('L');
-    var newDate = moment(d, "MM-DD-YYYY").add('days', 1);
-    console.log("current date state : " + d);
-    this.setState({
-      currentDate: newDate.format('LL'),
-      dateFormat: newDateFormat
-    })
-  }
   showModal() {
     this.setState({
       showModal: !this.state.showModal
@@ -146,12 +128,21 @@ export default class Header extends Component {
                     </a>
                     <span><b>{this.props.state.currentDate}</b></span>
                     {/* <span><b>11 september 2020</b></span> */}
-                    <a onClick={() => this.props.method.dateIncrement(this.props.state.dateFormat)}>
-                      {/* <a href="#"> */}
-                      <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
-                      </svg>
-                    </a>
+                    {
+                      this.props.state.currentDate === this.state.currentDate ? 
+                        <a href="#" aria-disabled={true}>
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                          </svg>
+                        </a>
+                        :
+                        <a onClick={() => this.props.method.dateIncrement(this.props.state.dateFormat)}>
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                          </svg>
+                        </a>
+                    }
+                    
                   </div>
                   <i className="fa fa-user-circle fa-2x"></i>
                 </div>
@@ -159,44 +150,47 @@ export default class Header extends Component {
               <div id="panel-tanaman" className="panel-tanaman">
                 <div className="container">
                   <div id="button" className="btn-left">
-                    <img src="../../assets/img/icon/next.svg" alt="" onClick={this.slideBefore} />
+                    <img src="../../assets/img/icon/next.svg" alt="" onClick={() => this.slideBefore()} />
                   </div>
                   <div id="rincian-table" className="table-wrapper">
-                    {/* {
-                      this.props.method.journalDataByDate.plantList.map(index => {
-                        console.log(index);
-                      })
-                    } */}
-                    <table className="table-card">
-                      <tr>
-                        <th>Tanaman2</th>
-                        <td>:</td>
-                        {/* <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> */}
-                        <td>Kentang Besar</td>
-                      </tr>
-                      <tr>
-                        <th>Komoditas</th>
-                        <td>:</td>
-                        {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
-                        <td>Granola Jerman</td>
-                      </tr>
-                      <tr>
-                        <th>Hari Ke</th>
-                        <td>:</td>
-                        <td>110</td>
-                      </tr>
-                    </table>
-                    <table className="table-card">
+                    {
+                      this.props.state.journalDataByDate.length !== 0 ? 
+                        this.props.state.journalDataByDate[0].plantList.map((e, index) => {
+                            return(
+                              <table className="table-card">
+                                <tr>
+                                  <th>Tanaman {index + 1}</th>
+                                  <td>:</td>
+                                  <td>{this.props.state.journalDataByDate[0].plantList[index].comodity}</td>
+                                </tr>
+                                <tr>
+                                  <th>Komoditas</th>
+                                  <td>:</td>
+                                  <td>{this.props.state.journalDataByDate[0].plantList[index].variety}</td>
+                                </tr>
+                                <tr>
+                                  <th>Hari Ke</th>
+                                  <td>:</td>
+                                  <td>110</td>
+                                </tr>
+                              </table>
+                            )
+                        })
+                      :
+                      <></>
+                    }
+                    
+                    {/* <table className="table-card">
                       <tr>
                         <th>Tanaman3</th>
                         <td>:</td>
-                        {/* <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> */}
+                        <td>{this.props.state.journalDataByDate[0].plantList[1].comodity}</td>
                         <td>Kentang Besar</td>
                       </tr>
                       <tr>
                         <th>Komoditas</th>
                         <td>:</td>
-                        {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
+                        <td>{this.props.state.journalDataByDate[0].plantList[1].variety}</td>
                         <td>Granola Jerman</td>
                       </tr>
                       <tr>
@@ -204,10 +198,10 @@ export default class Header extends Component {
                         <td>:</td>
                         <td>110</td>
                       </tr>
-                    </table>
+                    </table> */}
                   </div>
                   <div id="button" className="btn-right">
-                    <img src="../../assets/img/icon/next.svg" alt="" onClick={this.slideNext} />
+                    <img src="../../assets/img/icon/next.svg" alt="" onClick={() => this.slideNext()} />
                   </div>
                 </div>
               </div>

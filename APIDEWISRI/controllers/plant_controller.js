@@ -1,5 +1,6 @@
 Plant = require('../models/plant_model');
 User = require('../models/user_model');
+Journal = require('../models/journal_model');
 var response = require('../helpers/responseHelper');
 
 
@@ -37,27 +38,45 @@ exports.deletePlant = function (req, res) {
 exports.addPlant = function (req, res) {
     var plant = new Plant(req.body);
     plant.save().then(docPlant => {
-        User.findByIdAndUpdate(
-            req.body.owner_userId,
+        Journal.findOneAndUpdate(
             {
-                $push: {
-                    plantList: docPlant._id
-                }
+
+                'inputDate': req.body.startDate,
+                'owner_userId': req.body.owner_userId
             },
             {
-                new: true,
-                useFindAndModify: false
+                $push:{
+                    plantList: docPlant._id
+                },
+            },
+        function (error, results) {
+            if (error) {
+                console.log(error);
+            } else {   
+                User.findByIdAndUpdate(
+                    req.body.owner_userId,
+                    {
+                        $push: {
+                            plantList: docPlant._id
+                        }
+                    },
+                    {
+                        new: true,
+                        useFindAndModify: false
+                    }
+                    , function (err, allres) {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            res.json({
+                                status: 200,
+                                data: plant
+                            })
+                        }
+                    }
+                )
             }
-            , function (error, results) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    res.json({
-                        status: 200,
-                        data: plant
-                    })
-                }
-            })
+        })
     })
 }
 
