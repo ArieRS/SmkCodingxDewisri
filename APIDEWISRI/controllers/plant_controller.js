@@ -2,6 +2,7 @@ Plant = require('../models/plant_model');
 User = require('../models/user_model');
 Journal = require('../models/journal_model');
 var response = require('../helpers/responseHelper');
+PlantingNeeds = require('../models/planting_needs');
 
 
 exports.getAllPlant = function (req, res) {
@@ -37,6 +38,10 @@ exports.deletePlant = function (req, res) {
 
 exports.addPlant = function (req, res) {
     var plant = new Plant(req.body);
+
+    var planting_needs = new PlantingNeeds();
+    planting_needs.dateInput = req.body.dateInput;
+
     plant.save().then(docPlant => {
         Journal.findOneAndUpdate(
             {
@@ -45,38 +50,58 @@ exports.addPlant = function (req, res) {
                 'owner_userId': req.body.owner_userId
             },
             {
-                $push:{
+                $push: {
                     plantList: docPlant._id
                 },
             },
-        function (error, results) {
-            if (error) {
-                console.log(error);
-            } else {   
-                User.findByIdAndUpdate(
-                    req.body.owner_userId,
-                    {
-                        $push: {
-                            plantList: docPlant._id
+            function (error, results) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    User.findByIdAndUpdate(
+                        req.body.owner_userId,
+                        {
+                            $push: {
+                                plantList: docPlant._id
+                            }
+                        },
+                        {
+                            new: true,
+                            useFindAndModify: false
                         }
-                    },
-                    {
-                        new: true,
-                        useFindAndModify: false
-                    }
-                    , function (err, allres) {
-                        if (err) {
-                            console.log(err);
-                        } else {
-                            res.json({
-                                status: 200,
-                                data: plant
+                        , function (err, allres) {
+                            if (error) {
+                                console.log(error);
+                            }
+                            planting_needs.owner_plantId = docPlant._id;
+                            planting_needs.save().then(docPlantingNeeds => {
+                                Plant.findByIdAndUpdate(
+                                    docPlant._id,
+                                    {
+                                        $push: {
+                                            plantingNeeds: docPlantingNeeds._id
+                                        }
+                                    },
+                                    {
+                                        new: true,
+                                        useFindAndModify: false
+                                    }
+                                    , function (error, results) {
+                                        if (error) {
+                                            console.log(error);
+                                        } else {
+                                            res.json({
+                                                status: 200,
+                                                data: plant
+                                            })
+                                        }
+                                    })
                             })
+
                         }
-                    }
-                )
-            }
-        })
+                    )
+                }
+            })
     })
 }
 
