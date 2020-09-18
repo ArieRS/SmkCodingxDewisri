@@ -153,7 +153,8 @@ export default class HomePages extends Component {
         console.log(query);
         await getDataFunction(query).then(() => {
             if (responseData.status == 200) {
-                if (responseData.data.length != 0)
+                if (responseData.data != undefined) {
+                    if (responseData.data.length != 0)
                     this.setState({
                         bibitData: responseData.data[0]._idBibit,
                         bbmData: responseData.data[0]._idBBMList,
@@ -162,6 +163,8 @@ export default class HomePages extends Component {
                     }, () => {
                         console.log("dataaaaa: " + this.state.pupukData); console.log(query)
                     })
+                }
+                console.log(responseData.data);
             } else {
                 alert("galgagal")
             }
@@ -202,7 +205,7 @@ export default class HomePages extends Component {
                 {
                     this.state.isLogin && this.state.journalDataByDate.length != 0 ?
                         <>
-                            <div className="container-fluid bg-dark" style={{ width: '100vw', height: '50vh' }}>
+                            <div className="container-fluid" style={{ width: '100vw', height: '50vh' }}>
                                 <Header state={this.state} method={this.method}></Header>
                             </div>
                             <main id="main" className='mt-5'>

@@ -87,7 +87,8 @@ h6 {
 }
 
 #header.header-transparent {
-  background: transparent;
+  /* background: transparent; */
+  background-color: #343B40E6;
 }
 
 #header.header-fixed {
@@ -170,7 +171,6 @@ h6 {
   top: 30px;
   right: 280px;
   cursor: pointer;
-  z-index: 999999;
 }
 
 .profile-sidebar .menu-toggle span {
@@ -179,7 +179,7 @@ h6 {
   height: 3px;
   background-color: white;
   border-radius: 3px;
-  z-index: 9999;
+  /* z-index: 9999; */
 }
 
 .profile-bar-active {
@@ -912,24 +912,8 @@ form {
   text-align: center;
 }
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+#modal {
   background: rgba(0, 0, 0, 0.6);
-  z-index: 9999;
-}
-
-.modal-main {
-  position:fixed;
-  background: white;
-  width: 80%;
-  height: auto;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
 }
 
 .display-block {
@@ -950,9 +934,9 @@ table thead tr {
   text-align: center;
 }
 
-
 .modal-body .card.money, .card.coin {
   text-align: center;
+  cursor: pointer;
 }
 
 .card-body div img {

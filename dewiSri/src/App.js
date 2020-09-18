@@ -28,3 +28,17 @@ export default class App extends React.Component {
     return MainApp(this.state.isLogin)
   }
 }
+
+// import * as React from "react";
+// import { Admin, Resource } from 'react-admin';
+// import jsonServerProvider from 'ra-data-json-server';
+
+// import { UserList } from './admin/users';
+// const dataProvider = jsonServerProvider('http://localhost:8080');
+
+// const App = () => (
+//     <Admin dataProvider={dataProvider}>
+//         <Resource name="auth/getAllUsers" />
+//     </Admin>
+// );
+// export default App;

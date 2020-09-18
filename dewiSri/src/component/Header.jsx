@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import moment from "moment";
 import { postFunction, responseData } from '../models/Model';
 import { ADD_PLANT } from '../system/Strings';
 // import Modal from './main/modal/Modal';
-// import ModalProfile from './main/modal/ModalProfile';
+import ModalProfile from './main/modal/ModalProfile';
 
 const ModalTanaman = ({ handleClose, show, children, state, method }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
@@ -70,7 +69,8 @@ export default class Header extends Component {
       dateFormat: "",
       isLogin: localStorage.getItem('auth'),
       position: 100,
-      showModal: false,
+      showModalTanaman: false,
+      showModalProfile: false,
       startDate: '',
       variety: '',
       comodity: '',
@@ -90,19 +90,16 @@ export default class Header extends Component {
       _clear: this._clear.bind(this),
       _validate: this._validate.bind(this)
     }
-    this.showModal = this.showModal.bind(this);
+    this.showModalTanaman = this.showModalTanaman.bind(this);
+    this.showModalProfile = this.showModalProfile.bind(this);
   }
 
 
   slideNext() {
     const el = document.querySelector('.panel-tanaman #rincian-table');
     const ukuran = document.querySelectorAll('.panel-tanaman #rincian-table .table-card');
-
     this.setState({ position: this.state.position + 100 })
     el.style.top = `-${this.state.position}px`;
-    this.setState({ position: this.state.position + 100 })
-    el.style.top = `-${this.state.position}px`;
-    console.log(`position: ${this.state.position}`)
   }
 
   slideBefore() {
@@ -110,12 +107,10 @@ export default class Header extends Component {
     const ukuran = document.querySelectorAll('.panel-tanaman #rincian-table .table-card');
     this.setState({ position: this.state.position - 100 })
     el.style.top = `-${this.state.position}px`;
-    console.log(`position: ${this.state.position}`)
   }
 
   componentWillMount() {
     this.getCurrentDate();
-    // console.log(this.props.state.journalDataByDate);
     console.log('josawisadaks: ' + this.props.state.journalDataByDate.length);
   }
 
@@ -128,9 +123,15 @@ export default class Header extends Component {
     }, console.log("date: " + newDateFormat))
   }
 
-  showModal() {
+  showModalTanaman() {
     this.setState({
-      showModal: !this.state.showModal
+      showModalTanaman: !this.state.showModalTanaman
+    });
+  }
+  
+  showModalProfile() {
+    this.setState({
+      showModalProfile: !this.state.showModalProfile
     });
   }
 
@@ -159,55 +160,54 @@ export default class Header extends Component {
 
     if (this.state.comodity === '') {
       this.setState({ error: true })
-      document.querySelector('#comodity').classList.add('is-invalid');
+      document.querySelector('#komoditas').classList.add('is-invalid');
       return false;
     }
 
     if (this.state.variety === '') {
       this.setState({ error: true })
-      document.querySelector('#variety').classList.add('is-invalid');
+      document.querySelector('#varietas').classList.add('is-invalid');
       return false;
     }
-
     return true;
   }
 
   _clear() {
     document.querySelector('#tanggal').classList.remove('is-invalid');
-    document.querySelector('#comodity').classList.remove('is-invalid');
-    document.querySelector('#variety').classList.remove('is-invalid');
+    document.querySelector('#komoditas').classList.remove('is-invalid');
+    document.querySelector('#varietas').classList.remove('is-invalid');
   }
 
-
   async _addData() {
-    // if (this._validate()) {
-    //   this._clear()
-    var newStartDate = moment(this.state.startDate).format("DD-M-YYYY")
-    var data = new FormData()
-    data.append("comodity", this.state.comodity)
-    data.append("variety", this.state.variety)
-    data.append("startDate", newStartDate)
-    data.append("owner_userId", this.props.state.userData._id)
+    if (this._validate()) {
+      this._clear()
+      var newStartDate = moment(this.state.startDate).format("DD-M-YYYY")
+      var data = new FormData()
+      data.append("comodity", this.state.comodity)
+      data.append("variety", this.state.variety)
+      data.append("startDate", newStartDate)
+      data.append("owner_userId", this.props.state.userData._id)
 
-    await postFunction(data, ADD_PLANT).then(() => {
-      if (responseData.status == 200) {
-        console.log("success");
-        alert("Sukses menambah tanaman")
-        this.setState({
-          showModal: !this.state.showModal,
-        })
-        window.location.reload(false)
-      } else {
-        alert(responseData.message)
-      }
-    })
-    // }
+      await postFunction(data, ADD_PLANT).then(() => {
+        if (responseData.status == 200) {
+          console.log("success");
+          alert("Sukses menambah tanaman")
+          this.setState({
+            showModal: !this.state.showModal,
+          })
+          window.location.reload(false)
+        } else {
+          alert(responseData.message)
+        }
+      })
+    }
   }
 
   render() {
     return (
       <header id="header" className="header-transparent">
-        <ModalTanaman show={this.state.showModal} method={this.method} state={this.state} handleClose={this.showModal.bind(this, 'hide')} />
+        <ModalProfile show={this.state.showModalProfile} method={this.method} state={this.state} handleClose={this.showModalProfile.bind(this, 'hide')} />
+        <ModalTanaman show={this.state.showModalTanaman} method={this.method} state={this.state} handleClose={this.showModalTanaman.bind(this, 'hide')} />
         <div className="container">
           <div id="logo" className="">
             <a href="/" className="scrollto"><img src="../assets/img/icon/logo_putih.png" alt="" /></a>
@@ -236,7 +236,7 @@ export default class Header extends Component {
             <>
               <nav className="navigation-panel mt-0">
                 <div className="container">
-                  <a className="btn btn-light rounded-pill" >
+                  <a className="btn btn-light rounded-pill" href="#premium">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-award-fill text-success" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                       <path d="M8 0l1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z" />
                       <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
@@ -250,7 +250,6 @@ export default class Header extends Component {
                       </svg>
                     </a>
                     <span><b>{this.props.state.currentDate}</b></span>
-                    {/* <span><b>11 september 2020</b></span> */}
                     {
                       this.props.state.currentDate === this.state.currentDate ?
                         <a href="#" aria-disabled={true}>
@@ -265,9 +264,8 @@ export default class Header extends Component {
                           </svg>
                         </a>
                     }
-
                   </div>
-                  <i className="fa fa-user-circle fa-2x"></i>
+                  <i className="fa fa-user-circle fa-2x" onClick={this.showModalProfile} style={{cursor: 'pointer'}}></i>
                 </div>
               </nav>
               <div id="panel-tanaman" className="panel-tanaman">
@@ -275,6 +273,19 @@ export default class Header extends Component {
                   <div id="button" className="btn-left">
                     <img src="../../assets/img/icon/next.svg" alt="" onClick={() => this.slideBefore()} />
                   </div>
+                  {/* <div id="rincian-table">
+                    <div className="navigasi-wrapper">
+                      <div className="tanaman-wrapper">
+                        <h4>Wortel</h4>
+                      </div>
+                      <div className="komoditas-wrapper">
+                        <h4>Granola Jerman</h4>
+                      </div>
+                      <div className="hari-wrapper">
+                        <h4>110</h4>
+                      </div>
+                    </div>
+                  </div> */}
                   <div id="rincian-table" className="table-wrapper">
                     {
                       this.props.state.journalDataByDate.length !== 0 ?
@@ -283,7 +294,7 @@ export default class Header extends Component {
                           return (
                             <table className="table-card">
                               <tr>
-                                <th>Tanaman {index + 1}</th>
+                                <th>Tanaman</th>
                                 <td>:</td>
                                 <td>{this.props.state.journalDataByDate[0].plantList[index].comodity}</td>
                               </tr>
@@ -320,7 +331,7 @@ export default class Header extends Component {
           this.state.isLogin ?
             <section id="content">
               <div className="card-kebutuhan-tanam">
-                <a href="#" className="btn-get-started" onClick={() => this.showModal()}>Tambah Tanaman</a>
+                <a href="#" className="btn-get-started" onClick={() => this.showModalTanaman()}>Tambah Tanaman</a>
               </div>
             </section>
             :
