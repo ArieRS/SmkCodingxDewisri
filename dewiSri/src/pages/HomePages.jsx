@@ -202,7 +202,7 @@ export default class HomePages extends Component {
                 {
                     this.state.isLogin && this.state.journalDataByDate.length != 0 ?
                         <>
-                            <div className="container-fluid bg-dark" style={{ width: '100vw', height: '50vh' }}>
+                            <div className="container-fluid" style={{ width: '100vw', height: '50vh' }}>
                                 <Header state={this.state} method={this.method}></Header>
                             </div>
                             <main id="main" className='mt-5'>

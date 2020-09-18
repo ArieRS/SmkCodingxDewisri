@@ -20,14 +20,14 @@ export default class ModalPricing extends Component {
                         <div className="col">
                             <div className="card money" onClick={this.click.bind(this, '.money')}>
                                 <img src="../../assets/img/icon/rupiah.svg" alt=""/>
-                                <h2>{this.props.uang}</h2>
+                                <h3>{this.props.uang}</h3>
                             </div>
                         </div>
                         <div className="col">
                             <div className="card coin" onClick={this.click.bind(this, '.coin')}>
                                 <img src="../../assets/img/icon/coin.svg" alt=""/>
-                                <h2>90 koin</h2>
-                                <h2>Koin anda: {this.props.koin} koin</h2>
+                                <h3>90 koin</h3>
+                                <h3>Koin anda: {this.props.koin} koin</h3>
                             </div>
                         </div>
                     </div>

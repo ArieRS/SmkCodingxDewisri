@@ -1,9 +1,61 @@
+import { Modal } from '@material-ui/core';
 import React, { Component } from 'react'
 
+const ModalSaran = ({ handleClose, show, children, state, method }) => {
+    const showHideClassName = show ? "modal display-block" : "modal display-none";
+    return (
+      <div className={showHideClassName}>
+        <section className="col-md-12">
+          <div className="modal-dialog modal-dialog-scrollable">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h2 className="modal-title" id="staticBackdropLabel">Saran Tanggapan</h2>
+                <button type="button" className="close" onClick={handleClose} data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="saran">Saran</label>
+                        <textarea class="form-control" id="saran" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="tagggapan">Tanggapan</label>
+                        <textarea class="form-control" id="tagggapan" rows="3"></textarea>
+                    </div>
+                </form>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>
+                <button type="button" className="btn btn-custom">Kirim</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  };
+
 export default class Profile extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showModalSaran: false
+        }
+        this.showModalSaran = this.showModalSaran.bind(this);
+    }
+
+    showModalSaran() {
+        this.setState({
+            showModalSaran: !this.state.showModalSaran
+        })    
+    }
+
     render() {
         return (
             <div className="profile-sidebar">
+                <ModalSaran show={this.state.showModalSaran} state={this.state} handleClose={this.showModalSaran.bind(this)} />
                 <div className="profile" style={{borderBottom: '1px solid white'}}>
                     <div className="user-photo">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +81,7 @@ export default class Profile extends Component {
                         <li><a href="#premium">Ganti Ke Premium</a></li>
                         <li><a href="#">150 Koin <button className="btn btn-light ml-1">Tukar koin</button></a></li>
                         <li><a href="#">Tambah Komoditas Baru</a></li>
-                        <li><a href="#">Saran dan tanggapan</a></li>
+                        <li><a href="#" onClick={this.showModalSaran}>Saran dan tanggapan</a></li>
                     </ul>
                 </nav>
                 <div className="menu-toggle">

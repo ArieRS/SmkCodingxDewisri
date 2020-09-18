@@ -24,8 +24,8 @@ export default class Pricing extends Component {
     render() {
         return (
             <div id="premium">
+                <ModalPremium show={this.state.showModal} title="Plant It Premium" state={this.state} handleClose={this.showModal.bind(this, 'hide')} uang={this.state.money} />
                 <section id="content" className="section-bg">
-                    <ModalPremium show={this.state.showModal} title="Plant It Premium" state={this.state} handleClose={this.showModal.bind(this, 'hide')} uang={this.state.money} />
                     <div className="section-header-content">
                         <div className="foto-petani">
                             <h1 className="section-title-content">Plant It Premium</h1>

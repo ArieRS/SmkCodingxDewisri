@@ -20,11 +20,6 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                 <div className="modal-body">
                     <div className="form">
                         <form className="php-email-form">
-                            {/* <div className="form-group">
-                                <label for="tanggal">Tanggal</label>
-                                <input type="date" name="tanggal" onChange={(text) => method.changeState('dateInput',text)} className="form-control" id="tanggal" placeholder="Tanggal" required={true}/>
-                                <div className="validate"></div>
-                            </div> */}
                             <div className="form-group">
                                 <label for="kegiatan">Kegiatan</label>
                                 <textarea className="form-control" id="kegiatan" onChange={(text) => method.changeState('activity',text)} name="activity" rows="5" data-rule="required" placeholder="Kegiatan" required={true}></textarea>
@@ -48,7 +43,6 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                 </div>
               </div>
             </div>
-          <button onClick={handleClose}>close</button>
         </section>
       </div>
     );
