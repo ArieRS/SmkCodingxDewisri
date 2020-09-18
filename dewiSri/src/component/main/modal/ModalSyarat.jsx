@@ -14,7 +14,7 @@ export default class ModalSyarat extends Component {
 
     render() {
         return (
-            <div className="syarat">
+            <div className="container syarat">
                 <ul>
                     <li>Anda dapat batalkan langganan kapan saja</li>
                     <li>Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>

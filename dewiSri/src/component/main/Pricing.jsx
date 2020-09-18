@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
-import Modal from './modal/Modal';
-import ModalPricing from './modal/ModalPricing'
+import ModalPremium from './modal/ModalPremium';
+import ModalPricing from './modal/ModalPricing';
 
 export default class Pricing extends Component {
     constructor(props) {
@@ -25,7 +25,7 @@ export default class Pricing extends Component {
         return (
             <div id="premium">
                 <section id="content" className="section-bg">
-                    <Modal show={this.state.showModal} title="Plant It Premium" state={this.state} handleClose={this.showModal.bind(this, 'hide')} uang={this.state.money} />
+                    <ModalPremium show={this.state.showModal} title="Plant It Premium" state={this.state} handleClose={this.showModal.bind(this, 'hide')} uang={this.state.money} />
                     <div className="section-header-content">
                         <div className="foto-petani">
                             <h1 className="section-title-content">Plant It Premium</h1>

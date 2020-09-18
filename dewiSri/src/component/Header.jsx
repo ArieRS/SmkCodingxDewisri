@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import moment from "moment";
-import Modal from './main/modal/Modal';
 import ModalProfile from './main/modal/ModalProfile';
 
 export default class Header extends Component {
@@ -38,6 +36,7 @@ export default class Header extends Component {
       this.setState({position: this.state.position + 100})
       el.style.top = `-${this.state.position}px`;
       console.log(`position: ${this.state.position}`)
+      console.log('kanan')
     }
     
     slideBefore() {
@@ -47,6 +46,7 @@ export default class Header extends Component {
         //     console.log('kelebihan')
         // } else {
         // }
+        console.log('kiri')
         this.setState({position: this.state.position - 100})
         el.style.top = `-${this.state.position}px`;
         console.log(`position: ${this.state.position}`)
@@ -89,7 +89,6 @@ export default class Header extends Component {
         this.setState({
             showModal: !this.state.showModal
         });
-        ReactDOM.render(<ModalProfile />, document.getElementById("modal-content"))
     }
 
   _logout(){
@@ -101,7 +100,7 @@ export default class Header extends Component {
   render() {
     return (
       <header id="header" className="header-transparent">
-        <Modal show={this.state.showModal} title="Ubah Profile" state={this.state} handleClose={this.showModal.bind(this, 'hide')} />
+        <ModalProfile show={this.state.showModal} title="Ubah Profile" state={this.state} handleClose={this.showModal.bind(this, 'hide')} />
         <div className="container">
           <div id="logo" className="">
             <a href="/" className="scrollto"><img src="../assets/img/icon/logo_putih.png" alt=""/></a>
