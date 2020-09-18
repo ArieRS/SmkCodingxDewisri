@@ -7,6 +7,7 @@ import MainPage from '../pages/MainPage';
 import Login from '../component/main/Login';
 import Register from '../component/main/Register';
 import Profile from '../component/main/Profile';
+import Admin from '../admin/AdminPanel';
 
 export const MainApp = (auth) => {
     return (
@@ -19,6 +20,7 @@ export const MainApp = (auth) => {
                     <Route exact path="/main" component={MainPage} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
+                    <Route exact path="/admin" component={Admin} />
                 </Switch>
             </Router>
             <Footer></Footer>
