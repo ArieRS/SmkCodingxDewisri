@@ -18,24 +18,22 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                   </button>
                 </div>
                 <div className="modal-body">
-                    <div className="form">
-                        <form className="php-email-form">
-                            <div className="form-group">
-                                <label for="kegiatan">Kegiatan</label>
-                                <textarea className="form-control" id="kegiatan" onChange={(text) => method.changeState('activity',text)} name="activity" rows="5" data-rule="required" placeholder="Kegiatan" required={true}></textarea>
-                                <div className="invalid-feedback">
-                                    Kegiatan tidak boleh kosong
-                                </div>
+                    <form className="php-email-form">
+                        <div className="form-group">
+                            <label for="kegiatan">Kegiatan</label>
+                            <textarea className="form-control" id="kegiatan" onChange={(text) => method.changeState('activity',text)} name="activity" rows="5" data-rule="required" placeholder="Kegiatan" required={true}></textarea>
+                            <div className="invalid-feedback">
+                                Kegiatan tidak boleh kosong
                             </div>
-                            <div className="form-group">
-                                <label for="permasalahan">Permasalahan</label>
-                                <textarea className="form-control" id="permasalahan" onChange={(text) => method.changeState('problem',text)} name="keterangan" rows="5" data-rule="required" placeholder="Permasalahan" required={true}></textarea>
-                                <div className="invalid-feedback">
-                                    Permasalahan tidak boleh kosong
-                                </div>
+                        </div>
+                        <div className="form-group">
+                            <label for="permasalahan">Permasalahan</label>
+                            <textarea className="form-control" id="permasalahan" onChange={(text) => method.changeState('problem',text)} name="keterangan" rows="5" data-rule="required" placeholder="Permasalahan" required={true}></textarea>
+                            <div className="invalid-feedback">
+                                Permasalahan tidak boleh kosong
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>

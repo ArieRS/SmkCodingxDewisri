@@ -28,6 +28,11 @@ body {
   overflow-x: hidden;
 }
 
+.hide {
+    display: none;
+}
+
+
 a {
   color: var(--blueColor);
   transition: 0.5s;
@@ -679,6 +684,30 @@ content {
   /* list-style-image: url("../img/icon/checklist.svg"); */
 }
 
+/* Tanaman Wrapper */
+.tanaman-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tanaman-wrapper .item {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex-basis: 30%;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  
+}
+
+.tanaman-wrapper .item h2 {
+  color: var(--greenColor);
+}
+
+/* End Tanaman Wrapper */
+
 
 .panel-tanaman .container {
   padding: 15px 10px;
@@ -904,6 +933,10 @@ tbody tr td {
   color: white;
 }
 
+.carousel-item {
+  padding: 10px 0;
+}
+
 form {
   box-shadow: none;
 }
@@ -958,6 +991,7 @@ table thead tr {
 .modal-body .footer button {
   float: right;
 }
+
 
 @media (max-width: 767px) {
   #header #logo img {
@@ -1078,6 +1112,10 @@ table thead tr {
     font-size: 18px;
   }
 
+  #content h4 {
+      font-size: var(--largeFont);
+  }
+
   #content table tr th , td {
     font-size: var(--xSmallFont);
     text-align: left;
@@ -1140,5 +1178,17 @@ table thead tr {
 
   #rincian-table table {
     font-size: 14px;
+  }
+
+  .tanaman-wrapper .item h2 {
+    font-size: var(--xSmallFont);
+  }
+    
+  .tanaman-wrapper .item h1 {
+    font-size: var(--smallFont);
+  }
+
+  .tanggal span {
+    font-size: 17px;
   }
 }

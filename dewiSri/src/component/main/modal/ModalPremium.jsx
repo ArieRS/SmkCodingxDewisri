@@ -15,7 +15,7 @@ export default function ModalPremium({handleClose, show, children, state, method
                             </button>
                         </div>
                         <div className="modal-body">
-                            <div id="modal-content" className="content" style={{padding: '10px 0'}}>
+                            <div id="modal-content" className="content" style={{padding: '20px 0'}}>
 
                             </div>
                         </div>

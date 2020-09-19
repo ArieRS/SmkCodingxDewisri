@@ -75,7 +75,6 @@ export default class Header extends Component {
       variety: '',
       comodity: '',
       error: false
-
     }
     this.slideBefore = this.slideBefore.bind(this);
     this.slideNext = this.slideNext.bind(this);
@@ -93,7 +92,6 @@ export default class Header extends Component {
     this.showModalTanaman = this.showModalTanaman.bind(this);
     this.showModalProfile = this.showModalProfile.bind(this);
   }
-
 
   slideNext() {
     const el = document.querySelector('.panel-tanaman #rincian-table');
@@ -270,9 +268,9 @@ export default class Header extends Component {
               </nav>
               <div id="panel-tanaman" className="panel-tanaman">
                 <div className="container">
-                  <div id="button" className="btn-left">
+                  {/* <div id="button" className="btn-left">
                     <img src="../../assets/img/icon/next.svg" alt="" onClick={() => this.slideBefore()} />
-                  </div>
+                  </div> */}
                   {/* <div id="rincian-table">
                     <div className="navigasi-wrapper">
                       <div className="tanaman-wrapper">
@@ -286,41 +284,41 @@ export default class Header extends Component {
                       </div>
                     </div>
                   </div> */}
-                  <div id="rincian-table" className="table-wrapper">
+                  {/* <div id="rincian-table" className="table-wrapper"> */}
                     {
-                      this.props.state.journalDataByDate.length !== 0 ?
-                        // this.props.state.journalDataByDate[0].plantList.length !== 0 ?
-                        this.props.state.journalDataByDate[0].plantList.map((e, index) => {
-                          return (
-                            <table className="table-card">
-                              <tr>
-                                <th>Tanaman</th>
-                                <td>:</td>
-                                <td>{this.props.state.journalDataByDate[0].plantList[index].comodity}</td>
-                              </tr>
-                              <tr>
-                                <th>Komoditas</th>
-                                <td>:</td>
-                                <td>{this.props.state.journalDataByDate[0].plantList[index].variety}</td>
-                              </tr>
-                              <tr>
-                                <th>Hari Ke</th>
-                                <td>:</td>
-                                <td>110</td>
-                              </tr>
-                            </table>
-                          )
-                        })
-                        // :
-                        // <h1 className='text-white'>Tanaman masih kosong</h1>
-                        :
-                        <></>
+                      // this.props.state.journalDataByDate.length !== 0 ?
+                      //   // this.props.state.journalDataByDate[0].plantList.length !== 0 ?
+                      //   this.props.state.journalDataByDate[0].plantList.map((e, index) => {
+                      //     return (
+                      //       <table className="table-card">
+                      //         <tr>
+                      //           <th>Tanaman</th>
+                      //           <td>:</td>
+                      //           <td>{this.props.state.journalDataByDate[0].plantList[index].comodity}</td>
+                      //         </tr>
+                      //         <tr>
+                      //           <th>Komoditas</th>
+                      //           <td>:</td>
+                      //           <td>{this.props.state.journalDataByDate[0].plantList[index].variety}</td>
+                      //         </tr>
+                      //         <tr>
+                      //           <th>Hari Ke</th>
+                      //           <td>:</td>
+                      //           <td>110</td>
+                      //         </tr>
+                      //       </table>
+                      //     )
+                      //   })
+                      //   // :
+                      //   // <h1 className='text-white'>Tanaman masih kosong</h1>
+                      //   :
+                      //   <></>
                     }
 
-                  </div>
-                  <div id="button" className="btn-right">
+                  {/* </div> */}
+                  {/* <div id="button" className="btn-right">
                     <img src="../../assets/img/icon/next.svg" alt="" onClick={() => this.slideNext()} />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </>

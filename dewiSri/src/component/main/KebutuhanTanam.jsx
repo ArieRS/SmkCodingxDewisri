@@ -231,7 +231,6 @@ export default class KebutuhanTaman extends Component {
                             </nav>
                             <div className="tab-content" id="nav-tabContent">   
                                 <div className="tab-pane fade show active" id="nav-bibit" role="tabpanel" aria-labelledby="nav-bibit-tab">
-    
                                   {/* <EnhancedTable rows={} tab="Bibit"/> */}
                                   {/* <h2 className="text-center">Bibit</h2> */}
                                   <table className="table table-bordered table-striped">

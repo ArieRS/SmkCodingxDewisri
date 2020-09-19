@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PanelTanaman from './PanelTanaman';
 
 export default class Tanaman extends Component {
     constructor(props){
@@ -6,142 +7,37 @@ export default class Tanaman extends Component {
         this.state = {
             position: 0
         }
-        this.slide = this.slide.bind(this)
-    }
-
-    coba() {
-        const el = document.querySelector('.panel-tanaman #rincian-table');
-        const ukuran = document.querySelectorAll('.panel-tanaman #rincian-table .table-card').length;
-
-        el.style.top = `-${this.state.position}px`;
-        this.setState({position: this.state.position + 100})
-    }
-
-    componentWillMount(){
-        // console.log(this.props.state.currentDate);
     }
 
     render() {
         return (
-            // <div className="container">
-                <div id="panel-tanaman" className="panel-tanaman mt-3">
-                    <div id="rincian-table">
-
-                        <div className="table-card">
-                            <table>
-                                <tr>
-                                    <th>Tanaman</th>
-                                    <td>:</td>
-                                    {/* <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> */}
-                                    <td>Kentang Besar</td>
-                                </tr>
-                                <tr>
-                                    <th>Komoditas</th>
-                                    <td>:</td>
-                                    {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
-                                    <td>Granola Jerman</td>
-                                </tr>
-                                <tr>
-                                    <th>Hari Ke</th>
-                                    <td>:</td>
-                                    <td>110</td>
-                                </tr>
-                            </table>
+            <div className="container">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <PanelTanaman tanaman="kentang" komoditas="granola jerman" hari="100" />
                         </div>
-                        <div className="table-card">
-                            <table>
-                                <tr>
-                                    <th>Tanaman</th>
-                                    <td>:</td>
-                                    {/* { <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> } */}
-                                    <td>Wortel</td>
-                                </tr>
-                                <tr>
-                                    <th>Komoditas</th>
-                                    <td>:</td>
-                                    {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
-                                    <td>Wortel Lokal</td>
-                                </tr>
-                                <tr>
-                                    <th>Hari Ke</th>
-                                    <td>:</td>
-                                    <td>35</td>
-                                </tr>
-                            </table>
+                        <div class="carousel-item">
+                            <PanelTanaman tanaman="kentang" komoditas="granola jerman" hari="100" />
                         </div>
-                        <div className="table-card">
-                            <table>
-                                <tr>
-                                    <th>Tanaman3</th>
-                                    <td>:</td>
-                                    {/* { <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> } */}
-                                    <td>Wortel</td>
-                                </tr>
-                                <tr>
-                                    <th>Komoditas</th>
-                                    <td>:</td>
-                                    {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
-                                    <td>Wortel Lokal</td>
-                                </tr>
-                                <tr>
-                                    <th>Hari Ke</th>
-                                    <td>:</td>
-                                    <td>35</td>
-                                </tr>
-                            </table>
+                        <div class="carousel-item">
+                            <PanelTanaman tanaman="kentang" komoditas="granola jerman" hari="100" />
                         </div>
-                        <div className="table-card">
-                            <table>
-                                <tr>
-                                    <th>Tanaman4</th>
-                                    <td>:</td>
-                                    {/* { <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> } */}
-                                    <td>Wortel</td>
-                                </tr>
-                                <tr>
-                                    <th>Komoditas</th>
-                                    <td>:</td>
-                                    {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
-                                    <td>Wortel Lokal</td>
-                                </tr>
-                                <tr>
-                                    <th>Hari Ke</th>
-                                    <td>:</td>
-                                    <td>35</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div className="table-card">
-                            <table>
-                                <tr>
-                                    <th>Tanaman5</th>
-                                    <td>:</td>
-                                    {/* { <td>{this.props.state.journalDataByDate[0].plantList[0].comodity}</td> } */}
-                                    <td>Wortel</td>
-                                </tr>
-                                <tr>
-                                    <th>Komoditas</th>
-                                    <td>:</td>
-                                    {/* <td>{this.props.state.journalDataByDate[0].plantList[0].variety}</td> */}
-                                    <td>Wortel Lokal</td>
-                                </tr>
-                                <tr>
-                                    <th>Hari Ke</th>
-                                    <td>:</td>
-                                    <td>35</td>
-                                </tr>
-                            </table>
-                        </div>
-
                     </div>
-                    <div id="button" className="btn-right" >
-                        <svg viewBox="0 0 16 16" className="bi bi-chevron-double-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg" onClick={this.coba}>
-                            <path fillRule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                            <path fillRule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
+                    <div className="button-wrapper mt-4 float-right">
+                        <a class="btn btn-custom mr-4" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                            </svg>
+                        </a>
+                        <a class="btn btn-custom mx-3" href="#carouselExampleControls" role="button" data-slide="next">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
-            // </div>
+            </div>
         )
     }
 }

@@ -9,6 +9,7 @@ import { LOGIN_END, GET_JOURNAL_BY_DATE, GET_PLANTING_NEEDS, ADD_JOURNAL } from 
 import { postFunction, responseData, getDataFunction } from '../models/Model'
 import moment from 'moment';
 import Header from '../component/Header';
+import Tanaman from '../component/main/Tanaman';
 
 export default class HomePages extends Component {
     constructor(props) {
@@ -201,7 +202,6 @@ export default class HomePages extends Component {
     render() {
         return (
             <div>
-
                 {
                     this.state.isLogin && this.state.journalDataByDate.length != 0 ?
                         <>
@@ -214,7 +214,7 @@ export default class HomePages extends Component {
                                     this.state.journalDataByDate.length != 0 && this.state.journalDataByDate[0].plantList.length != 0 ?
                                         <>
                                             {/* <Navigation state={this.state} method={this.method} /> */}
-                                            {/* <Tanaman state={this.state} method={this.method} /> */}
+                                            <Tanaman state={this.state} method={this.method} />
                                             <KebutuhanTanam state={this.state} method={this.method} />
                                             <JurnalHarian state={this.state} method={this.method} />
                                             <CatatanPertanian state={this.state} method={this.method}/>
