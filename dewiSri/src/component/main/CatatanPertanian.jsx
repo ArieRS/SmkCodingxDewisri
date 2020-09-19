@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { postFunction, responseData } from '../../models/Model';
-import { ADD_DAILY_JOURNAL } from '../../system/Strings';
+import { ADD_DAILY_JOURNAL, ADD_HASIL_PANEN } from '../../system/Strings';
 
 
 const Modal = ({ handleClose, show, children, state, method }) => {
@@ -111,14 +111,14 @@ export default class CatatanPertanian extends Component {
         if (this._validate()) {
             this._clear();
             var data = new FormData()
-            data.append('activity', this.state.activity)
-            data.append('problem', this.state.problem)
-            data.append('owner_journalId',this.props.state.journalDataByDate[0]._id)
-            data.append('owner_userId',this.props.state.userData._id)
-            await postFunction(data, ADD_DAILY_JOURNAL).then(() => {
+            data.append('tanggalPanen', this.state.tanggalPanen)
+            data.append('hasilPanen', this.state.hasilPanen)
+            data.append('hargaPasar',this.state.hargaPasar)
+            data.append('owner_plantId',this.props.state.journalDataByDate[0].plantList[0]._id)
+            await postFunction(data, ADD_HASIL_PANEN).then(() => {
                 if (responseData.status == 200) {
                     console.log("success");
-                    alert("Sukses menambah jurnal harian")
+                    alert("Sukses menambah hasil panen")
                     this.setState({
                         showModal: !this.state.showModal,
                     })
@@ -150,35 +150,34 @@ export default class CatatanPertanian extends Component {
                                 <table className="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Tanggal Input</th>
-                                            <th>Jumlah</th>
+                                            <th>Tanggal Panen</th>
+                                            <th>Jumlah Panen (Kwintal)</th>
                                             <th>Harga Pasar (Kg)</th>
-                                            <th>Keterangan</th>
                                             <th>Keuntungan Bersih</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>10 - 8 - 2000</td>
-                                            <td>100</td>
-                                            <td>1.000.000</td>
-                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
-                                            <td><img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/></td>
+                                        {
+                                            this.props.state.journalDataByDate[0].plantList[0].hasilPanen != undefined ? 
+                                            <>
+                                                <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.tanggalPanen}</td>
+                                                <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.hasilPanen}</td>
+                                                <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.hargaPasar}</td>
+                                                {
+                                                    this.props.state.userData.isPremium == false ?
+                                                    
+                                                    <td><img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/></td>
+                                                    :
+
+                                                    <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.analisaHasilPanen}</td>
+                                                }
+                                            </>
+                                            :
+                                            <></>
+                                        }
                                         </tr>
-                                        <tr>
-                                            <td>10 - 8 - 2000</td>
-                                            <td>100</td>
-                                            <td>1.000.000</td>
-                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
-                                            <td><img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>10 - 8 - 2000</td>
-                                            <td>100</td>
-                                            <td>1.000.000</td>
-                                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, architecto?</td>
-                                            <td><img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/></td>
-                                        </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>

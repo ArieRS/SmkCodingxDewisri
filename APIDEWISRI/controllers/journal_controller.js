@@ -94,5 +94,8 @@ exports.getJournalByDate = function (req,res) {
             status: 200,
             data: journal
         })
-    }).populate("plantList").populate('dailyJournal')
+    }).populate({
+        path: "plantList",
+        populate: 'hasilPanen'
+    }).populate('dailyJournal')
 }

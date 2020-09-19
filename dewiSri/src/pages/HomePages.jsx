@@ -25,7 +25,7 @@ export default class HomePages extends Component {
             index: 0,
             currentDate: "",
             dateFormat: "",
-            dateIsoFormat: ''
+            dateIsoFormat: '',
         }
         this.method = {
             getCurrentDate: this.getCurrentDate.bind(this),
@@ -217,7 +217,7 @@ export default class HomePages extends Component {
                                             {/* <Tanaman state={this.state} method={this.method} /> */}
                                             <KebutuhanTanam state={this.state} method={this.method} />
                                             <JurnalHarian state={this.state} method={this.method} />
-                                            <CatatanPertanian />
+                                            <CatatanPertanian state={this.state} method={this.method}/>
                                             <Other />
                                             <Pricing />
                                         </>

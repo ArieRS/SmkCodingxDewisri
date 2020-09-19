@@ -163,14 +163,14 @@ export default class KebutuhanTaman extends Component {
                 data.append('quantity', this.state.quantity)
                 data.append('price', this.state.price)
                 data.append('keterangan', this.state.keterangan)
-                data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[1].plantingNeeds)
+                data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
             } else if (type === 'pupuk') {
                 var insertType = ADD_PUPUK
                 data.append('date_input', this.state.dateInput)
                 data.append('quantity', this.state.quantity)
                 data.append('price', this.state.price)
                 data.append('keterangan', this.state.keterangan)
-                data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[1].plantingNeeds)
+                data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
             }else if (type === 'pestisida') {
                 var insertType = ADD_PESTISIDA
                 data.append('date_input', this.state.dateInput)
@@ -244,7 +244,7 @@ export default class KebutuhanTaman extends Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        {/* <tr>
                                             <td>10/10/10</td>
                                             <td>10</td>
                                             <td>10000</td>
@@ -261,18 +261,18 @@ export default class KebutuhanTaman extends Component {
                                             <td>10</td>
                                             <td>10000</td>
                                             <td>panen</td>
-                                        </tr>
+                                        </tr> */}
                                         {
-                                            // this.props.state.bibitData.map((item, index) => {
-                                            //     return(
-                                            //         <tr>
-                                            //             <td>{this.props.state.bibitData[index].date_input}</td>
-                                            //             <td>{this.props.state.bibitData[index].quantity}</td>
-                                            //             <td>{this.props.state.bibitData[index].price}</td>
-                                            //             <td>{this.props.state.bibitData[index].keterangan}</td>
-                                            //         </tr>
-                                            //     )
-                                            // })
+                                            this.props.state.bibitData.map((item, index) => {
+                                                return(
+                                                    <tr>
+                                                        <td>{this.props.state.bibitData[index].date_input}</td>
+                                                        <td>{this.props.state.bibitData[index].quantity}</td>
+                                                        <td>{this.props.state.bibitData[index].price}</td>
+                                                        <td>{this.props.state.bibitData[index].keterangan}</td>
+                                                    </tr>
+                                                )
+                                            })
                                         }
                                     </tbody>
                                 </table>
