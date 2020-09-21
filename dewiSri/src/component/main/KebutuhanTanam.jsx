@@ -262,13 +262,13 @@ export default class KebutuhanTaman extends Component {
                                             <td>panen</td>
                                         </tr> */}
                                         {
-                                            this.props.state.bibitData.map((item, index) => {
+                                            this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idBibit.map((item, index) => {
                                                 return(
                                                     <tr>
-                                                        <td>{this.props.state.bibitData[index].date_input}</td>
-                                                        <td>{this.props.state.bibitData[index].quantity}</td>
-                                                        <td>{this.props.state.bibitData[index].price}</td>
-                                                        <td>{this.props.state.bibitData[index].keterangan}</td>
+                                                        <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idBibit[index].date_input}</td>
+                                                        <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idBibit[index].quantity}</td>
+                                                        <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idBibit[index].price}</td>
+                                                        <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idBibit[index].keterangan}</td>
                                                     </tr>
                                                 )
                                             })
@@ -297,13 +297,13 @@ export default class KebutuhanTaman extends Component {
                                     </thead>
                                     <tbody>
                                         {
-                                            this.props.state.pupukData.map((item, index) => {
+                                            this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idPupukList.map((item, index) => {
                                                 return(
                                                     <tr>
-                                                        <td>{this.props.state.pupukData[index].date_input}</td>
-                                                        <td>{this.props.state.pupukData[index].quantity}</td>
-                                                        <td>{this.props.state.pupukData[index].price}</td>
-                                                        <td>{this.props.state.pupukData[index].keterangan}</td>
+                                                        <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idPupukList[index].date_input}</td>
+                                                        <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idPupukList[index].quantity}</td>
+                                                        <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idPupukList[index].price}</td>
+                                                        <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idPupukList[index].keterangan}</td>
                                                     </tr>
                                                 )
                                             })
@@ -330,13 +330,13 @@ export default class KebutuhanTaman extends Component {
                                         </thead>
                                         <tbody>
                                             {
-                                                this.props.state.bbmData.map((item, index) => {
+                                                this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idBBMList.map((item, index) => {
                                                     return(
                                                         <tr>
-                                                            <td>{this.props.state.bbmData[index].date_input}</td>
-                                                            <td>{this.props.state.bbmData[index].diesel_duration}</td>
-                                                            <td>{this.props.state.bbmData[index].price}</td>
-                                                            <td>{this.props.state.bbmData[index].keterangan}</td>
+                                                            <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idBBMList[index].date_input}</td>
+                                                            <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idBBMList[index].diesel_duration}</td>
+                                                            <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idBBMList[index].price}</td>
+                                                            <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idBBMList[index].keterangan}</td>
                                                         </tr>
                                                     )
                                                 })
@@ -364,13 +364,13 @@ export default class KebutuhanTaman extends Component {
                                         </thead>
                                         <tbody>
                                             {
-                                                this.props.state.pestisidaData.map((item, index) => {
+                                                this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idPestisidaList.map((item, index) => {
                                                     return(
                                                         <tr>
-                                                            <td>{this.props.state.pestisidaData[index].date_input}</td>
-                                                            <td>{this.props.state.pestisidaData[index].quantity}</td>
-                                                            <td>{this.props.state.pestisidaData[index].price}</td>
-                                                            <td>{this.props.state.pestisidaData[index].keterangan}</td>
+                                                            <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idPestisidaList[index].date_input}</td>
+                                                            <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idPestisidaList[index].quantity}</td>
+                                                            <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idPestisidaList[index].price}</td>
+                                                            <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds._idPestisidaList[index].keterangan}</td>
                                                         </tr>
                                                     )
                                                 })
