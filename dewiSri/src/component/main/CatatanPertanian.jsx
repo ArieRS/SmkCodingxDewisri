@@ -114,7 +114,7 @@ export default class CatatanPertanian extends Component {
             data.append('tanggalPanen', this.state.tanggalPanen)
             data.append('hasilPanen', this.state.hasilPanen)
             data.append('hargaPasar',this.state.hargaPasar)
-            data.append('owner_plantId',this.props.state.journalDataByDate[0].plantList[0]._id)
+            data.append('owner_plantId',this.props.state.journalDataByDate[0].plantList[this.props.state.index]._id)
             await postFunction(data, ADD_HASIL_PANEN).then(() => {
                 if (responseData.status == 200) {
                     console.log("success");
@@ -159,11 +159,11 @@ export default class CatatanPertanian extends Component {
                                     <tbody>
                                         <tr>
                                         {
-                                            this.props.state.journalDataByDate[0].plantList[0].hasilPanen != undefined ? 
+                                            this.props.state.journalDataByDate[0].plantList[this.props.state.index].hasilPanen != undefined ? 
                                             <>
-                                                <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.tanggalPanen}</td>
-                                                <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.hasilPanen}</td>
-                                                <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.hargaPasar}</td>
+                                                <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].hasilPanen.tanggalPanen}</td>
+                                                <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].hasilPanen.hasilPanen}</td>
+                                                <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].hasilPanen.hargaPasar}</td>
                                                 {
                                                     this.props.state.userData.isPremium == false ?
                                                     
@@ -174,7 +174,7 @@ export default class CatatanPertanian extends Component {
                                                     </td>
                                                     :
 
-                                                    <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.analisaHasilPanen}</td>
+                                                    <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].hasilPanen.analisaHasilPanen}</td>
                                                 }
                                             </>
                                             :
