@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default function ModalPremium({handleClose, show, children, state, method, uang, koin, title}) {
+export default function ModalPremium({ handleClose, show, children, state, method, uang, koin, title }) {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
 
     return (
@@ -13,13 +13,15 @@ export default function ModalPremium({handleClose, show, children, state, method
                             <button type="button" className="close" onClick={handleClose} data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
+
                         </div>
                         <div className="modal-body">
-                            <div id="modal-content" className="content" style={{padding: '20px 0'}}>
+                            <div id="modal-content" className="content" style={{ padding: '10px 0' }}>
 
                             </div>
                         </div>
                     </div>
+
                 </div>
             </section>
         </div>

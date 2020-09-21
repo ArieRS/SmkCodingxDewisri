@@ -12,9 +12,22 @@ export default class Tanaman extends Component {
     render() {
         return (
             <div className="container">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        {
+                            this.props.state.journalDataByDate[0].plantList.map((e, index) =>{
+                                return(
+                                <div class={index == 0 ? "carousel-item active" : "carousel-item"}>
+                                    <PanelTanaman 
+                                        tanaman={this.props.state.journalDataByDate[0].plantList[index].comodity} 
+                                        komoditas={this.props.state.journalDataByDate[0].plantList[index].variety}
+                                        hari="100" 
+                                    />
+                                </div>
+                                )
+                            })
+                        }
+                        {/* <div class="carousel-item active">
                             <PanelTanaman tanaman="kentang" komoditas="granola jerman" hari="100" />
                         </div>
                         <div class="carousel-item">
@@ -22,7 +35,7 @@ export default class Tanaman extends Component {
                         </div>
                         <div class="carousel-item">
                             <PanelTanaman tanaman="kentang" komoditas="granola jerman" hari="100" />
-                        </div>
+                        </div> */}
                     </div>
                     <div className="button-wrapper mt-4 float-right">
                         <a class="btn btn-custom mr-4" href="#carouselExampleControls" role="button" data-slide="prev">

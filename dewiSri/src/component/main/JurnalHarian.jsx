@@ -8,7 +8,7 @@ const Modal = ({ handleClose, show, children, state, method }) => {
   
     return (
       <div className={showHideClassName}>
-        <section className="col-md-12">
+        <section className="col-md-12" style={{height: '100vh', marginTop: 0, backgroundColor:'rgba(0,0,0,0.5)'}}>
             <div className="modal-dialog modal-dialog-scrollable">
               <div className="modal-content">
                 <div className="modal-header">

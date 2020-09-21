@@ -179,9 +179,10 @@ export default class HomePages extends Component {
 
         this.setState({
             position: this.state.position + 100, index: this.state.index + 1
-        }, () => {
-            this.getPlantByDate({ index: this.state.index })
-        })
+        },
+            // this.getPlantByDate({ index: this.state.index })
+            console.log(`position: ${this.state.index}`)
+        )
         el.style.top = `-${this.state.position}px`;
         console.log(`position: ${this.state.index}`)
     }
@@ -192,7 +193,9 @@ export default class HomePages extends Component {
         this.setState({
             position: this.state.position - 100, index: this.state.index - 1
         }, () => {
-            this.getPlantByDate({ index: this.state.index })
+            // this.getPlantByDate({ index: this.state.index })
+
+        console.log(`position: ${this.state.index}`)
         })
         el.style.top = `-${this.state.position}px`;
         console.log(`position: ${this.state.index}`)

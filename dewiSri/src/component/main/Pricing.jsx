@@ -3,28 +3,92 @@ import ReactDOM from 'react-dom'
 import ModalPremium from './modal/ModalPremium';
 import ModalPricing from './modal/ModalPricing';
 
+
+
+const Modal = ({ handleClose, show, children, state, method }) => {
+    const showHideClassName = show ? "modal display-block" : "modal display-none";
+    return (
+      <div className={showHideClassName}>
+        <section className="col-md-12" style={{height: '100vh', marginTop: 0, backgroundColor:'rgba(0,0,0,0.5)'}}>
+            <div className="modal-dialog modal-dialog-scrollable">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="staticBackdropLabel">Jadi Premium</h5>
+                        <button type="button" className="close" onClick={handleClose} data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <div className="form">
+                            <form className="php-email-form">
+                            <div className="container">
+                                <div className="row my-3">
+                                    <div className="col">
+                                        <div className="card money" >
+                                            <img src="../../assets/img/icon/rupiah.svg" alt=""/>
+                                            <h3>Rp. {state.priceMoney}</h3>
+                                        </div>
+                                    </div>
+                                    <div className="col">
+                                        <div className="card coin" >
+                                            <img src="../../assets/img/icon/coin.svg" alt=""/>
+                                            <h3>{state.priceCoins} koin</h3>
+                                            <h3>Koin anda: {state.myCoins} koin</h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                            <div className="container-fluid align-right">
+                                <ul>
+                                    <li>Anda dapat batalkan langganan kapan saja</li>
+                                    <li>Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
+                                    <li>Pembayaran berikutnya tanggal 17 September 2020</li>
+                                </ul>
+                                
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>
+                        <button type="button" onClick={() => method.addData()} className="btn btn-custom">Tambah Data</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </div>
+    );
+};
+
 export default class Pricing extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showModal: false,
-            money: "0"
+            
+            priceMoney: 0,
+            priceCoins: 0
         }
-        this.showModal = this.showModal.bind(this)
+        this.showModal = this.showModal.bind(this);
+        this.method = {
+
+        }
     }
 
     showModal(money) {
         this.setState({
             showModal: !this.state.showModal,
-            money: money
+            priceMoney: money
         })
-        ReactDOM.render(<ModalPricing uang={money}/>, document.getElementById('modal-content'))
+        // ReactDOM.render(<ModalPricing uang={money}/>, document.getElementById('modal-content'))
     }
 
     render() {
         return (
             <div id="premium">
-                <ModalPremium show={this.state.showModal} title="Plant It Premium" state={this.state} handleClose={this.showModal.bind(this, 'hide')} uang={this.state.money} />
+                <Modal show={this.state.showModal} title="Plant It Premium" state={this.state} handleClose={this.showModal.bind(this, 'hide')} uang={this.state.money} />
                 <section id="content" className="section-bg">
                     <div className="section-header-content">
                         <div className="foto-petani">
@@ -58,7 +122,7 @@ export default class Pricing extends Component {
                                         <li><i className="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
                                         <li><i className="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
                                     </ul>
-                                        <a href="#" className="btn-get-started" onClick={this.showModal.bind(this, "22.999")}>Beli</a>
+                                        <a className="btn-get-started" onClick={() => this.showModal("29.999")}>Beli</a>
                                     </div>
                                 </div>
     
@@ -71,7 +135,7 @@ export default class Pricing extends Component {
                                         <li><i className="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
                                         <li><i className="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
                                     </ul>
-                                    <a href="#" className="btn-get-started" onClick={this.showModal.bind(this, "85.000")}>Beli</a>
+                                    <a className="btn-get-started" onClick={this.showModal.bind(this, "85.000")}>Beli</a>
                                     </div>
                                 </div>
     
@@ -84,7 +148,7 @@ export default class Pricing extends Component {
                                         <li><i className="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
                                         <li><i className="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
                                     </ul>
-                                    <a href="#" className="btn-get-started" onClick={this.showModal.bind(this, "320.000")}>Beli</a>
+                                    <a className="btn-get-started" onClick={this.showModal.bind(this, "320.000")}>Beli</a>
                                     </div>
                                 </div>
                                 <div className="col-lg-4 mx-auto">
@@ -96,7 +160,7 @@ export default class Pricing extends Component {
                                         <li><i className="ion-android-checkmark-circle"></i> Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
                                         <li><i className="ion-android-checkmark-circle"></i> Pembayaran berikutnya tanggal <b>17 September 2020</b> </li>
                                     </ul>
-                                    <a href="#" className="btn-get-started" onClick={this.showModal.bind(this, "1.800.000")}>Beli</a>
+                                    <a  className="btn-get-started" onClick={this.showModal.bind(this, "1.800.000")}>Beli</a>
                                     </div>
                                 </div>
                             </div>

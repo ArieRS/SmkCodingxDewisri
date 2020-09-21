@@ -8,7 +8,7 @@ const Modal = ({ handleClose, show, children, state, method }) => {
   
     return (
       <div className={showHideClassName}>
-        <section className="col-md-12">
+        <section className="col-md-12" style={{height: '100vh', marginTop: 0, backgroundColor:'rgba(0,0,0,0.5)'}}> 
             <div className="modal-dialog modal-dialog-scrollable">
               <div className="modal-content">
                 <div className="modal-header">
@@ -167,7 +167,11 @@ export default class CatatanPertanian extends Component {
                                                 {
                                                     this.props.state.userData.isPremium == false ?
                                                     
-                                                    <td><img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/></td>
+                                                    <td>
+                                                        <a href="#premium">
+                                                            <img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/>
+                                                        </a>
+                                                    </td>
                                                     :
 
                                                     <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.analisaHasilPanen}</td>

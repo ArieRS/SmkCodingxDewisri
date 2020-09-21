@@ -6,7 +6,7 @@ const Modal = ({ handleClose, show, children, state, method }) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
     return (
       <div className={showHideClassName}>
-        <section className="col-md-12">
+        <section className="col-md-12" style={{height: '100vh', marginTop: 0, backgroundColor:'rgba(0,0,0,0.5)'}}>
             <div className="modal-dialog modal-dialog-scrollable">
               <div className="modal-content">
                 <div className="modal-header">
@@ -163,28 +163,28 @@ export default class KebutuhanTaman extends Component {
                 data.append('quantity', this.state.quantity)
                 data.append('price', this.state.price)
                 data.append('keterangan', this.state.keterangan)
-                data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+                data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds)
             } else if (type === 'pupuk') {
                 var insertType = ADD_PUPUK
                 data.append('date_input', this.state.dateInput)
                 data.append('quantity', this.state.quantity)
                 data.append('price', this.state.price)
                 data.append('keterangan', this.state.keterangan)
-                data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+                data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds)
             }else if (type === 'pestisida') {
                 var insertType = ADD_PESTISIDA
                 data.append('date_input', this.state.dateInput)
                 data.append('quantity', this.state.quantity)
                 data.append('price', this.state.price)
                 data.append('keterangan', this.state.keterangan)
-                data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+                data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds)
             }else if (type === 'bbm') {
                 var insertType = ADD_BBM
                 data.append('date_input', this.state.dateInput)
                 data.append('diesel_duration', this.state.quantity)
                 data.append('price', this.state.price)
                 data.append('keterangan', this.state.keterangan)
-                data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[0].plantingNeeds)
+                data.append('owner_plantingNeedsId',this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds)
             }
 
             await postFunction(data, insertType).then(() => {
