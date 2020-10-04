@@ -10,6 +10,7 @@ import { postFunction, responseData, getDataFunction } from '../models/Model'
 import moment from 'moment';
 import Header from '../component/Header';
 import Tanaman from '../component/main/Tanaman';
+import Profile from '../component/main/Profile'
 
 export default class HomePages extends Component {
     constructor(props) {
@@ -196,13 +197,13 @@ export default class HomePages extends Component {
         }, () => {
             // this.getPlantByDate({ index: this.state.index })
 
-        console.log(`position: ${this.state.index}`)
+            console.log(`position: ${this.state.index}`)
         })
         el.style.top = `-${this.state.position}px`;
         console.log(`position: ${this.state.index}`)
     }
 
-    changeState(state, value){
+    changeState(state, value) {
         this.setState({
             [state]: value
         })
@@ -213,7 +214,8 @@ export default class HomePages extends Component {
                 {
                     this.state.isLogin && this.state.journalDataByDate.length != 0 ?
                         <>
-                            <div className="container-fluid" style={{ width: '100vw', height: '50vh' }}>
+                            <div className="container-fluid" style={{ width: '100vw', height: '50vh' }}>                            
+
                                 <Header state={this.state} method={this.method}></Header>
                             </div>
                             <main id="main" className='mt-5'>
@@ -225,7 +227,7 @@ export default class HomePages extends Component {
                                             <Tanaman state={this.state} method={this.method} />
                                             <KebutuhanTanam state={this.state} method={this.method} />
                                             <JurnalHarian state={this.state} method={this.method} />
-                                            <CatatanPertanian state={this.state} method={this.method}/>
+                                            <CatatanPertanian state={this.state} method={this.method} />
                                             <Other />
                                             <Pricing />
                                         </>
