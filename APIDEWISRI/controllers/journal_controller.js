@@ -6,9 +6,9 @@ exports.addJournal = function (req, res) {
     var date = new Date();
 
     var year = date.getFullYear();
-    var month = date.getMonth()+1;
+    var month = date.getMonth() + 1;
     var day = date.getDate();
-    var newDate =day+"-"+month+"-"+year;
+    var newDate = day + "-" + month + "-" + year;
     // journal.inputDate = newDate;
     var arrayPlantList = [];
 
@@ -79,7 +79,7 @@ exports.updateJournal = function (req, res) {
 };
 
 
-exports.getJournalById = function (req,res) {
+exports.getJournalById = function (req, res) {
     Journal.findById(req.params.journalId, function (err, journal) {
         res.json({
             status: 200,
@@ -88,14 +88,37 @@ exports.getJournalById = function (req,res) {
     }).populate("plantList")
 }
 
-exports.getJournalByDate = function (req,res) {
-    Journal.find({'inputDate': req.params.date, 'owner_userId': req.params.userId}, function (err, journal) {
+exports.getJournalByDate = function (req, res) {
+    Journal.find({ 'inputDate': req.params.date, 'owner_userId': req.params.userId }, function (err, journal) {
         res.json({
             status: 200,
             data: journal
         })
     }).populate({
         path: "plantList",
-        populate: 'hasilPanen'
+
+        populate: [
+            {
+                path: 'hasilPanen',
+            },
+            {
+
+                path: 'plantingNeeds',
+                populate: [
+                    {
+                        path: '_idBibit'
+                    },
+                    {
+                        path: '_idBBMList'
+                    },
+                    {
+                        path: '_idPupukList'
+                    },
+                    {
+                        path: '_idPestisidaList'
+                    }
+                ]
+            }
+        ],
     }).populate('dailyJournal')
 }

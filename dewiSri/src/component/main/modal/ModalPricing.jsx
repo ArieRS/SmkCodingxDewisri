@@ -39,11 +39,11 @@ export default class ModalPricing extends Component {
         return (
             <div>
                 <div className="container">
-                    <div className="row">
+                    <div className="row my-1">
                         <div className="col">
                             <div className="card money" onClick={this.click.bind(this, 'money')}>
                                 <img src="../../assets/img/icon/rupiah.svg" alt=""/>
-                                <h3>{this.props.uang}</h3>
+                                <h3>Rp. {this.props.uang}</h3>
                             </div>
                         </div>
                         <div className="col">
@@ -54,6 +54,15 @@ export default class ModalPricing extends Component {
                             </div>
                         </div>
                     </div>
+
+                    <div className="container syarat">
+                                <ul>
+                                    <li>Anda dapat batalkan langganan kapan saja</li>
+                                    <li>Kami akan mengingatkan anda sebelum jatuh tempo pembayaran berikutnya</li>
+                                    <li>Pembayaran berikutnya tanggal 17 September 2020</li>
+                                </ul>
+                                
+                            </div>
                 </div>
                 <div className="footer mt-4">
                     <button className="btn btn-custom mx-2" onClick={this.slide.bind(this, this.props.uang)}>Lanjut</button>

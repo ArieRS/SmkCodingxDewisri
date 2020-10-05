@@ -4,12 +4,13 @@ import { postFunction, responseData } from '../models/Model';
 import { ADD_PLANT } from '../system/Strings';
 // import Modal from './main/modal/Modal';
 import ModalProfile from './main/modal/ModalProfile';
+import Profile from './main/Profile';
 
 const ModalTanaman = ({ handleClose, show, children, state, method }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
   return (
-    <div id="modal" className={showHideClassName}>
-      <section className="col-md-12">
+    <div className={showHideClassName}>
+      <section className="col-md-12" style={{height: '100vh', marginTop: 0, backgroundColor:'rgba(0,0,0,0.5)'}}>
         <div className="modal-dialog modal-dialog-scrollable">
           <div className="modal-content">
             <div className="modal-header">
@@ -136,7 +137,7 @@ export default class Header extends Component {
   _logout() {
     localStorage.removeItem('auth');
     localStorage.removeItem('userData');
-    alert(localStorage.getItem("auth"));
+    // alert(localStorage.getItem("auth"));
   }
 
   _changeState(state, value) {
@@ -221,6 +222,7 @@ export default class Header extends Component {
                       <li><a href="#hasilPanen">Hasil Panen</a></li>
                       <li><a href="#premium">Premium</a></li>
                       <li><a onClick={() => this.method.logout()} href="">Logout</a></li>
+                      <Profile state={this.props.state}/>
                     </>
                     :
                     <li><a href="/login">Login</a></li>

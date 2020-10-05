@@ -12,7 +12,8 @@ import Admin from '../admin/AdminPanel';
 export const MainApp = (auth) => {
     return (
         <div>
-            <Profile />
+            {/* <Profile /> */}
+            
             {/* <Header isLogin={auth}></Header> */}
             <Router>
                 <Switch>

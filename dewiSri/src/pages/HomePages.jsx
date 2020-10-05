@@ -10,6 +10,7 @@ import { postFunction, responseData, getDataFunction } from '../models/Model'
 import moment from 'moment';
 import Header from '../component/Header';
 import Tanaman from '../component/main/Tanaman';
+import Profile from '../component/main/Profile'
 
 export default class HomePages extends Component {
     constructor(props) {
@@ -33,7 +34,8 @@ export default class HomePages extends Component {
             dateDecrement: this.dateDecrement.bind(this),
             dateIncrement: this.dateIncrement.bind(this),
             slideBefore: this.slideBefore.bind(this),
-            slideNext: this.slideNext.bind(this)
+            slideNext: this.slideNext.bind(this),
+            changeState: this.changeState.bind(this)
         }
     }
 
@@ -134,12 +136,12 @@ export default class HomePages extends Component {
                             if (this.state.journalDataByDate[0].plantList.length != 0) {
                                 if (params != null || params != undefined) {
                                     if (params.index != null || params.index != undefined) {
-                                        await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[params.index]._id)
+                                        // await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[params.index]._id)
                                     }
                                 }
-                                await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
+                                // await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
                             }
-                            console.log('getPlant : ' + this.state.journalDataByDate[0].plantList.length);
+                            console.log('getPlant : ' + this.state.journalDataByDate[0].plantList[0].plantingNeeds);
                         }
                     })
                 }
@@ -149,28 +151,28 @@ export default class HomePages extends Component {
         })
     }
 
-    async getPlantingNeeds(idPlant) {
-        var query = GET_PLANTING_NEEDS + idPlant;
-        console.log(query);
-        await getDataFunction(query).then(() => {
-            if (responseData.status == 200) {
-                if (responseData.data != undefined) {
-                    if (responseData.data.length != 0)
-                    this.setState({
-                        bibitData: responseData.data[0]._idBibit,
-                        bbmData: responseData.data[0]._idBBMList,
-                        pupukData: responseData.data[0]._idPupukList,
-                        pestisidaData: responseData.data[0]._idPestisidaList,
-                    }, () => {
-                        console.log("dataaaaa: " + this.state.pupukData); console.log(query)
-                    })
-                }
-                console.log(responseData.data);
-            } else {
-                alert("galgagal")
-            }
-        })
-    }
+    // async getPlantingNeeds(idPlant) {
+    //     var query = GET_PLANTING_NEEDS + idPlant;
+    //     console.log(query);
+    //     await getDataFunction(query).then(() => {
+    //         if (responseData.status == 200) {
+    //             if (responseData.data != undefined) {
+    //                 if (responseData.data.length != 0)
+    //                 this.setState({
+    //                     bibitData: responseData.data[0]._idBibit,
+    //                     bbmData: responseData.data[0]._idBBMList,
+    //                     pupukData: responseData.data[0]._idPupukList,
+    //                     pestisidaData: responseData.data[0]._idPestisidaList,
+    //                 }, () => {
+    //                     console.log("dataaaaa: " + this.state.pupukData); console.log(query)
+    //                 })
+    //             }
+    //             console.log(responseData.data);
+    //         } else {
+    //             alert("galgagal")
+    //         }
+    //     })
+    // }
 
 
     slideNext() {
@@ -179,9 +181,10 @@ export default class HomePages extends Component {
 
         this.setState({
             position: this.state.position + 100, index: this.state.index + 1
-        }, () => {
-            this.getPlantByDate({ index: this.state.index })
-        })
+        },
+            // this.getPlantByDate({ index: this.state.index })
+            console.log(`position: ${this.state.index}`)
+        )
         el.style.top = `-${this.state.position}px`;
         console.log(`position: ${this.state.index}`)
     }
@@ -192,20 +195,27 @@ export default class HomePages extends Component {
         this.setState({
             position: this.state.position - 100, index: this.state.index - 1
         }, () => {
-            this.getPlantByDate({ index: this.state.index })
+            // this.getPlantByDate({ index: this.state.index })
+
+            console.log(`position: ${this.state.index}`)
         })
         el.style.top = `-${this.state.position}px`;
         console.log(`position: ${this.state.index}`)
     }
 
-
+    changeState(state, value) {
+        this.setState({
+            [state]: value
+        })
+    }
     render() {
         return (
             <div>
                 {
                     this.state.isLogin && this.state.journalDataByDate.length != 0 ?
                         <>
-                            <div className="container-fluid" style={{ width: '100vw', height: '50vh' }}>
+                            <div className="container-fluid" style={{ width: '100vw', height: '50vh' }}>                            
+
                                 <Header state={this.state} method={this.method}></Header>
                             </div>
                             <main id="main" className='mt-5'>
@@ -217,7 +227,8 @@ export default class HomePages extends Component {
                                             <Tanaman state={this.state} method={this.method} />
                                             <KebutuhanTanam state={this.state} method={this.method} />
                                             <JurnalHarian state={this.state} method={this.method} />
-                                            <CatatanPertanian state={this.state} method={this.method}/>
+                                            <CatatanPertanian state={this.state} method={this.method} />
+                                            <Other />
                                             <Pricing />
                                         </>
                                         :

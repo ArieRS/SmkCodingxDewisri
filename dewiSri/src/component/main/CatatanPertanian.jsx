@@ -8,7 +8,7 @@ const Modal = ({ handleClose, show, children, state, method }) => {
   
     return (
       <div className={showHideClassName}>
-        <section className="col-md-12">
+        <section className="col-md-12" style={{height: '100vh', marginTop: 0, backgroundColor:'rgba(0,0,0,0.5)'}}> 
             <div className="modal-dialog modal-dialog-scrollable">
               <div className="modal-content">
                 <div className="modal-header">
@@ -114,7 +114,7 @@ export default class CatatanPertanian extends Component {
             data.append('tanggalPanen', this.state.tanggalPanen)
             data.append('hasilPanen', this.state.hasilPanen)
             data.append('hargaPasar',this.state.hargaPasar)
-            data.append('owner_plantId',this.props.state.journalDataByDate[0].plantList[0]._id)
+            data.append('owner_plantId',this.props.state.journalDataByDate[0].plantList[this.props.state.index]._id)
             await postFunction(data, ADD_HASIL_PANEN).then(() => {
                 if (responseData.status == 200) {
                     console.log("success");
@@ -159,18 +159,22 @@ export default class CatatanPertanian extends Component {
                                     <tbody>
                                         <tr>
                                         {
-                                            this.props.state.journalDataByDate[0].plantList[0].hasilPanen != undefined ? 
+                                            this.props.state.journalDataByDate[0].plantList[this.props.state.index].hasilPanen != undefined ? 
                                             <>
-                                                <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.tanggalPanen}</td>
-                                                <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.hasilPanen}</td>
-                                                <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.hargaPasar}</td>
+                                                <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].hasilPanen.tanggalPanen}</td>
+                                                <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].hasilPanen.hasilPanen}</td>
+                                                <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].hasilPanen.hargaPasar}</td>
                                                 {
                                                     this.props.state.userData.isPremium == false ?
                                                     
-                                                    <td><img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/></td>
+                                                    <td>
+                                                        <a href="#premium">
+                                                            <img className="icon-premium" src="../assets/img/icon/premium.svg" alt=""/>
+                                                        </a>
+                                                    </td>
                                                     :
 
-                                                    <td>{this.props.state.journalDataByDate[0].plantList[0].hasilPanen.analisaHasilPanen}</td>
+                                                    <td>{this.props.state.journalDataByDate[0].plantList[this.props.state.index].hasilPanen.analisaHasilPanen}</td>
                                                 }
                                             </>
                                             :
