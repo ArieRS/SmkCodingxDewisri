@@ -5,7 +5,7 @@ import { postFunction, responseData } from '../../models/Model';
 const Modal = ({ handleClose, show, children, state, method }) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
     return (
-      <div className={showHideClassName}>
+      <div id="modal" className={showHideClassName}>
         <section className="col-md-12">
             <div className="modal-dialog modal-dialog-scrollable">
               <div className="modal-content">
@@ -16,50 +16,50 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                   </button>
                 </div>
                 <div className="modal-body">
-                <div className="form">
-                <form className="php-email-form">
-                    <div className="form-group">
-                        <label for="tanggal">Tanggal</label>
-                        <input type="date" name="tanggal" onChange={(text) => method.changeState('dateInput',text)} className="form-control" id="tanggal" placeholder="Tanggal" required={true}/>
-                        <div className="invalid-feedback">
-                            Tanggal tidak boleh kosong
-                        </div>
-                    </div>
-                    {
-                        state.type == 'bbm' 
-                        ? 
-                        <div className="form-group">
-                            <label for="jumlah">Durasi Diesel (Menit)</label>
-                            <input type="number" onChange={(text) => method.changeState('quantity',text)} className="form-control" name="jumlah" id="jumlah" placeholder="Durasi" required={true}/>
-                            <div className="invalid-feedback">
-                                Durasi tidak boleh kosong
+                    <div className="form">
+                        <form className="php-email-form">
+                            <div className="form-group">
+                                <label for="tanggal">Tanggal</label>
+                                <input type="date" name="tanggal" onChange={(text) => method.changeState('dateInput',text)} className="form-control" id="tanggal" placeholder="Tanggal" required={true}/>
+                                <div className="invalid-feedback">
+                                    Tanggal tidak boleh kosong
+                                </div>
                             </div>
-                        </div>
-                        :
-                        <div className="form-group">
-                            <label for="jumlah">Jumlah (kg)</label>
-                            <input type="number" onChange={(text) => method.changeState('quantity',text)} className="form-control" name="jumlah" id="jumlah" placeholder="jumlah (Kg)" required={true}/>
-                            <div className="invalid-feedback">
-                                Jumlah tidak boleh kosong
+                            {
+                                state.type == 'bbm' 
+                                ? 
+                                <div className="form-group">
+                                    <label for="jumlah">Durasi Diesel (Menit)</label>
+                                    <input type="number" onChange={(text) => method.changeState('quantity',text)} className="form-control" name="jumlah" id="jumlah" placeholder="Durasi" required={true}/>
+                                    <div className="invalid-feedback">
+                                        Durasi tidak boleh kosong
+                                    </div>
+                                </div>
+                                :
+                                <div className="form-group">
+                                    <label for="jumlah">Jumlah (kg)</label>
+                                    <input type="number" onChange={(text) => method.changeState('quantity',text)} className="form-control" name="jumlah" id="jumlah" placeholder="jumlah (Kg)" required={true}/>
+                                    <div className="invalid-feedback">
+                                        Jumlah tidak boleh kosong
+                                    </div>
+                                </div>
+                            }
+                            <div className="form-group">
+                                <label for="harga">Harga {state.type == 'bbm'  ? 'Bahan Bakar' : ''}</label>
+                                <input type="Number" className="form-control"  onChange={(text) => method.changeState('price',text)} name="harga" id="harga" placeholder="Harga" required={true}/>
+                                <div className="invalid-feedback">
+                                    Harga tidak boleh kosong
+                                </div>
                             </div>
-                        </div>
-                    }
-                    <div className="form-group">
-                        <label for="harga">Harga {state.type == 'bbm'  ? 'Bahan Bakar' : ''}</label>
-                        <input type="Number" className="form-control"  onChange={(text) => method.changeState('price',text)} name="harga" id="harga" placeholder="Harga" required={true}/>
-                        <div className="invalid-feedback">
-                            Harga tidak boleh kosong
-                        </div>
+                            <div className="form-group">
+                                <label for="keterangan">Keterangan</label>
+                                <textarea className="form-control" id="keterangan" onChange={(text) => method.changeState('keterangan',text)} name="keterangan" rows="5" data-rule="required" placeholder="Keterangan" required={true}></textarea>
+                                <div className="invalid-feedback">
+                                    Keterangan tidak boleh kosong
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div className="form-group">
-                        <label for="keterangan">Keterangan</label>
-                        <textarea className="form-control" id="keterangan" onChange={(text) => method.changeState('keterangan',text)} name="keterangan" rows="5" data-rule="required" placeholder="Keterangan" required={true}></textarea>
-                        <div className="invalid-feedback">
-                            Keterangan tidak boleh kosong
-                        </div>
-                    </div>
-                </form>
-            </div>
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>
@@ -210,8 +210,8 @@ export default class KebutuhanTaman extends Component {
 
     render() {
         return (
-            <div id="kebutuhanTanam">
-                <section id="content" className="my-5">
+            <div id="kebutuhanTanam" className="mt-5">
+                <section id="content">
                     <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={this.modalShowHide}>
                     </Modal>
                     <div className="card-kebutuhan-tanam my-3">
@@ -231,8 +231,6 @@ export default class KebutuhanTaman extends Component {
                             </nav>
                             <div className="tab-content" id="nav-tabContent">   
                                 <div className="tab-pane fade show active" id="nav-bibit" role="tabpanel" aria-labelledby="nav-bibit-tab">
-                                  {/* <EnhancedTable rows={} tab="Bibit"/> */}
-                                  {/* <h2 className="text-center">Bibit</h2> */}
                                   <table className="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -243,24 +241,6 @@ export default class KebutuhanTaman extends Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {/* <tr>
-                                            <td>10/10/10</td>
-                                            <td>10</td>
-                                            <td>10000</td>
-                                            <td>panen</td>
-                                        </tr>
-                                        <tr>
-                                            <td>10/10/10</td>
-                                            <td>10</td>
-                                            <td>10000</td>
-                                            <td>panen</td>
-                                        </tr>
-                                        <tr>
-                                            <td>10/10/10</td>
-                                            <td>10</td>
-                                            <td>10000</td>
-                                            <td>panen</td>
-                                        </tr> */}
                                         {
                                             this.props.state.bibitData.map((item, index) => {
                                                 return(
@@ -351,8 +331,6 @@ export default class KebutuhanTaman extends Component {
                                     </button>
                                 </div>
                                 <div className="tab-pane fade" id="nav-pestisida" role="tabpanel" aria-labelledby="nav-pestisida-tab">
-                                  {/* <EnhancedTable tab="Pestisida" /> */}
-                                    {/* <div className="text-center"></div> */}
                                     <table className="table table-bordered">
                                         <thead>
                                             <tr>

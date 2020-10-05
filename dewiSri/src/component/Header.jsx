@@ -8,7 +8,7 @@ import ModalProfile from './main/modal/ModalProfile';
 const ModalTanaman = ({ handleClose, show, children, state, method }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
   return (
-    <div className={showHideClassName}>
+    <div id="modal" className={showHideClassName}>
       <section className="col-md-12">
         <div className="modal-dialog modal-dialog-scrollable">
           <div className="modal-content">
@@ -266,61 +266,6 @@ export default class Header extends Component {
                   <i className="fa fa-user-circle fa-2x" onClick={this.showModalProfile} style={{cursor: 'pointer'}}></i>
                 </div>
               </nav>
-              <div id="panel-tanaman" className="panel-tanaman">
-                <div className="container">
-                  {/* <div id="button" className="btn-left">
-                    <img src="../../assets/img/icon/next.svg" alt="" onClick={() => this.slideBefore()} />
-                  </div> */}
-                  {/* <div id="rincian-table">
-                    <div className="navigasi-wrapper">
-                      <div className="tanaman-wrapper">
-                        <h4>Wortel</h4>
-                      </div>
-                      <div className="komoditas-wrapper">
-                        <h4>Granola Jerman</h4>
-                      </div>
-                      <div className="hari-wrapper">
-                        <h4>110</h4>
-                      </div>
-                    </div>
-                  </div> */}
-                  {/* <div id="rincian-table" className="table-wrapper"> */}
-                    {
-                      // this.props.state.journalDataByDate.length !== 0 ?
-                      //   // this.props.state.journalDataByDate[0].plantList.length !== 0 ?
-                      //   this.props.state.journalDataByDate[0].plantList.map((e, index) => {
-                      //     return (
-                      //       <table className="table-card">
-                      //         <tr>
-                      //           <th>Tanaman</th>
-                      //           <td>:</td>
-                      //           <td>{this.props.state.journalDataByDate[0].plantList[index].comodity}</td>
-                      //         </tr>
-                      //         <tr>
-                      //           <th>Komoditas</th>
-                      //           <td>:</td>
-                      //           <td>{this.props.state.journalDataByDate[0].plantList[index].variety}</td>
-                      //         </tr>
-                      //         <tr>
-                      //           <th>Hari Ke</th>
-                      //           <td>:</td>
-                      //           <td>110</td>
-                      //         </tr>
-                      //       </table>
-                      //     )
-                      //   })
-                      //   // :
-                      //   // <h1 className='text-white'>Tanaman masih kosong</h1>
-                      //   :
-                      //   <></>
-                    }
-
-                  {/* </div> */}
-                  {/* <div id="button" className="btn-right">
-                    <img src="../../assets/img/icon/next.svg" alt="" onClick={() => this.slideNext()} />
-                  </div> */}
-                </div>
-              </div>
             </>
             :
             <></>

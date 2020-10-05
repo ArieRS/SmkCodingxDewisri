@@ -147,7 +147,7 @@ export default class CatatanPertanian extends Component {
                                 </div>
                             </div>
                             <div className="table-responsive-xl">
-                                <table className="table table-bordered table-striped">
+                                <table className="table table-bordered table-striped table-content">
                                     <thead>
                                         <tr>
                                             <th>Tanggal Panen</th>
@@ -177,7 +177,6 @@ export default class CatatanPertanian extends Component {
                                             <></>
                                         }
                                         </tr>
-                                        
                                     </tbody>
                                 </table>
                             </div>

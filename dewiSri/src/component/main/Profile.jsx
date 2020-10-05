@@ -4,38 +4,46 @@ import React, { Component } from 'react'
 const ModalSaran = ({ handleClose, show, children, state, method }) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
     return (
-      <div className={showHideClassName}>
+    <div id="modal" className={showHideClassName}>
         <section className="col-md-12">
-          <div className="modal-dialog modal-dialog-scrollable">
+        <div className="modal-dialog modal-dialog-scrollable">
             <div className="modal-content">
-              <div className="modal-header">
-                <h2 className="modal-title" id="staticBackdropLabel">Saran Tanggapan</h2>
-                <button type="button" className="close" onClick={handleClose} data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="saran">Saran</label>
-                        <textarea class="form-control" id="saran" rows="3"></textarea>
+                <div className="modal-header">
+                    <h2 className="modal-title" id="staticBackdropLabel">Saran Tanggapan</h2>
+                    <button type="button" className="close" onClick={handleClose} data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div className="modal-body">
+                    <div className="form">
+                        <form className="php-email-form">
+                            <div className="form-group">
+                                <label for="saran">Saran</label>
+                                <input type="text" name="saran" className="form-control" id="saran" placeholder="Tanggal" required={true}/>
+                                <div className="invalid-feedback">
+                                    Saran tidak boleh kosong
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label for="tanggapan">Tanggapan</label>
+                                <input type="text" name="tanggapan" className="form-control" id="tanggapan" placeholder="Tanggal" required={true}/>
+                                <div className="invalid-feedback">
+                                    Tanggapan tidak boleh kosong
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="tagggapan">Tanggapan</label>
-                        <textarea class="form-control" id="tagggapan" rows="3"></textarea>
-                    </div>
-                </form>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>
-                <button type="button" className="btn btn-custom">Kirim</button>
-              </div>
+                </div>
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>
+                    <button type="button" className="btn btn-custom">Kirim</button>
+                </div>
             </div>
-          </div>
+        </div>
         </section>
-      </div>
+    </div>
     );
-  };
+};
 
 export default class Profile extends Component {
     constructor(props) {

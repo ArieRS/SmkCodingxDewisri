@@ -690,6 +690,7 @@ content {
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-top: -50px;
 }
 
 .tanaman-wrapper .item {
@@ -827,22 +828,6 @@ h1.section-title-content {
   text-align: center;
 }
 
-.table-content {
-  width: 100%;
-  background-color: white;
-  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
-}
-
-.table-content thead tr td,
-tbody tr td {
-  padding: 10px 5px;
-  text-align: center;
-}
-
-.table-content img {
-  width: 50px;
-}
-
 .table-responsive-xl {
   width: 100%;
 }
@@ -933,8 +918,16 @@ tbody tr td {
   color: white;
 }
 
+.carousel {
+  margin-top: -100px;
+}
+
+.carousel-inner {
+  padding: 10px;
+}
+
 .carousel-item {
-  padding: 10px 0;
+  margin-top: 50px;
 }
 
 form {
@@ -992,6 +985,9 @@ table thead tr {
   float: right;
 }
 
+.modal-body label {
+  color: black;
+}
 
 @media (max-width: 767px) {
   #header #logo img {
@@ -1180,12 +1176,16 @@ table thead tr {
     font-size: 14px;
   }
 
+  .tanaman-wrapper .item {
+    height: 100px;
+  }
+
   .tanaman-wrapper .item h2 {
-    font-size: var(--xSmallFont);
+    font-size: 10px;
   }
     
   .tanaman-wrapper .item h1 {
-    font-size: var(--smallFont);
+    font-size: 12px;
   }
 
   .tanggal span {

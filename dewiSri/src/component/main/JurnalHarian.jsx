@@ -7,7 +7,7 @@ const Modal = ({ handleClose, show, children, state, method }) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
   
     return (
-      <div className={showHideClassName}>
+      <div id="modal" className={showHideClassName}>
         <section className="col-md-12">
             <div className="modal-dialog modal-dialog-scrollable">
               <div className="modal-content">
