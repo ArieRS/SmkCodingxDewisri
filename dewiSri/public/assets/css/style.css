@@ -80,7 +80,7 @@ h6 {
 }
 
 #header #logo img {
-  width: 25px;
+  width: 50px;
   margin-top: -10px;
   margin-right: 10px;
 }
@@ -679,6 +679,10 @@ content {
 
 /* Panel Tanaman */
 
+.table th, td {
+  text-align: center;
+}
+
 .syarat ul {
   list-style: circle;
   /* list-style-image: url("../img/icon/checklist.svg"); */
@@ -700,13 +704,12 @@ content {
   border-radius: 10px;
   text-align: center;
   padding: 20px;
-  
+  box-sizing: border-box;
 }
 
-.tanaman-wrapper .item h2 {
+.tanaman-wrapper .title {
   color: var(--greenColor);
 }
-
 /* End Tanaman Wrapper */
 
 
@@ -919,7 +922,7 @@ h1.section-title-content {
 }
 
 .carousel {
-  margin-top: -100px;
+  margin-top: -150px;
 }
 
 .carousel-inner {
@@ -991,22 +994,13 @@ table thead tr {
 
 @media (max-width: 767px) {
   #header #logo img {
-    width: 47px;
-    margin-left: 25px;
+    width: 40px;
+    height: auto;
+    margin-left: 20px;
   }
 
   #mobile-nav-toggle {
     display: inline;
-  }
-
-  #header #logo h1 {
-    font-size: var(--largeFont);
-    margin-top: 0;
-  }
-
-  #header #logo img {
-    max-height: 35px;
-    max-width: 20px;
   }
 
   #intro {
@@ -1180,15 +1174,21 @@ table thead tr {
     height: 100px;
   }
 
-  .tanaman-wrapper .item h2 {
-    font-size: 10px;
-  }
-    
   .tanaman-wrapper .item h1 {
     font-size: 12px;
   }
 
   .tanggal span {
     font-size: 17px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 320px) {
+  .tanaman-wrapper .item {
+    padding: 10px;
+    line-height: 50px;
+    box-sizing: border-box;
+    height: 75px;
   }
 }

@@ -9,15 +9,15 @@ export default class PanelTanaman extends Component {
             <div className="container">
                 <div className="tanaman-wrapper">
                     <div className="item tanaman">
-                        <h2>Tanaman</h2>
+                        <h1 className="title">Tanaman</h1>
                         <h1>{this.props.tanaman}</h1>
                     </div>
                     <div className="item komoditas">
-                        <h2>Komoditas</h2>
+                        <h1 className="title">Komoditas</h1>
                         <h1>{this.props.komoditas}</h1>
                     </div>
                     <div className="item hari">
-                        <h2>Hari</h2>
+                        <h1 className="title">Hari</h1>
                         <h1>{this.props.hari}</h1>
                     </div>
                 </div>

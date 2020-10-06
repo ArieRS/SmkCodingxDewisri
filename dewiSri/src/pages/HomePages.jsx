@@ -52,7 +52,6 @@ export default class HomePages extends Component {
 
         await postFunction(data, LOGIN_END).then(() => {
             if (responseData.status == 200) {
-                // console.log("success");
                 this.setState({
                     userData: responseData.data,
                     journalData: responseData.data.journalList
@@ -141,7 +140,7 @@ export default class HomePages extends Component {
                                 }
                                 // await this.getPlantingNeeds(this.state.journalDataByDate[0].plantList[0]._id)
                             }
-                            console.log('getPlant : ' + this.state.journalDataByDate[0].plantList[0].plantingNeeds);
+                            // console.log('getPlant : ' + this.state.journalDataByDate[0].plantList[0].plantingNeeds);
                         }
                     })
                 }
@@ -214,7 +213,7 @@ export default class HomePages extends Component {
                 {
                     this.state.isLogin && this.state.journalDataByDate.length != 0 ?
                         <>
-                            <div className="container-fluid" style={{ width: '100vw', height: '50vh' }}>                            
+                            <div className="container-fluid" style={{ width: '100vw', height: '50vh' }}>
 
                                 <Header state={this.state} method={this.method}></Header>
                             </div>

@@ -209,8 +209,7 @@ export default class Header extends Component {
         <ModalTanaman show={this.state.showModalTanaman} method={this.method} state={this.state} handleClose={this.showModalTanaman.bind(this, 'hide')} />
         <div className="container">
           <div id="logo" className="">
-            <a href="/" className="scrollto"><img src="../assets/img/icon/logo_putih.png" alt="" /></a>
-            <h1 style={{ display: "inline-block", color: 'white' }}>DEWISRI</h1>
+            <a href="/" className="scrollto"><img className="logo" src="../assets/img/icon/logobaru.png" alt="" /></a>
             <nav id="nav-menu-container" className="navigasi">
               <ul className="nav-menu">
                 <li className="menu-active"><a href="/">Beranda</a></li>
