@@ -11,6 +11,43 @@ import moment from 'moment';
 import Header from '../component/Header';
 import Tanaman from '../component/main/Tanaman';
 import Profile from '../component/main/Profile'
+import TableDownload from './TableDownload'
+
+
+const Modal = ({ handleClose, show, children, state, method }) => {
+    const showHideClassName = show ? "modal display-block" : "modal display-none";
+
+    return (
+        <div className={showHideClassName}>
+            <section className="col-md-12" style={{ height: '100vh', marginTop: 0, backgroundColor: 'rgba(0,0,0,0.5)' }}>
+                <div className="modal-dialog modal-dialog-scrollable" style={{width: '100vw'}}>
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="staticBackdropLabel">Tambah Hasil Panen</h5>
+                            <button type="button" className="close" onClick={handleClose} data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            {
+                                state.userData.isPremium ? 
+
+                                <TableDownload state={state}></TableDownload>
+                                :
+                                <h1>Update to premium to download data</h1>
+                            }
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>
+                            {/* <button type="submit" onClick={() => method.addData({type: state.type})} className="btn btn-custom">Tambah Data</button> */}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
+
 
 export default class HomePages extends Component {
     constructor(props) {
@@ -28,6 +65,7 @@ export default class HomePages extends Component {
             currentDate: "",
             dateFormat: "",
             dateIsoFormat: '',
+            showModal: false
         }
         this.method = {
             getCurrentDate: this.getCurrentDate.bind(this),
@@ -35,7 +73,8 @@ export default class HomePages extends Component {
             dateIncrement: this.dateIncrement.bind(this),
             slideBefore: this.slideBefore.bind(this),
             slideNext: this.slideNext.bind(this),
-            changeState: this.changeState.bind(this)
+            changeState: this.changeState.bind(this),
+            modalShowHide: this.modalShowHide.bind(this)
         }
     }
 
@@ -62,6 +101,12 @@ export default class HomePages extends Component {
             }
         })
 
+    }
+
+    modalShowHide() {
+        this.setState({
+            showModal: !this.state.showModal
+        })
     }
 
     getCurrentDate() {
@@ -213,6 +258,7 @@ export default class HomePages extends Component {
                 {
                     this.state.isLogin && this.state.journalDataByDate.length != 0 ?
                         <>
+                            <Modal show={this.state.showModal} state={this.state} method={this.method} handleClose={() => this.method.modalShowHide()} />
                             <div className="container-fluid" style={{ width: '100vw', height: '50vh' }}>
 
                                 <Header state={this.state} method={this.method}></Header>
@@ -229,6 +275,7 @@ export default class HomePages extends Component {
                                             <CatatanPertanian state={this.state} method={this.method} />
                                             <Other />
                                             <Pricing />
+                                            {/* <TableDownload state={this.state} /> */}
                                         </>
                                         :
 

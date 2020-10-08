@@ -4,6 +4,7 @@ import Header from '../component/Header';
 import HomePages from '../pages/HomePages';
 import Footer from '../component/Footer';
 import MainPage from '../pages/MainPage';
+import Table from '../pages/TableDownload';
 import Login from '../component/main/Login';
 import Register from '../component/main/Register';
 import Profile from '../component/main/Profile';
@@ -22,6 +23,7 @@ export const MainApp = (auth) => {
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/admin" component={Admin} />
+                    <Route exact path="/table" component={Table} />
                 </Switch>
             </Router>
             <Footer></Footer>

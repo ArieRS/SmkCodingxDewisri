@@ -129,9 +129,6 @@ export default class JurnalHarian extends Component {
                         <span className="section-divider"></span>
                     </div>
     
-                    <div className="tab-pane fade show active" id="nav-bibit" role="tabpanel" aria-labelledby="nav-bibit-tab">  
-                        <a href="3" className="btn-get-started">Download Data</a>
-                    </div>
                     <div className="my-3">
                         <table className="table table-bordered table-striped">
                             <thead>

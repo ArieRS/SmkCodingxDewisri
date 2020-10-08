@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 import PanelTanaman from './PanelTanaman';
+import {
+    JsonToCsv,
+    useJsonToCsv
+} from 'react-json-csv';
+import { useHistory } from "react-router-dom";
 
+// const history = useHistory();
+const { saveAsCsv } = useJsonToCsv();
+const fields = {
+};
 export default class Tanaman extends Component {
     constructor(props) {
         super(props);
@@ -8,7 +17,9 @@ export default class Tanaman extends Component {
             position: 0
         }
     }
-
+    componentDidMount() {
+        console.log("contohdata:  " + this.props.state.journalDataByDate[0].plantList[this.props.state.index].plantingNeeds);
+    }
     render() {
         return (
             <div className="container">
@@ -37,6 +48,18 @@ export default class Tanaman extends Component {
                             <PanelTanaman tanaman="kentang" komoditas="granola jerman" hari="100" />
                         </div> */}
                     </div>
+                    <div className="button-wrapper mt-4 float-left">
+                        <a class="btn btn-custom mr-4" style={{ color: 'white' }}
+                            // onClick={() => saveAsCsv({
+                            //     data: this.props.state.journalDataByDate[0].plantList[this.props.state.index],
+                            //     fields: fields,
+                            //     filename: this.props.state.journalDataByDate[0].plantList[this.props.state.index].variety
+                            // })}
+                            onClick={() => this.props.method.modalShowHide()}
+                        >
+                            Download data
+                        </a>
+                    </div>
                     <div className="button-wrapper mt-4 float-right">
                         {
                             this.props.state.index == 0 ?
@@ -55,7 +78,7 @@ export default class Tanaman extends Component {
 
                         }
                         {
-                            this.props.state.index+1 == this.props.state.journalDataByDate[0].plantList.length
+                            this.props.state.index + 1 == this.props.state.journalDataByDate[0].plantList.length
                                 ?
 
                                 <a aria-disabled={true} class="btn btn-custom mx-3" >

@@ -31,7 +31,7 @@ exports.addBibit = function (req, res) {
         PlantingNeeds.findByIdAndUpdate(
             req.body.owner_plantingNeedsId,
             {
-                $set:{
+                $push:{
                     _idBibit: docBibit._id
                 }
             },

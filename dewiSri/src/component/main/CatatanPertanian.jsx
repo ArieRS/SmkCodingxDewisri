@@ -190,7 +190,6 @@ export default class CatatanPertanian extends Component {
                                 </svg>
                                 <span className="d-none d-md-inline text-light ml-1">Tambah Data</span>
                             </button>
-                            <a href="#" className="btn-get-started mt-3">Download Data</a>
                         </div>
                     </div>
                 </section>

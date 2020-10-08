@@ -180,7 +180,7 @@ export default class Header extends Component {
   async _addData() {
     if (this._validate()) {
       this._clear()
-      var newStartDate = moment(this.state.startDate).format("DD-M-YYYY")
+      var newStartDate = moment(this.state.startDate).format("D-M-YYYY")
       var data = new FormData()
       data.append("comodity", this.state.comodity)
       data.append("variety", this.state.variety)

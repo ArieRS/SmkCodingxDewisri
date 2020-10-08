@@ -85,7 +85,33 @@ exports.getJournalById = function (req, res) {
             status: 200,
             data: journal
         })
-    }).populate("plantList")
+    }).populate({
+        path: "plantList",
+
+        populate: [
+            {
+                path: 'hasilPanen',
+            },
+            {
+
+                path: 'plantingNeeds',
+                populate: [
+                    {
+                        path: '_idBibit'
+                    },
+                    {
+                        path: '_idBBMList'
+                    },
+                    {
+                        path: '_idPupukList'
+                    },
+                    {
+                        path: '_idPestisidaList'
+                    }
+                ]
+            }
+        ],
+    }).populate('dailyJournal')
 }
 
 exports.getJournalByDate = function (req, res) {

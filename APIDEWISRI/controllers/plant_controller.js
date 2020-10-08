@@ -70,8 +70,8 @@ exports.addPlant = function (req, res) {
                             useFindAndModify: false
                         }
                         , function (err, allres) {
-                            if (error) {
-                                console.log(error);
+                            if (err) {
+                                console.log(err);
                             }
                             planting_needs.owner_plantId = docPlant._id;
                             planting_needs.save().then(docPlantingNeeds => {
