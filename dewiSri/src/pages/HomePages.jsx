@@ -20,7 +20,7 @@ const Modal = ({ handleClose, show, children, state, method }) => {
     return (
         <div className={showHideClassName}>
             <section className="col-md-12" style={{ height: '100vh', marginTop: 0, backgroundColor: 'rgba(0,0,0,0.5)' }}>
-                <div className="modal-dialog modal-dialog-scrollable" style={{width: '100vw'}}>
+                <div className="modal-dialog modal-dialog-scrollable" style={{ width: '100vw' }}>
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="staticBackdropLabel">Tambah Hasil Panen</h5>
@@ -29,13 +29,11 @@ const Modal = ({ handleClose, show, children, state, method }) => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            {
-                                state.userData.isPremium ? 
 
-                                <TableDownload state={state}></TableDownload>
-                                :
-                                <h1>Update to premium to download data</h1>
-                            }
+
+                            <TableDownload state={state}></TableDownload>
+
+
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleClose}>Close</button>
@@ -274,7 +272,7 @@ export default class HomePages extends Component {
                                             <JurnalHarian state={this.state} method={this.method} />
                                             <CatatanPertanian state={this.state} method={this.method} />
                                             <Other />
-                                            <Pricing />
+                                            <Pricing state={this.state} method={this.method} />
                                             {/* <TableDownload state={this.state} /> */}
                                         </>
                                         :
