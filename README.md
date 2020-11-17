@@ -1,25 +1,33 @@
 # SmkCodingxDewisri
 
-## Quick Start
+- [About](#about)
+- [Requirements](#requirements)
+- [Installation](#installation)
 
-## recomendation : use node v12.16.1 (npm v6.13.4)
+## About
+[This project description]
 
-Clone the repository:
+## Requirements
+Node v12.16.1 / npm v6.13.4 (recommend)
+
+## Installation
+1. Clone this repository to your machine
 ```bash
 git clone https://github.com/ArieRS/SmkCodingxDewisri.git && cd react-pwa 
 ```
 
-Install the dependencies:
+2. Install the dependencies on your machine
 ```bash
 npm install
 ```
 
-To start the project run following command in your terminal:
+- To start this project, run
 ```bash
 npm start
 ```
 
-To build the project run the following command in your terminal:
+- To build this project, run
 ```bash
 npm run build
 ```
+3. Then, open the localhost
